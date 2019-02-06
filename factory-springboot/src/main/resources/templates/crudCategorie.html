@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="ISO-8859-1">
+<title>Crud Categorie</title>
+</head>
+<body>
+<h1>Crud catégorie</h1>
+
+	<form method="post">
+		
+			Libelle de la categorie: <br> <input type="text" name="libelle"
+				required> <input type="submit" value="Ajouter">
+		
+		</form>
+
+
+
+	<table class="table">
+
+			<tr th:each="categorie : ${listeCategorie}">
+				<td>[[${ categorie.libelle }]]</td> 
+				
+				<td><div sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{'/supprimer/'+${ categorie.id }}">Supprimer</a></div></td>
+				<td><div sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{'/editer/' +${ categorie.id }}">Editer</a></div></td>
+				
+			</tr>
+
+		</table>
+
+</body>
+</html>
