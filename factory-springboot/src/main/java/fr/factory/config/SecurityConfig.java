@@ -20,7 +20,7 @@ public class SecurityConfig {
 				.antMatchers(HttpMethod.OPTIONS).permitAll()
 				.anyRequest().hasAnyRole("ADMIN", "USER")
 				.and().httpBasic()
-				.and().csrf().disable(); 
+				.and().csrf().disable();
 		}
 	}
 	
