@@ -50,7 +50,7 @@ public class Lieu {
 	@Column(name="LIE_LIEN")
 	private String lien;
 	
-	@OneToOne (mappedBy = "lieu")
+	@OneToOne
 	private Utilisateur utilisateur ;
 	
 	@OneToMany(mappedBy="lieu")
