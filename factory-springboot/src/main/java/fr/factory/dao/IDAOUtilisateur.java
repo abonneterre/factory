@@ -1,4 +1,4 @@
-package fr.factory.idao;
+package fr.factory.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
