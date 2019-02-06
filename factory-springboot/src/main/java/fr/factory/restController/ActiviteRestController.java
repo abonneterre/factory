@@ -20,7 +20,7 @@ import fr.factory.model.Activite;
 public class ActiviteRestController {
 	
 	@Autowired
-	private IDAOActivite daoActivite;
+	private IDAOActivite daoActivite; 
 	
 	@GetMapping()
 	public List<Activite> listeActivites() {
