@@ -33,7 +33,7 @@ public class ReservationController {
 	@PostMapping("/reservation")
 	public String addReservation(@Valid @ModelAttribute Reservation reservation, BindingResult result,
 			Model model) {
-		model.addAttribute("reservations", daoReservation.findAll());
+		//model.addAttribute("reservations", daoReservation.findAll());
 		if(result.hasErrors()) {
 			System.out.println("Invalide");
 			return "reservation";
