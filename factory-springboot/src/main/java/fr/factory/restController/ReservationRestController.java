@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
+
+import fr.factory.model.Categorie;
 import fr.factory.model.Reservation;
 
 
@@ -23,12 +25,12 @@ public class ReservationRestController {
 	private IDAOReservation daoReservation;
 	
 	
-	@GetMapping("/api/reservation")
-//	@JsonView(Views.Reservation.class)
-	public  List<Reservation> listeReservation(@RequestBody Reservation reservation) {
 
-		public List<Reservation> listeRest() {
-			return this.daoReservation.findAll();
+		
+	@PostMapping
+//	@JsonView(Views.Reservation.class)
+	public Reservation ajouterReservation(@RequestBody Reservation reservation) {
+		this.daoReservation.save(reservation);
+		return reservation;
 	}
-	
 }
