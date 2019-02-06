@@ -1,5 +1,6 @@
 package fr.factory.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -50,6 +51,9 @@ public class Lieu {
 	
 	@OneToMany (mappedBy = "lieu")
 	private Utilisateur utilisateur ;
+	
+	@OneToMany(mappedBy="lieu")
+	private List<Activite> activites = new ArrayList<Activite>();
 	
 
 	public int getId() {

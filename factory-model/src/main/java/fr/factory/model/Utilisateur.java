@@ -1,7 +1,5 @@
 package fr.factory.model;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -57,12 +55,7 @@ public class Utilisateur {
 
 	@OneToOne (mappedBy = "utilisateur", cascade = CascadeType.PERSIST)
 	private Lieu lieu;
-	
-	
-	@OneToMany(mappedBy="lieu")
-	private List<Activite> activites = new ArrayList<Activite>();
-	
-	
+		
 	
 	public int getId() {
 		return id;
