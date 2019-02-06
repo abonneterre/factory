@@ -37,7 +37,7 @@ public class UtilisateurController {
 	public String formulaireAjout(Model model) { 
 		List <Utilisateur> mesUtilisateurs = daoUtilisateur.findAll(); 
 		model.addAttribute("mesUtilisateurs", mesUtilisateurs); 
-		return "mesUtilisateurs" ; 
+		return "admin" ; 
 	} 
 	 
 	@PostMapping("/ajoutUtilisateur") 
