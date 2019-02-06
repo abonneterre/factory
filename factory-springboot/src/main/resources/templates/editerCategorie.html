@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="ISO-8859-1">
+<title>Edition Categorie</title>
+</head>
+<body>
+	<h1>Edition catégorie</h1>
+	<form method="post">
+		<input type="hidden" name="id" th:value="${categorie?.id}">
+		Libelle de la categorie: <br> <input type="text" name="libelle"
+			required th:value="${categorie.libelle }"> <input
+			type="submit" value="OK">
+	</form>
+
+</body>
+</html>
