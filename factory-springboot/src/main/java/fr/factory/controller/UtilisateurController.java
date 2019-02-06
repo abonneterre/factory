@@ -1,19 +1,24 @@
 package fr.factory.controller; 
  
-import java.util.List; 
- 
-import javax.validation.Valid; 
- 
-import org.springframework.beans.factory.annotation.Autowired; 
-import org.springframework.security.access.prepost.PreAuthorize; 
-import org.springframework.stereotype.Controller; 
-import org.springframework.ui.Model; 
-import org.springframework.validation.BindingResult; 
-import org.springframework.web.bind.annotation.GetMapping; 
-import org.springframework.web.bind.annotation.ModelAttribute; 
-import org.springframework.web.bind.annotation.PathVariable; 
-import org.springframework.web.bind.annotation.PostMapping; 
-import org.springframework.web.bind.annotation.RequestMapping; 
+import java.util.List;
+import java.util.Optional;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import fr.factory.idao.IDAOLieu;
+import fr.factory.idao.IDAOUtilisateur;
+import fr.factory.model.Lieu;
+import fr.factory.model.Utilisateur; 
  
  
  
@@ -24,7 +29,7 @@ public class UtilisateurController {
 	@Autowired 
 	private IDAOUtilisateur daoUtilisateur; 
 	 
-	@Autowired 
+	@Autowired
 	private IDAOLieu daoLieu; 
 	 
  
@@ -35,46 +40,42 @@ public class UtilisateurController {
 		return "mesUtilisateurs" ; 
 	} 
 	 
-	 
-	 
- 
-	@PostMapping("/ajoutProduit") 
-	public String ajouterProduit( 
-			@Valid @ModelAttribute Produit produit, BindingResult result, Model model) { 
+	@PostMapping("/ajoutUtilisateur") 
+	public String ajouterUtilisateur( 
+			@Valid @ModelAttribute Utilisateur utilisateur, BindingResult result, Model model) { 
 		if (result.hasErrors()) { 
 			System.out.println("Erreur..."); 
-			return "produit"; 
+			return "utilisateur"; 
 			} 
-		daoProduit.save(produit); 
+		daoUtilisateur.save(utilisateur); 
 		 
-		return "redirect:./liste"; 
+		return "redirect:./listeUtilisateurs"; 
 	} 
 	 
  
-	 
- 
 	@GetMapping("/supprimer/{id}") 
-	public String supprimerProduit(@PathVariable(value="id", required=false) int id, Model model) { 
+	public String supprimerUtilisateur(@PathVariable(value="id", required=false) int id, Model model) { 
 		 
-		daoProduit.deleteById(id); 
+		daoUtilisateur.deleteById(id); 
 		 
-		return "redirect:../liste"; 
+		return "redirect:../listeUtilisateurs"; 
 	} 
 	 
  
 	@GetMapping("/editer/{id}") 
-	public String editerProduit(@PathVariable(value="id", required=false) int id, Model model) { 
-		model.addAttribute("produit", daoProduit.findById(id).get()); 
-		List <Fournisseur> mesFournisseurs = daoFournisseur.findAll(); 
-		model.addAttribute("mesFournisseurs", mesFournisseurs); 
+	public String editerUtilisateur(@PathVariable(value="id", required=false) int id, Model model) { 
+		model.addAttribute("utilisateur", daoUtilisateur.findById(id).get()); 
+		Utilisateur utilisateur = daoUtilisateur.findById(id).get();
+		Optional<Lieu> lieu = daoLieu.findById(utilisateur.getLieu().getId()); 
+		model.addAttribute("lieu", lieu); 
 		return "editer"; 
 	} 
 	 
  
 	@PostMapping("/editer/{id}") 
-	public String modifierProduit(@PathVariable(value="id", required=false) int id, @ModelAttribute Produit produit) { 
-		daoProduit.save(produit); 
-		return "redirect:../liste"; 
+	public String modifierUtilisateur(@PathVariable(value="id", required=false) int id, @ModelAttribute Utilisateur utilisateur) { 
+		daoUtilisateur.save(utilisateur); 
+		return "redirect:../listeUtilisateurs"; 
 	 
 	} 
 } 
