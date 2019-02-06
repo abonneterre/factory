@@ -16,7 +16,7 @@ import fr.factory.model.Activite;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/activite")
+@RequestMapping("/api/activite")
 public class ActiviteRestController {
 	
 	@Autowired
