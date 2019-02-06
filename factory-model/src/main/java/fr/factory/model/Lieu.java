@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -49,7 +50,7 @@ public class Lieu {
 	@Column(name="LIE_LIEN")
 	private String lien;
 	
-	@OneToMany (mappedBy = "lieu")
+	@OneToOne (mappedBy = "lieu")
 	private Utilisateur utilisateur ;
 	
 	@OneToMany(mappedBy="lieu")
