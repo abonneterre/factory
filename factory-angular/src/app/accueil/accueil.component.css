@@ -1,0 +1,13 @@
+div#carouselExampleIndicators {
+  width : 700px;
+  margin: 0 auto;
+}
+
+div#titre  {
+  font-family: 'Source Sans Pro', sans-serif;
+  /* margin: 0 auto; */
+}
+
+div#menu {
+  background-color: grey;
+} 
