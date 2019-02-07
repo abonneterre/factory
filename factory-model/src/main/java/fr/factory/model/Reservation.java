@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 
 
@@ -41,9 +43,11 @@ public class Reservation {
 	private boolean isApprox = false;
 	
 	@Column(name="RES_DATEDEMANDE")
+	@Temporal(TemporalType.DATE)
 	private Date dateDemande; 
 	
 	@Column(name="RES_DATERESERVATION")
+	@Temporal(TemporalType.DATE)
 	private Date dateReservation;
 	
 	@Column(name="RES_DUREESOUHAITEE")

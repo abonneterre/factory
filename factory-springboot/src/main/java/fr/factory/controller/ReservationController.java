@@ -1,8 +1,11 @@
 package fr.factory.controller;
 
+import java.util.Date;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
 import fr.factory.dao.IDAOActivite;
 import fr.factory.dao.IDAOReservation;
 import fr.factory.model.Reservation;
@@ -38,13 +42,18 @@ public class ReservationController {
 	@GetMapping("/ajouter")
 	public String ajouterReservation(@Valid @ModelAttribute Reservation reservation, Model model) {
 		model.addAttribute("activites", daoActivite.findAll());
+		System.out.println(reservation.getDateReservation());
 		return "resa-edit";
 	}
 	
 	@PostMapping("/ajouter")
 	public String addReservation(@Valid @ModelAttribute Reservation reservation, BindingResult result,
-			Model model) {
+			Model model, @DateTimeFormat(pattern = "yyyy-MM-dd") Date dateResa ) {
 		//model.addAttribute("reservations", daoReservation.findAll());
+		System.out.println(reservation.getDateReservation());
+		reservation.setDateReservation(dateResa);
+		System.out.println(dateResa);
+		
 		if(result.hasErrors()) {
 			System.out.println("Invalide");
 			return "resa-edit";
