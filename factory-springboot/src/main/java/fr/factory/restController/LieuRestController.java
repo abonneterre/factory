@@ -5,32 +5,26 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.fasterxml.jackson.annotation.JsonView;
 
-import fr.factory.dao.IDAOCategorie;
-import fr.factory.model.Categorie;
+import fr.factory.dao.IDAOLieu;
+import fr.factory.model.Lieu;
 import fr.factory.projection.Views;
-
-
 
 @RestController
 @CrossOrigin("*") 
-public class CategorieRestController {
-
-	
+public class LieuRestController {
 	
 	@Autowired
-	private IDAOCategorie daoCategorie;
+	private IDAOLieu daoLieu;
 	
-	@GetMapping("/api/categorie")
-	@JsonView(Views.Categorie.class)
-	public List<Categorie> listeCategorie() {
-			return this.daoCategorie.findAll();
+	@GetMapping("/api/lieu")
+	@JsonView(Views.LieuWithUtilisateur.class)
+	public List<Lieu> listeLieu() {
+			return this.daoLieu.findAll();
 	}
 	
 
-	
 }
