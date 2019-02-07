@@ -16,7 +16,7 @@ public class SecurityConfig {
 	@Order(1)
 	public static class ApiWebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapter {
 		protected void configure(HttpSecurity http) throws Exception {
-			http.antMatcher("/api/**").authorizeRequests()
+			http.antMatcher("/**").authorizeRequests()
 				.antMatchers(HttpMethod.OPTIONS).permitAll()
 //				.anyRequest().hasAnyRole("ADMIN", "USER")
 				.and().httpBasic()
