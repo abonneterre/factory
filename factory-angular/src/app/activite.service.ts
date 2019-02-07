@@ -25,6 +25,16 @@ findById(id : number){
     this.activite = resp);
 }
 
+findByActiveeAsync() {
+   if (this.activites == null) {
+this.activites =  this.httpClient.get("http://localhost:8080/api/activite/activee");
+}
+
+ return this.activites;
+
+
+}
+
      refresh() {
        this.activites = null;
      }
