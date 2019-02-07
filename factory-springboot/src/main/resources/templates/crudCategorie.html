@@ -6,28 +6,40 @@
 <title>Crud Categorie</title>
 </head>
 <body>
-<h1>Crud catégorie</h1>
+	<h1>Crud catégorie</h1>
 
 	<form method="post">
-		
-			Libelle de la categorie: <br> <input type="text" name="libelle"
-				required> <input type="submit" value="Ajouter">
-		
-		</form>
+
+		Libelle de la categorie: <br> <input type="text" name="libelle"
+			required> <br>
+			
+		Choisir categorie<select class="custom-select" name="categorieMere">
+			<option th:each="categorie : ${listeCategorie}"
+				th:value="${categorie.id}">[[${categorie.libelle }]]</option>
+				</select>
+				<br>
+				<input type="submit" value="Ajouter">
+	</form>
+
+
 
 
 
 	<table class="table">
 
-			<tr th:each="categorie : ${listeCategorie}">
-				<td>[[${ categorie.libelle }]]</td> 
-				
-				<td><div sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{'/supprimer/'+${ categorie.id }}">Supprimer</a></div></td>
-				<td><div sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{'/editer/' +${ categorie.id }}">Editer</a></div></td>
-				
-			</tr>
+		<tr th:each="categorie : ${listeCategorie}">
+			<td>[[${ categorie.libelle }]]</td>
 
-		</table>
+			<td><div>
+					<a th:href="@{'/supprimer/'+${ categorie.id }}">Supprimer</a>
+				</div></td>
+			<td><div>
+					<a th:href="@{'/editer/' +${ categorie.id }}">Editer</a>
+				</div></td>
+
+		</tr>
+
+	</table>
 
 </body>
 </html>
