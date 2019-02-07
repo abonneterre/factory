@@ -32,7 +32,7 @@ public class Lieu {
 	@Column(name="LIE_NOM")
 	@NotEmpty
 	@NotNull
-	@JsonView(Views.Lieu.class)
+	@JsonView({Views.Lieu.class, Views.Activite.class})
 	private String nom;
 	
 	@Column(name="LIE_ADRESSE")
