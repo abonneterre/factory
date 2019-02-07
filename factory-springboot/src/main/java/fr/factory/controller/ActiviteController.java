@@ -12,7 +12,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import fr.factory.dao.IDAOActivite;
+import fr.factory.dao.IDAOCategorie;
 import fr.factory.model.Activite;
+import fr.factory.model.Categorie;
+import fr.factory.model.Niveau;
 
 //**********************************************************//
 //	PENSER A METTRE A JOUR LES LIENS URL SELON LE BESOIN	//
@@ -25,25 +28,48 @@ public class ActiviteController {
 	@Autowired
 	private IDAOActivite daoActivite;
 	
+	@Autowired
+	private IDAOCategorie daoCategorie;
+	
+	
+	private Niveau monNiveau;
+	
+	
 //Lister des activités
 	@GetMapping("")
 	public String listeActivite(@ModelAttribute Activite activite, Model model) {
+		
 		List<Activite> mesActivites = daoActivite.findAll();
 		model.addAttribute("mesActivites", mesActivites);
 		return "listeActivites";
 	}
 	
+	
+
+	
+	
 //Ajouter une activité
-	@GetMapping({ "/ajouter" })
-	public String ajouterActivite(Model model) {
-		return "formActivite"; //formulaire html de création/édition d'activités (mettre à jour si besoin)
+	@GetMapping({ "/ajouterActivite" })
+	public String ajouterActivite(@ModelAttribute Categorie Categorie , Niveau niveau, Model model) {
+		
+		Niveau[] mesNiveaux = Niveau.values();
+		List<Categorie> mesCategories = daoCategorie.findAll();
+		model.addAttribute("mesCategories", mesCategories);
+		model.addAttribute("mesNiveaux", mesNiveaux);
+		return "formActivite"; 
 	}
+		
+		
 	
 	@PostMapping("/ajouterActivite")
-	public String ajouterActivite(@ModelAttribute Activite activite, Model model) {
+	public String ajouterActivite1(@ModelAttribute Activite activite, Model model) {
 		daoActivite.save(activite);
 		return "redirect:.";
 	}
+	
+	
+	
+	
 	
 //Editer une activité
 	@GetMapping("/editer/{id}")
@@ -57,6 +83,11 @@ public class ActiviteController {
 		daoActivite.save(activite);
 		return "redirect:..";
 	}
+	
+	
+	
+	
+	
 	
 	
 //Supprimer une activité
