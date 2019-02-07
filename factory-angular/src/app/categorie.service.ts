@@ -23,9 +23,7 @@ this.categories =  this.httpClient.get("http://localhost:8080/api/categorie");
 
   return this.categories;
 
-
 }
-
      refresh() {
        this.categories = null;
      }
