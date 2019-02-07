@@ -28,7 +28,7 @@ public class LieuRestController {
 	}
 	
 	@GetMapping("/api/lieu/{id}")
-	@JsonView(Views.Lieu.class)
+	@JsonView(Views.LieuWithUtilisateur.class)
 	public Lieu lieuParId(@PathVariable int id) {
 		return this.daoLieu.findById(id).get();
 	}
