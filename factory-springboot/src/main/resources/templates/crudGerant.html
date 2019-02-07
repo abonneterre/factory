@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Bienvenue sur la factory !</title>
+
+<meta name="description" content="" />
+<meta name="viewport" content="width=devide-width, initial-scale=1" />
+</head>
+<body>
+ <a th:href="@{ajouterUtilisateur}"> Ajouter</a>
+	<table>
+		<thead>
+			<tr>
+				<h2>Liste des gérants</h2>
+				<th>Nom</th>
+				<th>Prénom</th>
+				<th>Email</th>
+				<th>Lieu</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+		<tr th:each="utilisateur :${ mesUtilisateurs }" >
+		
+				<td>[[${utilisateur.nom }]]</td>
+
+				<td>[[${utilisateur.prenom}]]</td>
+
+				<td>[[${utilisateur.email}]]</td>
+				
+				<td>[[${utilisateur.lieu?.nom }]]</td>
+				
+				<td>
+				 <a th:href="@{supprimer/{id}(id=${utilisateur.id })}"> Supprimer</a>
+			     <a th:href="@{editer/{id}(id=${utilisateur.id })}"> Editer</a>
+			    </td>
+		</tr>
+		</tbody>
+	</table>
+	
+
+</body>
+</html>
