@@ -2,6 +2,7 @@ package fr.factory.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,18 +32,18 @@ public class Categorie {
 	
 	@Column(name="CAT_LIBELLE", nullable=false)
 	@NotNull
+	@NotEmpty
 	@JsonView(Views.Categorie.class)
 	private String libelle;
 	
 	@ManyToMany(mappedBy="categories")
 	private List<Activite> activites;
 	
-	@OneToMany(mappedBy="categorieMere")
-	@JsonView(Views.Categorie.class)
+	@OneToMany(mappedBy="categorieMere", cascade = CascadeType.REMOVE)
 	private List<Categorie> categoriesFilles;
 	
 	@ManyToOne
-//	@JsonView(Views.Categoie.class)
+	@JsonView(Views.Categorie.class)
 	private Categorie categorieMere;
 	
 	public List<Activite> getActivites() {
@@ -67,6 +68,22 @@ public class Categorie {
 
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
+	}
+
+	public List<Categorie> getCategoriesFilles() {
+		return categoriesFilles;
+	}
+
+	public void setCategoriesFilles(List<Categorie> categoriesFilles) {
+		this.categoriesFilles = categoriesFilles;
+	}
+
+	public Categorie getCategorieMere() {
+		return categorieMere;
+	}
+
+	public void setCategorieMere(Categorie categorieMere) {
+		this.categorieMere = categorieMere;
 	}
 
 	

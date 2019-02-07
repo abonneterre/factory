@@ -13,43 +13,17 @@
 
 
 <!------MENU ------>
-<!-- <div class="row">
-  <nav id="menu" >
-    <div class="dropdown">
-      <button class="dropbtn"><a id="categorie" href="#">Accueil</a></button>
-        </div>
-  	<div class="dropdown">
-      <button class="dropbtn"><a id="categorie" href="#">Jeux</a></button>
-      <div class="dropdown-content">
-        <a href="#">Jeux de société</a>
-        <a href="#">Jeux vidéo</a>
-        <a href="#">Création</a>
-      </div>
-    </div>
-    <div class="dropdown">
-      <button class="dropbtn"><a id="categorie" href="#">Boissons</a></button>
-      <div class="dropdown-content">
-        <a href="#">Cocktail</a>
-        <a href="#">Thé</a>
-        <a href="#">Café</a>
-      </div>
-    </div>
-    <div class="dropdown">
-      <button class="dropbtn"><a id="categorie" href="#">Repas</a></button>
-      <div class="dropdown-content">
-        <a href="#">Restaurant</a>
-        <a href="#">Bistrot</a>
-      </div>
-    </div>
-  	</nav>
-</div> -->
 
 <div class="row">
   <nav id="menu" >
   	<div  *ngFor="let c of categorieService.findAllAsync() | async"  class="dropdown">
-      <button class="dropbtn"><a id="categorie" href="#">{{ c.libelle }}</a></button>
-      <div   class="dropdown-content">
-        <a *ngFor="let cf of c.categoriesFilles" href="#">{{ cf.libelle }}</a>
+      <div *ngIf="c.categorieMere==null" >
+        <button class="dropbtn"><a id="categorie" href="#">{{ c.libelle }}</a></button>
+        <div   class="dropdown-content">
+          <div *ngFor="let cf of categorieService.findAllAsync() | async">
+            <a  *ngIf="cf.categorieMere?.id==c.id" href="#">{{ cf.libelle }}</a>
+          </div>
+        </div>
       </div>
     </div>
   	</nav>
