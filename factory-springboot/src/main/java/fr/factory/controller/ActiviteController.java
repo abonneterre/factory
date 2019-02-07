@@ -47,10 +47,6 @@ public class ActiviteController {
 		return "listeActivites";
 	}
 	
-	
-
-	
-	
 //Ajouter une activité
 	@GetMapping({ "/ajouterActivite" })
 	public String ajouterActivite(@ModelAttribute Categorie Categorie , Niveau niveau, Lieu lieu, Model model) {
@@ -64,18 +60,13 @@ public class ActiviteController {
 		model.addAttribute("mesLieux", mesLieux);
 		return "formActivite"; 
 	}
-		
-		
 	
 	@PostMapping("/ajouterActivite")
 	public String ajouterActivite1(@ModelAttribute Activite activite, Model model) {
 		daoActivite.save(activite);
 		return "redirect:.";
 	}
-	
-	
-	
-	
+
 	
 //Editer une activité
 	@GetMapping("/editer/{id}")
@@ -92,12 +83,6 @@ public class ActiviteController {
 		return "redirect:..";
 	}
 	
-	
-	
-	
-	
-	
-	
 //Supprimer une activité
 	@GetMapping("/supprimer/{id}")
 	public String supprimerActivite(@PathVariable int id) {
@@ -105,4 +90,21 @@ public class ActiviteController {
 		return "redirect:../";
 	}
 	
+//masquer une activité
+	@GetMapping("/masquer/{id}")
+	public String masquerActivite(@PathVariable Integer id) {
+		Activite monActivite = daoActivite.findById(id).get();
+		monActivite.setActivee(false);
+		daoActivite.save(monActivite);
+		return"redirect:../";
+	}
+	
+//afficher une activité
+	@GetMapping("/afficher/{id}")
+	public String afficherActivite(@PathVariable Integer id) {
+		Activite monActivite = daoActivite.findById(id).get();
+		monActivite.setActivee(true);
+		daoActivite.save(monActivite);
+		return"redirect:../";
+	}
 }
