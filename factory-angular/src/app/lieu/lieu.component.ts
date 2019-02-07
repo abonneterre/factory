@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LieuService } from '../lieu.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-lieu',
@@ -7,9 +8,14 @@ import { LieuService } from '../lieu.service';
   styleUrls: ['./lieu.component.css']
 })
 export class LieuComponent implements OnInit {
+  private id: number = 0;
 
-  constructor(private lieuService: LieuService) { }
-
+  constructor(private route: ActivatedRoute, private lieuService: LieuService) {
+  this.route.params.subscribe(params => {
+    this.id = params.id;
+    this.lieuService.findById(params.id);
+  });
+}
   ngOnInit() {
   }
 
