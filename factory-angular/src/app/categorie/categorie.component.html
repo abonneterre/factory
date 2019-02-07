@@ -1,3 +1,21 @@
 <p>
   categorie works!
 </p>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Nom</th>
+      <th scope="col">Nom fille</th>
+    </tr>
+  </thead>
+  <tbody>
+
+      <tr *ngFor="let c of categorieService.findAllAsync() | async">
+        <td  >{{ c.libelle }}</td>
+        <td *ngFor="let cf of c.categoriesFilles">{{ cf.libelle }}</td>
+
+
+
+  </tbody>
+</table>
