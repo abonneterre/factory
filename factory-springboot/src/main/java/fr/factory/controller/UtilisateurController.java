@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import fr.factory.idao.IDAOLieu;
-import fr.factory.idao.IDAOUtilisateur;
+import fr.factory.dao.IDAOLieu;
+import fr.factory.dao.IDAOUtilisateur;
 import fr.factory.model.Lieu;
 import fr.factory.model.Utilisateur; 
  
@@ -37,7 +37,7 @@ public class UtilisateurController {
 	public String formulaireAjout(Model model) { 
 		List <Utilisateur> mesUtilisateurs = daoUtilisateur.findAll(); 
 		model.addAttribute("mesUtilisateurs", mesUtilisateurs); 
-		return "mesUtilisateurs" ; 
+		return "admin" ; 
 	} 
 	 
 	@PostMapping("/ajoutUtilisateur") 

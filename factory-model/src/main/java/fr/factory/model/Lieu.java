@@ -1,5 +1,6 @@
 package fr.factory.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -9,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -48,8 +50,11 @@ public class Lieu {
 	@Column(name="LIE_LIEN")
 	private String lien;
 	
-	@OneToMany (mappedBy = "lieu")
+	@OneToOne
 	private Utilisateur utilisateur ;
+	
+	@OneToMany(mappedBy="lieu")
+	private List<Activite> activites = new ArrayList<Activite>();
 	
 
 	public int getId() {
