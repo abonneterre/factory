@@ -37,14 +37,15 @@ public class Activite {
 	@Column(name = "ACT_CODE_UNIQUE")
 	@NotEmpty
 	@NotNull
-	private int codeUnique;
+	@Size(max=100)
+	private String codeUnique;
 	
-	@Column(name = "ACT_NB_PARTICIPANTS_MIN")
+	@Column(name = "ACT_NB_PARTICIPANTS_MIN", nullable=false)
 	@NotEmpty
 	@NotNull
 	private int nbParticipantsMin;
 	
-	@Column(name = "ACT_NB_PARTICIPANTS_MAX")
+	@Column(name = "ACT_NB_PARTICIPANTS_MAX", nullable=false)
 	@NotEmpty
 	@NotNull
 	private int nbParticipantsMax;
@@ -52,8 +53,8 @@ public class Activite {
 	@Column(name = "ACT_TARIF_PERSONNE")
 	private float tarifPersonne;
 	
-	@Column(name = "ACT_ACTIVEE")
-	private boolean activee;
+	@Column(name = "ACT_ACTIVEE", nullable=false)
+	private boolean activee = false;
 	
 	@Column(name = "ACT_DUREE")
 	private int duree;
@@ -65,12 +66,11 @@ public class Activite {
 	@NotEmpty
 	private String description;
 	
-	@Column(name = "ACT_LIEN_YOUTUBE")
+	@Column(name = "ACT_LIEN_YOUTUBE", columnDefinition="TEXT", nullable = true)
 	private String lienYoutube;
 	
-	@Column(name = "ACT_IMAGE")
+	@Column(name = "ACT_IMAGE", columnDefinition="TEXT", nullable = true)
 	private String image;
-
 	
 	@Column(name="ACT_NIVEAU_ID")
 	@Enumerated(EnumType.ORDINAL)
@@ -81,10 +81,12 @@ public class Activite {
 	
 	@ManyToMany
 	@JoinColumn(name="ACT_CATEGORIE_ID")
+	@NotNull
 	private List<Categorie> categories ;
 	
 	@ManyToOne
 	@JoinColumn(name="ACT_LIEU_ID")
+	@NotNull
 	private Lieu lieu;
 
 	public int getId() {
@@ -103,11 +105,11 @@ public class Activite {
 		this.nom = nom;
 	}
 
-	public int getCodeUnique() {
+	public String getCodeUnique() {
 		return codeUnique;
 	}
 
-	public void setCodeUnique(int codeUnique) {
+	public void setCodeUnique(String codeUnique) {
 		this.codeUnique = codeUnique;
 	}
 
