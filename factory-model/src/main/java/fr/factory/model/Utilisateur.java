@@ -14,6 +14,10 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import fr.factory.projection.Views;
+
 @Entity
 @Table(name="utilisateur")
 public class Utilisateur {
@@ -21,16 +25,19 @@ public class Utilisateur {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="UTI_ID")
+	@JsonView(Views.Common.class)
 	private int id;
 	
 	@Column(name="UTI_NOM")
 	@NotEmpty
 	@NotNull
+	@JsonView(Views.LieuWithUtilisateur.class)
 	private String nom;
 	
 	@Column(name="UTI_PRENOM")
 	@NotEmpty
 	@NotNull
+	@JsonView(Views.LieuWithUtilisateur.class)
 	private String prenom;
 	
 	@Column(name="UTI_USERNAME")
@@ -44,16 +51,16 @@ public class Utilisateur {
 	private String password;
 	
 	@Column(name="UTI_ADMIN")
-	@NotEmpty
 	@NotNull
 	private boolean admin;
 	
 	@Column(name="UTI_EMAIL")
 	@NotNull
 	@NotEmpty
+	@JsonView(Views.LieuWithUtilisateur.class)
 	private String email;
 
-	@OneToOne (mappedBy = "utilisateur", cascade = CascadeType.PERSIST)
+	@OneToOne (mappedBy = "utilisateur", cascade = CascadeType.ALL)
 	private Lieu lieu;
 		
 	
@@ -104,6 +111,8 @@ public class Utilisateur {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+
 
 	public boolean isAdmin() {
 		return admin;

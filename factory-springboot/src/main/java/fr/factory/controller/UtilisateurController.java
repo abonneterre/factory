@@ -3,8 +3,6 @@ package fr.factory.controller;
 import java.util.List;
 import java.util.Optional;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,7 +21,7 @@ import fr.factory.model.Utilisateur;
  
  
 @Controller 
-@RequestMapping("/") 
+@RequestMapping("") 
 public class UtilisateurController { 
 	 
 	@Autowired 
@@ -31,23 +29,34 @@ public class UtilisateurController {
 	 
 	@Autowired
 	private IDAOLieu daoLieu; 
-	 
+	
+	Lieu lieu = new Lieu();
  
 	@GetMapping("/listeUtilisateurs") 
 	public String formulaireAjout(Model model) { 
 		List <Utilisateur> mesUtilisateurs = daoUtilisateur.findAll(); 
 		model.addAttribute("mesUtilisateurs", mesUtilisateurs); 
-		return "mesUtilisateurs" ; 
+		return "admin" ; 
 	} 
+	
+	@GetMapping("/ajouterUtilisateur")
+	public String afficher() {
+		return "ajoutUtilisateur";
+	}
 	 
-	@PostMapping("/ajoutUtilisateur") 
+	@PostMapping("/ajouterUtilisateur") 
 	public String ajouterUtilisateur( 
-			@Valid @ModelAttribute Utilisateur utilisateur, BindingResult result, Model model) { 
-		if (result.hasErrors()) { 
-			System.out.println("Erreur..."); 
-			return "utilisateur"; 
-			} 
+			@ModelAttribute Utilisateur utilisateur, Model model) {  
+		System.out.println("hello");
+		System.out.println(utilisateur.getNom());
+		lieu = utilisateur.getLieu();
+		System.out.println(lieu.getNom());
+		lieu.setUtilisateur(utilisateur);
+//		daoLieu.save(lieu);
+		
+		utilisateur.setAdmin(false);
 		daoUtilisateur.save(utilisateur); 
+		
 		 
 		return "redirect:./listeUtilisateurs"; 
 	} 

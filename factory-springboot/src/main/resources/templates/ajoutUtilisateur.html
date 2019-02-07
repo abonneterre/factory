@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!-- xmlns:sec="http://www.thymeleaf.org/extras/spring-security" -->
+
+
+<head>
+<meta charset="ISO-8859-1">
+<title>Ajouter un utilisateur</title>
+</head>
+<body>
+<form method="POST" action="ajouterUtilisateur"> 
+		<h2>Formulaire de nouvel utilisateur</h2>
+			<div>
+				<h3>Utilisateur</h3>
+				<div>
+					<label for="nom">Nom de l'utilisateur</label> 
+					<input id="nom" type="text" name="nom" th:value="${ utilisateur?.nom }"
+						placeholder="Entrez votre nom"/>
+				</div>
+				<div>
+					<label for="prenom">Prenom de l'utilisateur</label> 
+					<input id="prenom" type="text" name="prenom" th:value="${ utilisateur?.prenom }"
+						placeholder="Entrez votre prenom"/>
+				</div>
+				<div>
+					<label for="username">Username de l'utilisateur</label> 
+					<input id="username" type="text" name="username" th:value="${ utilisateur?.username }"
+						placeholder="Entrez votre username"/>
+				</div>
+				<div>
+					<label for="password">Mot de passe de l'utilisateur</label> 
+					<input id="password" type="text" name="password" th:value="${ utilisateur?.password }"
+						placeholder="Entrez votre mot de passe"/>
+				</div>
+				<div>
+					<label for="email">Email de l'utilisateur</label> 
+					<input id="email" type="text" name="email" th:value="${ utilisateur?.email }"
+						placeholder="Entrez votre adresse email"/>
+				</div>
+			</div>
+			
+			<div>
+				<h3>Lieu de l'utilisateur</h3>
+				<div>
+					<label for="nomLieu">Nom du lieu</label> 
+					<input id="nomLieu" type="text" name="lieu.nom" th:value="${ utilisateur?.lieu?.nom }"
+						placeholder="Entrez le nom du lieu"/>
+				</div>
+				<div>
+					<label for="adresseLieu">Adresse du lieu</label> 
+					<input id="adresseLieu" type="text" name="lieu.adresse" th:value="${ utilisateur?.lieu?.adresse }"
+						placeholder="Entrez l'adresse du lieu"/>
+				</div>
+				<div>
+					<label for="telLieu">Telephone du lieu</label> 
+					<input id="telLieu" type="text" name="lieu.telephone" th:value="${ utilisateur?.lieu?.telephone }"
+						placeholder="Entrez le numero de telephone du lieu"/>
+				</div>
+				<div>
+					<label for="descriptionLieu">Description du lieu</label> 
+					<textarea id="descriptionLieu" name="lieu.description" th:value="${ utilisateur?.lieu?.description }"
+						placeholder="Entrez la description du lieu"/></textarea>
+				</div>
+				<div>
+					<label for="imageLieu">Image du lieu</label> 
+					<input id="imageLieu" type="text" name="lieu.image" th:value="${ utilisateur?.lieu?.image }"
+						placeholder="Entrez l'url de l'image du lieu"/>
+				</div>
+				<div>
+					<label for="lienLieu">Lien du lieu</label> 
+					<input id="lienLieu" type="text" name="lieu.lien" th:value="${ utilisateur?.lieu?.lien }"
+						placeholder="Entrez l'url du lien du lieu"/>
+				</div>
+			</div>
+			
+			<div>
+				<input type="submit" value="Envoyer"/>
+			</div>
+
+	</form>
+
+
+
+
+
+</body>
+</html>
