@@ -22,8 +22,8 @@
 			<tr th:each="categorie : ${listeCategorie}">
 				<td>[[${ categorie.libelle }]]</td> 
 				
-				<td><div sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{'/supprimer/'+${ categorie.id }}">Supprimer</a></div></td>
-				<td><div sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{'/editer/' +${ categorie.id }}">Editer</a></div></td>
+				<td><div><a th:href="@{'/supprimer/'+${ categorie.id }}">Supprimer</a></div></td>
+				<td><div><a th:href="@{'/editer/' +${ categorie.id }}">Editer</a></div></td>
 				
 			</tr>
 
