@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
+
 import fr.factory.dao.IDAOActivite;
 import fr.factory.dao.IDAOReservation;
 import fr.factory.model.Reservation;
@@ -90,7 +90,7 @@ public class ReservationController {
 	public String deleteReservation(@RequestParam(value="id", required=false, defaultValue="0") Integer idReservation, 
 			Model model) {
 		daoReservation.deleteById(idReservation);
-		return "redirect:/reservation"; // peut utiliser ./ si mapping d�finit en haut
+		return "redirect:/reservation";
 	}
 
 
