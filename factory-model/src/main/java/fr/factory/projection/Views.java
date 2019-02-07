@@ -27,11 +27,11 @@ public class Views {
 	}
 	public static class Activite extends Common {
 	}
-	public static class ActiviteWithReservations extends Activite {
-	}
 	public static class ActiviteWithCategorie extends Activite {
 	}
-	public static class	ActiviteWithLieu extends Activite {
+	public static class ActiviteWithCategorieAndReservations extends ActiviteWithCategorie {
+	}
+	public static class	ActiviteWithCategorieAndReservationsAndLieu extends ActiviteWithCategorieAndReservations {
 	}
 	
 

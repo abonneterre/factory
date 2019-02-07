@@ -62,7 +62,7 @@ public class Activite {
 	
 	@Column(name = "ACT_TARIF_PERSONNE")
 	@JsonView({Views.ReservationWithActivite.class,Views.Activite.class})
-	private float tarifPersonne;
+	private Float tarifPersonne;
 	
 	@Column(name = "ACT_ACTIVEE", nullable=false)
 	@JsonView({Views.ReservationWithActivite.class,Views.Activite.class})
@@ -97,7 +97,7 @@ public class Activite {
 	private Niveau niveau;
 	
 	@OneToMany(mappedBy = "activite")
-	@JsonView(Views.ActiviteWithReservations.class)
+	@JsonView(Views.ActiviteWithCategorieAndReservations.class)
 	private List<Reservation> reservations;
 	
 	@ManyToMany
@@ -108,7 +108,7 @@ public class Activite {
 	@ManyToOne
 	@JoinColumn(name="ACT_LIEU_ID")
 	@NotNull
-	@JsonView(Views.ActiviteWithLieu.class)
+	@JsonView(Views.ActiviteWithCategorieAndReservationsAndLieu.class)
 	private Lieu lieu;
 
 	public int getId() {
