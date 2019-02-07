@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LieuService } from '../lieu.service';
 
 @Component({
   selector: 'app-lieu',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LieuComponent implements OnInit {
 
-  constructor() { }
+  constructor(private lieuService: LieuService) { }
 
   ngOnInit() {
   }
