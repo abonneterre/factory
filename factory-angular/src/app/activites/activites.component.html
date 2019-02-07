@@ -1,3 +1,24 @@
-<p>
-  activites works!
-</p>
+<!------BOUTON CONNEXION ------>
+
+<div class="container">
+<button id="bouton" type="button" class="btn btn-outline-secondary"><a href="#">Connexion</a></button>
+</div>
+
+
+<!------MENU ------>
+
+<div class="row">
+  <nav id="menu" >
+  	<div  *ngFor="let c of categorieService.findAllAsync() | async"  class="dropdown">
+      <div *ngIf="c.categorieMere==null" >
+        <button class="dropbtn"><a id="categorie" href="#">{{ c.libelle }}</a></button>
+        <div   class="dropdown-content">
+          <div *ngFor="let cf of categorieService.findAllAsync() | async">
+            <a  *ngIf="cf.categorieMere?.id==c.id" href="#">{{ cf.libelle }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  	</nav>
+</div>
+
