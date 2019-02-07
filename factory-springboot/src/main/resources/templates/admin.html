@@ -30,7 +30,7 @@
 				<td>[[${utilisateur.email}]]</td>
 				
 				<td>[[${utilisateur.lieu?.nom }]]</td>
-				
+				<td>
 				 <a th:href="@{supprimer/{id}(id=${utilisateur.id })}"> Supprimer</a>
 			     <a th:href="@{editer/{id}(id=${utilisateur.id })}"> Editer</a>
 			    </td>
