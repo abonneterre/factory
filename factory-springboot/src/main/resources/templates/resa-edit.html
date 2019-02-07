@@ -70,14 +70,23 @@
 				</div>
 			</div>
 			
-<!-- 			<div class="form-group row">
-				<label for="isApprox" class="col-sm-2 col-form-label">Date réservation</label>
-				<div class="col-sm-10">
+			<div class="form-group row">
+				<label for="isApprox" class="col-sm-2 col-form-label">Le nombre de personnes est-il approximatif ?</label>
+				<div class="form-check form-check-inline" id="isApprox">
+  					<input class="form-check-input" type="radio" name="isApprox" id="inlineRadio1" value="false"  th:value="${ reservation?.isApprox }">
+  					<label class="form-check-label" for="inlineRadio1">Oui</label>
+				</div>
+				<div class="form-check form-check-inline">
+  					<input class="form-check-input" type="radio" name="isApprox" id="inlineRadio2" value="true"  th:value="${ reservation?.isApprox }">
+ 					<label class="form-check-label" for="inlineRadio2">Non</label>
+				</div>
+				
+				<!-- <div class="col-sm-10">
 					<input type="checkbox" class="form-control" id="isApprox" name="isApprox"
 					 th:value="${ reservation?.isApprox }">
-				</div>
+				</div> -->
 			</div>
-			 -->
+			 
 			<div class="form-group row">
 				<label for="dateReservation" class="col-sm-2 col-form-label">Date réservation</label>
 				<div class="col-sm-10">
@@ -95,11 +104,19 @@
 				</div>
 			</div>
 			
+			<div class="form-group row">
+ 				 <select name="statut">
+				<option	th:value = "${reservation.statut}" th:text = "Non traité" value="0"/> 
+				<option	th:value = "${reservation.statut}" th:text = "Accepté" value="1"/> 
+				<option	th:value = "${reservation.statut}" th:text = "Refusé" value="2"/> 
+			</select>
+ 			</div>
+			
 			
 			
 						<div class="form-group row">
 				<div class="col-sm-10">
-					<input type="submit" class="btn btn-danger" value="S'inscrire" />
+					<input type="submit" class="btn btn-danger" value="Réserver" />
 				</div>
 
 			</div>
