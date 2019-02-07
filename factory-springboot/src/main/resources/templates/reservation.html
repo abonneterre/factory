@@ -15,7 +15,7 @@
 
 <h2>Formulaire de réservation</h2>
 
-
+<a class="btn" th:href="@{ajouter}">Nouvelle réservation</a>
 
 <h2>Liste des réservations</h2>
 
@@ -42,7 +42,7 @@
 	      <td>[[${ reservation.dateReservation }]]</td>
 	      <td>[[${ reservation.statut }]]</td>
 	      <td>
-				<a class="btn" th:href="@{resa-edit(id=${ resa.id })}">Détails</a>
+				<a class="btn" th:href="@{editer(id=${ resa.id })}">Détails</a>
 				<a class="btn" th:href="@{supprimer(id=${ resa.id })}">Supprimer</a>
 	      </td>
 	    </tr>
