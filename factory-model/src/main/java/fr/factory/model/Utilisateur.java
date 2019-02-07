@@ -43,7 +43,7 @@ public class Utilisateur {
 	@NotNull
 	private String password;
 	
-	@Column(name="UTI_ADMIN")
+	@Column(name="UTI_ADMIN", nullable=false)
 	@NotNull
 	private boolean admin;
 	
