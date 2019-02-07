@@ -77,7 +77,7 @@ public class UtilisateurController {
 		Utilisateur utilisateur = daoUtilisateur.findById(id).get();
 		Optional<Lieu> lieu = daoLieu.findById(utilisateur.getLieu().getId()); 
 		model.addAttribute("lieu", lieu); 
-		return "editer"; 
+		return "ajoutUtilisateur"; 
 	} 
 	 
  
