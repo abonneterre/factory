@@ -2,23 +2,39 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+	crossorigin="anonymous">
 <title>Edition Categorie</title>
 </head>
 <body>
-	<h1>Edition catégorie</h1>
-	<form method="post">
-		<input type="hidden" name="id" th:value="${categorie?.id}">
-		Libelle de la categorie: <br> <input type="text" name="libelle"
-			required th:value="${categorie.libelle }"><br> Choisir
-		categorie mère <br>
-		<select class="custom-select" name="categorieMere">
-			<option th:each="categorie : ${listeCategorie}"
-				th:value="${categorie.id}"
-				th:selected="${ categorie?.categorieMere?.id == categorieMere.id}">
-				[[${categorie.libelle }]]</option>
-		</select> <br> <input type="submit" value="OK">
-	</form>
+	<div class="container">
+		<h1>Edition catÃ©gorie</h1>
+		<form method="post">
+			<input type="hidden" name="id" th:value="${categorie?.id}">
+			LibellÃ© de la categorie: <br> <input type="text" name="libelle"
+				required th:value="${categorie.libelle }"><br> Choisir
+			categorie mÃ¨re <br> <select class="custom-select"
+				name="categorieMere.id">
+				<option th:each="categorie2 : ${listeCategorie}"
+					th:value="${categorie2.id}" th:selected="${ categorie?.categorieMere?.id == categorie2.id}">
+				
+					[[${categorie2.libelle }]]</option>
+			</select> <br> <input class="btn btn-primary" type="submit" value="Modifier">		</form>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+		integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+		integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+		crossorigin="anonymous"></script>
 
 </body>
 </html>
