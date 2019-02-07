@@ -40,8 +40,11 @@ public class ReservationController {
 	}
 	
 	@GetMapping("/ajouter")
-	public String ajouterReservation(@Valid @ModelAttribute Reservation reservation, Model model) {
+	public String ajouterReservation(@Valid @ModelAttribute Reservation reservation, BindingResult result, 
+			//@RequestParam(value="id", required=false) Integer id, 
+			Model model) {
 		model.addAttribute("activites", daoActivite.findAll());
+
 		System.out.println(reservation.getDateReservation());
 		return "resa-edit";
 	}
@@ -51,6 +54,7 @@ public class ReservationController {
 			Model model, @DateTimeFormat(pattern = "yyyy-MM-dd") Date dateResa ) {
 		//model.addAttribute("reservations", daoReservation.findAll());
 		System.out.println(reservation.getDateReservation());
+		reservation.setDateDemande(new Date());
 		reservation.setDateReservation(dateResa);
 		System.out.println(dateResa);
 		
@@ -71,6 +75,7 @@ public class ReservationController {
 	public String modifierPersonnage(@RequestParam int id, Model model) {
 		model.addAttribute("activites", daoActivite.findAll());
 		model.addAttribute("reservation",daoReservation.findById(id).get());
+		model.addAttribute("id", id);
 		return "resa-edit";
 	}
 	
