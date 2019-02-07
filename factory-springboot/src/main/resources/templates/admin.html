@@ -27,9 +27,9 @@
 				<td>[[${utilisateur.prenom}]]</td>
 
 				<td>[[${utilisateur.email}]]</td>
-			
-			
-				<td>
+				
+				<td>[[${utilisateur.lieu?.nom }]]</td>
+				
 				 <a th:href="@{supprimer/{id}(id=${utilisateur.id })}"> Supprimer</a>
 			     <a th:href="@{editer/{id}(id=${utilisateur.id })}"> Editer</a>
 			    </td>
