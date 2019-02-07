@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -29,6 +32,23 @@ public class Categorie {
 	@NotNull
 	private String libelle;
 	
+	@ManyToMany(mappedBy="categories")
+	private List<Activite> activites;
+	
+	@OneToMany(mappedBy="categorieMere")
+	private List<Categorie> categoriesFilles;
+	
+	@ManyToOne
+	private Categorie categorieMere;
+	
+	public List<Activite> getActivites() {
+		return activites;
+	}
+
+	public void setActivites(List<Activite> activites) {
+		this.activites = activites;
+	}
+
 	public int getId() {
 		return id;
 	}

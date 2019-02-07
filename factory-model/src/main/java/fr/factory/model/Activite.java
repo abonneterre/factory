@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
@@ -21,10 +22,6 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name="activite")
 public class Activite {
-	
-	
-	
-	
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -80,197 +77,143 @@ public class Activite {
 	@Enumerated(EnumType.ORDINAL)
 	private Niveau niveau;
 	
-	
 	@OneToMany(mappedBy = "activite")
 	private List<Reservation> reservations;
-	
-	
 	
 	@ManyToMany
 	@JoinColumn(name="ACT_CATEGORIE_ID")
 	private List<Categorie> categories ;
 	
+	@ManyToOne
+	@JoinColumn(name="ACT_LIEU_ID")
+	private Lieu lieu;
 
 	public int getId() {
 		return id;
 	}
 
-
-
 	public void setId(int id) {
 		this.id = id;
 	}
-
-
 
 	public String getNom() {
 		return nom;
 	}
 
-
-
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-
-
 
 	public int getCodeUnique() {
 		return codeUnique;
 	}
 
-
-
 	public void setCodeUnique(int codeUnique) {
 		this.codeUnique = codeUnique;
 	}
-
-
 
 	public int getNbParticipantsMin() {
 		return nbParticipantsMin;
 	}
 
-
-
 	public void setNbParticipantsMin(int nbParticipantsMin) {
 		this.nbParticipantsMin = nbParticipantsMin;
 	}
-
-
 
 	public int getNbParticipantsMax() {
 		return nbParticipantsMax;
 	}
 
-
-
 	public void setNbParticipantsMax(int nbParticipantsMax) {
 		this.nbParticipantsMax = nbParticipantsMax;
 	}
-
-
 
 	public float getTarifPersonne() {
 		return tarifPersonne;
 	}
 
-
-
 	public void setTarifPersonne(float tarifPersonne) {
 		this.tarifPersonne = tarifPersonne;
 	}
-
-
 
 	public boolean isActivee() {
 		return activee;
 	}
 
-
-
 	public void setActivee(boolean activee) {
 		this.activee = activee;
 	}
-
-
 
 	public int getDuree() {
 		return duree;
 	}
 
-
-
 	public void setDuree(int duree) {
 		this.duree = duree;
 	}
-
-
 
 	public boolean isNbApproximatif() {
 		return nbApproximatif;
 	}
 
-
-
 	public void setNbApproximatif(boolean nbApproximatif) {
 		this.nbApproximatif = nbApproximatif;
 	}
-
-
 
 	public String getDescription() {
 		return description;
 	}
 
-
-
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
-
 
 	public String getLienYoutube() {
 		return lienYoutube;
 	}
 
-
-
 	public void setLienYoutube(String lienYoutube) {
 		this.lienYoutube = lienYoutube;
 	}
-
-
 
 	public String getImage() {
 		return image;
 	}
 
-
-
 	public void setImage(String image) {
 		this.image = image;
 	}
-
-
 
 	public Niveau getNiveau() {
 		return niveau;
 	}
 
-
-
 	public void setNiveau(Niveau niveau) {
 		this.niveau = niveau;
 	}
-
-
 
 	public List<Reservation> getReservations() {
 		return reservations;
 	}
 
-
-
 	public void setReservations(List<Reservation> reservations) {
 		this.reservations = reservations;
 	}
-
-
 
 	public List<Categorie> getCategories() {
 		return categories;
 	}
 
-
-
 	public void setCategories(List<Categorie> categories) {
 		this.categories = categories;
 	}
 
+	public Lieu getLieu() {
+		return lieu;
+	}
 
-
-	
+	public void setLieu(Lieu lieu) {
+		this.lieu = lieu;
+	}
 
 }
