@@ -14,6 +14,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
@@ -91,6 +92,13 @@ public class Activite {
 	@JoinColumn(name="ACT_LIEU_ID")
 	@NotNull
 	private Lieu lieu;
+	
+	
+	
+	@Transient
+	private int nbParticipants;
+	
+	
 
 	public int getId() {
 		return id;
@@ -220,4 +228,12 @@ public class Activite {
 		this.lieu = lieu;
 	}
 
+	public int getNbParticipants() {
+		return nbParticipants;
+	}
+
+	public void setNbParticipants(int nbParticipants) {
+		this.nbParticipants = nbParticipants;
+	}
+	
 }

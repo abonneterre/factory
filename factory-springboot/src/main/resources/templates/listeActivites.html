@@ -45,11 +45,8 @@
 						<td>[[${ activite.codeUnique }]]</td>
 						<td>[[${ activite.nom }]]</td>
 						<td>[[${ activite.nbParticipantsMin }]] à [[${ activite.nbParticipantsMax }]]</td>
-						<td th:with="someVariable=0">
-							<span th:each="Reservation : ${mesReservations}">
-							
-							</span>
-							[[${Reservation.nbParticipants}]]
+						<td>
+							[[${activite.nbParticipants}]]
 						</td>
 						<td>						
 							<span th:if="${activite.activee == true}">
