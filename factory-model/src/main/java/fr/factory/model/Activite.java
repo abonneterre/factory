@@ -28,7 +28,6 @@ public class Activite {
 	@Column(name = "ACT_ID")
 	private int id;
 	
-	
 	@Column(name = "ACT_NOM")
 	@NotEmpty
 	@NotNull
