@@ -18,7 +18,7 @@ export class ReservationComponent implements OnInit {
 
 
   ajouterReservation(){
-    this.reservation.activite.id = this.activite.id;
+    this.reservation.activite.id = 1;
     this.reservationService.save(this.reservation);
   }
 
