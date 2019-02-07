@@ -38,58 +38,70 @@ public class Activite {
 	@NotEmpty
 	@NotNull
 	@Size(max=100)
+	@JsonView(Views.ReservationWithActivite.class)
 	@JsonView(Views.Activite.class)
 	private String nom;
 	
 	@Column(name = "ACT_CODE_UNIQUE")
 	@NotEmpty
 	@NotNull
+	@JsonView(Views.ReservationWithActivite.class)
 	private int codeUnique;
 	
 	@Column(name = "ACT_NB_PARTICIPANTS_MIN")
 	@NotEmpty
 	@NotNull
+	@JsonView(Views.ReservationWithActivite.class)
 	@JsonView(Views.Activite.class)
 	private int nbParticipantsMin;
 	
 	@Column(name = "ACT_NB_PARTICIPANTS_MAX")
 	@NotEmpty
 	@NotNull
+	@JsonView(Views.ReservationWithActivite.class)
 	@JsonView(Views.Activite.class)
 	private int nbParticipantsMax;
 	
 	@Column(name = "ACT_TARIF_PERSONNE")
+	@JsonView(Views.ReservationWithActivite.class)
 	@JsonView(Views.Activite.class)
 	private Float tarifPersonne;
 	
 	@Column(name = "ACT_ACTIVEE")
+	@JsonView(Views.ReservationWithActivite.class)
 	@JsonView(Views.Activite.class)
 	private boolean activee;
 	
 	@Column(name = "ACT_DUREE")
+	@JsonView(Views.ReservationWithActivite.class)
 	@JsonView(Views.Activite.class)
 	private Integer duree;
 	
 	@Column(name = "ACT_NB_APPROXIMATIF", nullable=false)
+	@JsonView(Views.ReservationWithActivite.class)
 	@JsonView(Views.Activite.class)
 	private boolean nbApproximatif;
 	
 	@Column(name = "ACT_DESCRIPTION", columnDefinition="TEXT", nullable = false)
 	@NotEmpty
+	@JsonView(Views.ReservationWithActivite.class)
 	@JsonView(Views.Activite.class)
 	private String description;
 	
 	@Column(name = "ACT_LIEN_YOUTUBE")
+	@JsonView(Views.ReservationWithActivite.class)
 	@JsonView(Views.Activite.class)
 	private String lienYoutube;
 	
 	@Column(name = "ACT_IMAGE")
 	@JsonView(Views.Activite.class)
+	@JsonView(Views.ReservationWithActivite.class)
 	private String image;
 
 	
 	@Column(name="ACT_NIVEAU_ID")
 	@Enumerated(EnumType.ORDINAL)
+	@JsonView(Views.ReservationWithActivite.class)
 	@JsonView(Views.Activite.class)
 	private Niveau niveau;
 	
