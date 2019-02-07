@@ -30,13 +30,13 @@ public class ActiviteController {
 	public String listeActivite(@ModelAttribute Activite activite, Model model) {
 		List<Activite> mesActivites = daoActivite.findAll();
 		model.addAttribute("mesActivites", mesActivites);
-		return "listeDesActivites";
+		return "listeActivites";
 	}
 	
 //Ajouter une activité
 	@GetMapping({ "/ajouter" })
 	public String ajouterActivite(Model model) {
-		return "form-activite"; //formulaire html de création/édition d'activités (mettre à jour si besoin)
+		return "formActivite"; //formulaire html de création/édition d'activités (mettre à jour si besoin)
 	}
 	
 	@PostMapping("/ajouterActivite")
@@ -49,7 +49,7 @@ public class ActiviteController {
 	@GetMapping("/editer/{id}")
 	public String editerActivite(@PathVariable int id, Model model) {
 		model.addAttribute("activite", daoActivite.findById(id).get());
-		return "form-activite"; //formulaire html de création/édition d'activités (mettre à jour si besoin)
+		return "formActivite"; //formulaire html de création/édition d'activités (mettre à jour si besoin)
 	}
 	
 	@PostMapping("/editer/{id}")
