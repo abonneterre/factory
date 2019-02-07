@@ -73,15 +73,17 @@ public class ReservationController {
 	
 	@GetMapping("/editer")
 	public String modifierPersonnage(@RequestParam int id, Model model) {
-		model.addAttribute("activites", daoActivite.findAll());
+		model.addAttribute("activites", daoActivite.findById(daoReservation.findById(id).get().getActivite().getId()).get());
 		model.addAttribute("reservation",daoReservation.findById(id).get());
 		model.addAttribute("id", id);
 		return "resa-edit";
 	}
 	
 	@PostMapping("/editer")
-	public String editerReservation(@RequestParam int id, @Valid @ModelAttribute Reservation reservation) {		
+	public String editerReservation(@RequestParam int id, @Valid @ModelAttribute Reservation reservation, @DateTimeFormat(pattern = "yyyy-MM-dd") Date dateResa) {		
 		reservation.setId(id);
+		reservation.setDateDemande(new Date());
+		reservation.setDateReservation(dateResa);
 		daoReservation.save(reservation);
 		return "redirect:/reservation";
 	}
