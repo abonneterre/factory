@@ -16,9 +16,9 @@ public class SecurityConfig {
 	@Order(1)
 	public static class ApiWebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapter {
 		protected void configure(HttpSecurity http) throws Exception {
-			http.antMatcher("/api/**").authorizeRequests()
+			http.antMatcher("/**").authorizeRequests()
 				.antMatchers(HttpMethod.OPTIONS).permitAll()
-				.anyRequest().hasAnyRole("ADMIN", "USER")
+//				.anyRequest().hasAnyRole("ADMIN", "USER")
 				.and().httpBasic()
 				.and().csrf().disable();
 		}
@@ -35,7 +35,7 @@ public class SecurityConfig {
 					.antMatchers("/inscription/**").permitAll()
 					.antMatchers("/api/**").permitAll()
 					.antMatchers("/**").permitAll()
-					.antMatchers("/**").hasAnyRole("ADMIN", "USER")
+//					.antMatchers("/**").hasAnyRole("ADMIN", "USER")
 				.and()
 				.formLogin()
 					.loginPage("/connexion")
