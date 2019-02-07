@@ -23,7 +23,7 @@ import fr.factory.model.Utilisateur;
  
  
 @Controller 
-@RequestMapping("/") 
+@RequestMapping("") 
 public class UtilisateurController { 
 	 
 	@Autowired 
@@ -42,12 +42,11 @@ public class UtilisateurController {
 	 
 	@PostMapping("/ajoutUtilisateur") 
 	public String ajouterUtilisateur( 
-			@Valid @ModelAttribute Utilisateur utilisateur, BindingResult result, Model model) { 
-		if (result.hasErrors()) { 
-			System.out.println("Erreur..."); 
-			return "utilisateur"; 
-			} 
+			@ModelAttribute Utilisateur utilisateur, @ModelAttribute Lieu lieu, BindingResult result, Model model) {  
+		lieu.setUtilisateur(utilisateur);
+		utilisateur.setLieu(lieu);
 		daoUtilisateur.save(utilisateur); 
+		daoLieu.save(lieu);
 		 
 		return "redirect:./listeUtilisateurs"; 
 	} 
