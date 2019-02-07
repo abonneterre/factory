@@ -24,6 +24,14 @@ this.categories =  this.httpClient.get("http://localhost:8080/api/categorie");
   return this.categories;
 
 }
+
+findById(id: number) {
+
+this.httpClient
+    .get("http://localhost:8080/api/categorie/" + id )
+      .subscribe(resp => this.categories = resp);
+ }
+ 
      refresh() {
        this.categories = null;
      }
