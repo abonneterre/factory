@@ -1,4 +1,5 @@
 export class Reservation{
+  public id;
   public nom;
   public prenom;
   public telephone;
