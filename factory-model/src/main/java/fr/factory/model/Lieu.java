@@ -3,7 +3,6 @@ package fr.factory.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,6 +17,8 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import fr.factory.projection.Views;
+
 @Entity
 @Table(name="lieu")
 public class Lieu {
@@ -25,32 +26,40 @@ public class Lieu {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="LIE_ID")
+	@JsonView(Views.Common.class)
 	private int id;
 	
 	@Column(name="LIE_NOM")
 	@NotEmpty
 	@NotNull
+	@JsonView(Views.Lieu.class)
 	private String nom;
 	
 	@Column(name="LIE_ADRESSE")
 	@NotEmpty
 	@NotNull
+	@JsonView(Views.Lieu.class)
 	private String adresse;
 	
 	@Column(name="LIE_TELEPHONE")
 	@Size(max=20)
+	@JsonView(Views.Lieu.class)
 	private String telephone;
 	
 	@Column(name="LIE_DESCRIPTION", columnDefinition="TEXT")
+	@JsonView(Views.Lieu.class)
 	private String description;
 	
 	@Column(name="LIE_IMAGE")
+	@JsonView(Views.Lieu.class)
 	private String image;
 	
 	@Column(name="LIE_LIEN")
+	@JsonView(Views.Lieu.class)
 	private String lien;
 	
 	@OneToOne
+	@JsonView(Views.LieuWithUtilisateur.class)
 	private Utilisateur utilisateur ;
 	
 	@OneToMany(mappedBy="lieu")
