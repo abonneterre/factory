@@ -9,6 +9,7 @@ import { CategorieComponent } from './categorie/categorie.component';
 import { ActiviteComponent } from './activite/activite.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule} from '@angular/forms';
+import { ActiviteDetailComponent } from './activite-detail/activite-detail.component';
 
 
 // Config des routes :
@@ -28,7 +29,8 @@ const routes: Routes = [
     ReservationComponent,
     LieuComponent,
     CategorieComponent,
-    ActiviteComponent
+    ActiviteComponent,
+    ActiviteDetailComponent
   ],
   imports: [
     BrowserModule,
