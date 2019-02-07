@@ -3,6 +3,9 @@ import { CategorieService } from '../categorie.service';
 import { ActiviteService } from '../activite.service';
 import { ActivatedRoute } from '@angular/router';
 
+import { Activite } from './activite';
+import { Categorie } from './categorie';
+
 @Component({
   selector: 'app-activites',
   templateUrl: './activites.component.html',

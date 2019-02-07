@@ -16,10 +16,9 @@ export class Activite {
     	public lienYoutube?: string, 
     	public image?: string, 
 
-    	public niveau?: any;
-    	public reservations: any;
-    	public niveau?: any;
-    	public categories?: any;
+    	public niveau?: any,
+    	public reservations?: any,
+    	public categories?: any,
     	public lieu?: any
 
     	) { }
