@@ -31,6 +31,7 @@ public class Categorie {
 	
 	@Column(name="CAT_LIBELLE", nullable=false)
 	@NotNull
+	@NotEmpty
 	private String libelle;
 	
 	@ManyToMany(mappedBy="categories")
