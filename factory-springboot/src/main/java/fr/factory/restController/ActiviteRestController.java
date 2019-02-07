@@ -33,6 +33,14 @@ public class ActiviteRestController {
 		
 	}
 	
+	@GetMapping("/activee")
+	@JsonView(Views.ActiviteWithCategorieAndReservationsAndLieu.class)
+	public List<Activite> listeActivitesActivee() {
+		List<Activite> act = daoActivite.findByActivee(true);
+		return act;
+		
+	}
+	
 	
 
 }
