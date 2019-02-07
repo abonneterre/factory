@@ -15,4 +15,9 @@ export class ReservationComponent implements OnInit {
   ngOnInit() {
   }
 
+
+  ajouterReservation(){
+    this.reservationService.save(this.reservation);
+  }
+
 }
