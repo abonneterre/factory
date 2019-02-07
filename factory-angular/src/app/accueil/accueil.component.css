@@ -1,0 +1,14 @@
+div#carouselExampleIndicators {
+  border-top: solid white 50px;
+  width : 700px;
+  margin: 0 auto;
+}
+
+div#titre  {
+  text-align: center;
+  font-size: 300px;
+}
+
+div#menu {
+  background-color: grey;
+}
