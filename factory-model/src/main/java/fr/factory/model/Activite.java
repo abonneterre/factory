@@ -61,19 +61,19 @@ public class Activite {
 	
 	@Column(name = "ACT_TARIF_PERSONNE")
 	@JsonView({Views.ReservationWithActivite.class,Views.Activite.class})
-	private Float tarifPersonne;
+	private float tarifPersonne;
 	
 	@Column(name = "ACT_ACTIVEE")
 	@JsonView({Views.ReservationWithActivite.class,Views.Activite.class})
-	private Boolean activee;
+	private boolean activee;
 	
 	@Column(name = "ACT_DUREE")
 	@JsonView({Views.ReservationWithActivite.class,Views.Activite.class})
-	private Integer duree;
+	private int duree;
 	
 	@Column(name = "ACT_NB_APPROXIMATIF", nullable=false)
 	@JsonView({Views.ReservationWithActivite.class,Views.Activite.class})
-	private Boolean nbApproximatif;
+	private boolean nbApproximatif;
 	
 	@Column(name = "ACT_DESCRIPTION", columnDefinition="TEXT", nullable = false)
 	@NotEmpty
