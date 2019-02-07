@@ -14,6 +14,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 import fr.factory.dao.IDAOReservation;
 import fr.factory.model.Categorie;
 import fr.factory.model.Reservation;
+import fr.factory.projection.Views;
 
 
 
@@ -29,7 +30,7 @@ public class ReservationRestController {
 
 		
 	@PostMapping("/api/reservation")
-//	@JsonView(Views.Reservation.class)
+	@JsonView(Views.ReservationWithActivite.class)
 	public Reservation ajouterReservation(@RequestBody Reservation reservation) {
 		System.out.println(reservation.getNom());
 		this.daoReservation.save(reservation);
