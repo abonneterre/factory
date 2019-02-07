@@ -52,7 +52,7 @@ public class Utilisateur {
 	@NotEmpty
 	private String email;
 
-	@OneToOne (mappedBy = "utilisateur", cascade = CascadeType.PERSIST)
+	@OneToOne (mappedBy = "utilisateur", cascade = CascadeType.ALL)
 	private Lieu lieu;
 		
 	
