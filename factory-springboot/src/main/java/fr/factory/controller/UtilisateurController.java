@@ -36,7 +36,7 @@ public class UtilisateurController {
 	public String formulaireAjout(Model model) { 
 		List <Utilisateur> mesUtilisateurs = daoUtilisateur.findAll(); 
 		model.addAttribute("mesUtilisateurs", mesUtilisateurs); 
-		return "admin" ; 
+		return "crudGerant" ; 
 	} 
 	
 	@GetMapping("/ajouterUtilisateur")
