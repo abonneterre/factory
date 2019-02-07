@@ -8,8 +8,10 @@ import { Reservation } from './reservation';
   styleUrls: ['./reservation.component.css']
 })
 export class ReservationComponent implements OnInit {
-  public reservation: Reservation;
-  public activite: any;
+
+  private reservation: Reservation = new Reservation();
+  private reservations: Array<Reservation> = new Array<Reservation>();
+
 
   constructor(public reservationService: ReservationService) { }
 

@@ -1,5 +1,4 @@
 export class Reservation{
-  public id;
   public nom;
   public prenom;
   public telephone;
@@ -12,6 +11,6 @@ export class Reservation{
   public statut;
   public activite;
 
-  constructor(){}
+  constructor(  ){}
 
 }
