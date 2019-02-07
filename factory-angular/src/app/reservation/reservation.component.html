@@ -1,3 +1,18 @@
 <p>
   reservation works!
 </p>
+
+
+
+<form>
+  <p>Nom : <input type="text" [(ngModel)]="reservation.nom"></p>
+  <p>Prénom : <input type="text" [(ngModel)]="reservation.prenom"></p>
+  <p>Téléphone : <input type="text" [(ngModel)]="reservation.telephone"></p>
+  <p>Mail : <input type="text" [(ngModel)]="reservation.mail"></p>
+  <p>Nombre de participants : <input type="text" [(ngModel)]="reservation.nbParticipants"></p>
+  <p>Est-ce un nombre approximatif? : <input type="select" [(ngModel)]="reservation.isApprox"></p>
+  <p>Date reservation : <input type="date" [(ngModel)]="reservation.dateReservation"></p>
+  <p>Durée réservée : <input type="date" [(ngModel)]="reservation.dateReservation"></p>
+  <input type="submit" name="" value="">
+
+<form>
