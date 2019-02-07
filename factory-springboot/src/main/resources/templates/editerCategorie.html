@@ -10,8 +10,14 @@
 	<form method="post">
 		<input type="hidden" name="id" th:value="${categorie?.id}">
 		Libelle de la categorie: <br> <input type="text" name="libelle"
-			required th:value="${categorie.libelle }"> <input
-			type="submit" value="OK">
+			required th:value="${categorie.libelle }"><br> Choisir
+		categorie mère <br>
+		<select class="custom-select" name="categorieMere">
+			<option th:each="categorie : ${listeCategorie}"
+				th:value="${categorie.id}"
+				th:selected="${ categorie?.categorieMere?.id == categorieMere.id}">
+				[[${categorie.libelle }]]</option>
+		</select> <br> <input type="submit" value="OK">
 	</form>
 
 </body>
