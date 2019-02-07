@@ -7,6 +7,9 @@ import { ReservationComponent } from './reservation/reservation.component';
 import { LieuComponent } from './lieu/lieu.component';
 import { CategorieComponent } from './categorie/categorie.component';
 import { ActiviteComponent } from './activite/activite.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule} from '@angular/forms';
+
 
 // Config des routes :
 const routes: Routes = [
@@ -29,7 +32,9 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

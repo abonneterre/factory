@@ -38,10 +38,11 @@ public class Categorie {
 	private List<Activite> activites;
 	
 	@OneToMany(mappedBy="categorieMere")
+	@JsonView(Views.Categorie.class)
 	private List<Categorie> categoriesFilles;
 	
 	@ManyToOne
-	@JsonView(Views.Categorie.class)
+//	@JsonView(Views.Categorie.class)
 	private Categorie categorieMere;
 	
 	public List<Activite> getActivites() {
