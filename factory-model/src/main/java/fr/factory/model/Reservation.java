@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 
 
@@ -21,39 +23,41 @@ public class Reservation {
 	@Column(name="RES_ID")
 	private int id;
 	
-	@Column(name="RES_NOM")
+	@Column(name="RES_NOM", nullable = false)
 	private String nom;
 	
-	@Column(name="RES_PRENOM")
+	@Column(name="RES_PRENOM", nullable = false)
 	private String prenom;
 	
-	@Column(name="RES_TELEPHONE")
+	@Column(name="RES_TELEPHONE", nullable = false)
 	@Size(max=20)
 	private String telephone;
 	
-	@Column(name="RES_MAIL")
+	@Column(name="RES_MAIL", nullable = false)
 	private String mail;
 	
-	@Column(name="RES_NBPARTICIPANTS")
+	@Column(name="RES_NBPARTICIPANTS", nullable = false)
 	private int nbParticipants;
 	
-	@Column(name="RES_APPROX")
+	@Column(name="RES_APPROX", nullable = false)
 	private boolean isApprox = false;
 	
 	@Column(name="RES_DATEDEMANDE")
+	@Temporal(TemporalType.DATE)
 	private Date dateDemande; 
 	
-	@Column(name="RES_DATERESERVATION")
+	@Column(name="RES_DATERESERVATION", nullable = false)
+	@Temporal(TemporalType.DATE)
 	private Date dateReservation;
 	
-	@Column(name="RES_DUREESOUHAITEE")
+	@Column(name="RES_DUREESOUHAITEE", nullable = false)
 	private int dureeSouhaitee;
 	
 	@Column(name="RES_STATUT") //0 pour en attente, 1 pour validée, 2 pour refusée
 	private int statut;
 	
 	@ManyToOne
-	@JoinColumn(name="RES_ACTIVITE_ID") //A VERIFIER AUPRES DU GROUPE I
+	@JoinColumn(name="RES_ACTIVITE_ID", nullable = false) //A VERIFIER AUPRES DU GROUPE I
 	private Activite activite;
 
 	public int getId() {
