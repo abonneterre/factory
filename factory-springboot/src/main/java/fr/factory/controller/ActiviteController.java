@@ -79,8 +79,10 @@ public class ActiviteController {
 	
 //Editer une activité
 	@GetMapping("/editer/{id}")
-	public String editerActivite(@PathVariable int id, Model model) {
+	public String editerActivite(@ModelAttribute Categorie Categorie , @PathVariable int id, Model model) {
+		List<Categorie> mesCategories = daoCategorie.findAll();
 		model.addAttribute("activite", daoActivite.findById(id).get());
+		model.addAttribute("mesCategories", mesCategories);
 		return "formActivite"; //formulaire html de création/édition d'activités (mettre à jour si besoin)
 	}
 	

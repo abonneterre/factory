@@ -2,14 +2,17 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=devide-width, initial-scale=1" />
-<link rel="stylesheet"
+	<meta name="description"content="Best game ever">
+	<meta name="viewport" content="width=devide-width, initial-scale=1" />
+	<base href="inscription.html" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	<link rel="stylesheet"
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 	crossorigin="anonymous"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
-<link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 <title>Ajout/Edition des activités</title>
 </head>
 
@@ -28,31 +31,91 @@
 
  <div>
  <label> Nom de l'activité  </label>
- <input type="text" name="nom" placeholder="Renseignez le nom de l'activité à proposer" required/>
+ <input type="text" name="nom" th:value="${activite?.nom}" placeholder="Renseignez le nom de l'activité à proposer" required/>
  </div>
 
 
  <div>
  <label> Code unique de l'activité  </label>
- <input type="text" name="codeUnique" placeholder="Renseignez un code unique" required/>
+ <input type="text" name="codeUnique" th:value="${activite?.codeUnique}" placeholder="Renseignez un code unique" required/>
  </div>
+
+
 
 
  <div>
   <label> Catégorie  </label>
- <select name="categorie.id">
+ <select  name="categorie.id" >
  <option th:each="categorie: ${ mesCategories}"
  		th:value="${categorie.id}"
  		th:text="${categorie.libelle}"
- 		th:selected="${activite?.categorie?.id == categorie.id}"/>
+ 		th:selected="${activite?.categorie?.id == categorie.id}" />
  </select>
   </div>
 
 
+
+
+
+
+
+
+
+<section class="container mb-5 mt-5 tableau">
+
+
+		<table class="table table-striped" id="tableauCategorie">
+			<thead>
+				<tr>
+				</tr>
+			</thead>
+			<tbody>
+			
+		<tr th:each="categorie : ${mesCategories}">
+		
+		<td > [[${ categorie.libelle }]] </td>
+		<td >  </td>
+	
+		</tr>
+			</tbody>
+		</table>
+		</div>
+		
+		
+		
+		</div>
+		
+
+	</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  <div>
  <label> Nombre de partipants  </label>
- <input type="text" name="nbParticipantsMin" placeholder="Renseignez un nombre de participants mini" required/>
-  <input type="text" name="nbParticipantsMax" placeholder="Renseignez un nombre de participants maxi"  required/>
+ <input type="text" name="nbParticipantsMin" th:value="${activite?.nbParticipantsMin}" placeholder="Renseignez un nombre de participants mini" required/>
+  <input type="text" name="nbParticipantsMax" th:value="${activite?.nbParticipantsMax}" placeholder="Renseignez un nombre de participants maxi"  required/>
  </div>
 
 
@@ -60,21 +123,21 @@
  
  <div>
  <label> Tarif (EUR)/personne (Optionnel)</label>
- <input type="text" name="tarifPersonne" placeholder="Renseignez le tarif" step="0.1"/>
+ <input type="text" name="tarifPersonne" th:value="${activite?.tarifPersonne}" placeholder="Renseignez le tarif" step="0.1"/>
  </div>
 
 
 
  <div>
  <label>  Durée de l'activité (Optionnel) </label>
- <input type="text" name="duree" placeholder="Renseignez la durée totale de votre activité" />
+ <input type="text" name="duree" th:value="${activite?.duree}"  placeholder="Renseignez la durée totale de votre activité" />
  </div>
 
 
 
 
  <div>
-  <label> Catégorie  </label>
+  <label> Lieu  </label>
  <select name="lieu.id">
  <option th:each="lieu: ${ mesLieux}"
  		th:value="${lieu.id}"
@@ -85,41 +148,35 @@
 
 
 
-<div class="custom-control custom-switch">
-  <input type="checkbox" class="custom-control-input" id="customSwitch1" name="nbApproximatif">
-  <label class="custom-control-label nbApproximatif" for="customSwitch1">Nombre approximatif de participants (Optionnel) </label>
+ <div class="custom-control custom-switch">
+  <input type="checkbox" class="custom-control-input" id="customSwitch1" name="nbApproximatif" th:value="${activite?.nbApproximatif}">
+  <label class="custom-control-label nbApproximatif" for="customSwitch1">Nombre approximatif de participants</label>
 </div>
+
+
 
 
 
  <div>
  <label>  Description</label>
- <input type="text" name="description" placeholder="Decrivez l'activité" required/>
+ <input type="text" name="description" th:value="${activite?.description}"placeholder="Decrivez l'activité" required/>
  </div>
 
 
  <div>
  <label>  Lien vidéo Youtube (Optionnel)  </label>
- <input type="text" name="lienYoutube" placeholder="Inserez un lien" />
+ <input type="text" name="lienYoutube" th:value="${activite?.lienYoutube}" placeholder="Inserez un lien" />
  </div>
  
  
  
  <div>
  <label>  Lien image (Optionnel) </label>
- <input type="text" name="image" placeholder="Inserez un lien" />
+ <input type="text" name="image" th:value="${activite?.image}" placeholder="Inserez un lien" />
  </div>
 
 
 
-
-<!--    <div class="difficulte">
-  
-  
-  <div class="custom-control custom-switch">
-  <input type="checkbox" class="custom-control-input" id="customSwitch2">
-  <label class="custom-control-label difficulte" for="customSwitch2">Niveau de difficulté</label>
-  </div> -->
   
   <label> Niveau de difficulté  </label>
  <select name="niveau">
@@ -136,7 +193,7 @@
 
 
  <div>
- <input type="submit" value="Ajouter l'activité"/>
+ <input type="submit" value="Ajouter/Modifier"/>
  </div>
 
 
