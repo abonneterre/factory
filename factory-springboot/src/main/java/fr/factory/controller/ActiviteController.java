@@ -39,7 +39,7 @@ public class ActiviteController {
 		return "form-activite"; //formulaire html de création/édition d'activités (mettre à jour si besoin)
 	}
 	
-	@PostMapping("/ajouerActivite")
+	@PostMapping("/ajouterActivite")
 	public String ajouterActivite(@ModelAttribute Activite activite, Model model) {
 		daoActivite.save(activite);
 		return "redirect:.";
@@ -61,7 +61,7 @@ public class ActiviteController {
 	
 //Supprimer une activité
 	@GetMapping("/supprimer/{id}")
-	public String supprimerActivite(@PathVariable Integer id) {
+	public String supprimerActivite(@PathVariable int id) {
 		daoActivite.deleteById(id);
 		return "redirect:../";
 	}
