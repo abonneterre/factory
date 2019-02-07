@@ -10,9 +10,13 @@
   <p>Téléphone : <input type="text" [(ngModel)]="reservation.telephone"></p>
   <p>Mail : <input type="text" [(ngModel)]="reservation.mail"></p>
   <p>Nombre de participants : <input type="text" [(ngModel)]="reservation.nbParticipants"></p>
-  <p>Est-ce un nombre approximatif? : <input type="select" [(ngModel)]="reservation.isApprox"></p>
+  <p>Est-ce un nombre approximatif? :
+  <select [(ngModel)]="reservation.isApprox">
+    <option value="true">Oui</option>
+    <option value="false">Non</option>
+  </select>
   <p>Date reservation : <input type="date" [(ngModel)]="reservation.dateReservation"></p>
-  <p>Durée réservée : <input type="date" [(ngModel)]="reservation.dateReservation"></p>
-  <input type="submit" name="" value="">
+  <p>Durée réservée : <input type="number" [(ngModel)]="reservation.dureeReservation"></p>
+  <input type="submit" (click)="ajouterReservation()">
 
 <form>
