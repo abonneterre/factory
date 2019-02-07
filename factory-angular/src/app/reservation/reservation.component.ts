@@ -9,6 +9,8 @@ import { Reservation } from './reservation';
 })
 export class ReservationComponent implements OnInit {
 
+
+  // private activite: Activite = new Activite();
   private reservation: Reservation = new Reservation();
   private reservations: Array<Reservation> = new Array<Reservation>();
 
@@ -20,7 +22,12 @@ export class ReservationComponent implements OnInit {
 
 
   ajouterReservation(){
-    this.reservation.activite.id = 1;
+// this.reservation.activite  = {}
+
+this.reservation.activite  = {
+  id: 2
+};
+    // this.reservation.activite.id = 1;
     this.reservationService.save(this.reservation);
   }
 
