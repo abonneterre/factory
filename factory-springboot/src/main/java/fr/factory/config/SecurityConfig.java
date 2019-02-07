@@ -16,6 +16,7 @@ public class SecurityConfig {
 	public static class ApiWebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapter {
 		protected void configure(HttpSecurity http) throws Exception {
 			http.antMatcher("/api/**").authorizeRequests().antMatchers(HttpMethod.OPTIONS).permitAll()
+			
 //				.anyRequest().hasAnyRole("ADMIN", "USER")
 					.and().httpBasic().and().csrf().disable();
 		}
@@ -25,14 +26,8 @@ public class SecurityConfig {
 	public static class FormLoginWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
 		@Override
 		protected void configure(HttpSecurity http) throws Exception {
-			http.authorizeRequests().antMatchers("/css/**").permitAll().antMatchers("/images/**").permitAll()
-					.antMatchers("/js/**").permitAll().antMatchers("/inscription/**").permitAll().antMatchers("/api/**")
-					.permitAll().antMatchers("/**").permitAll()
-//					.antMatchers("/**").hasAnyRole("ADMIN", "USER")
-					.and().formLogin().loginPage("/connexion").loginProcessingUrl("/perform_login")
-					.defaultSuccessUrl("/", true).failureUrl("/connexion?error=true").permitAll().and().logout()
-					.logoutUrl("/logout").logoutSuccessUrl("/connexion").permitAll().and().csrf()
-					.ignoringAntMatchers("/api/**"); // désactiver csrf pour API
+			http.antMatcher("/**").authorizeRequests().antMatchers(HttpMethod.OPTIONS).permitAll()
+			.and().httpBasic().and().csrf().disable();
 		}
 
 	}
