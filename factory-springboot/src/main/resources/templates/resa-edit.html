@@ -19,12 +19,12 @@
 		<form method="POST">
 			<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
 			<label>Activité</label>
-			<div class="card" th:if="${id == reservation.id}">
- 				 <div class="card-body">
+			<!-- <div class="card" th:if="${id == reservation.id}">
+ 				 <div class="card-body" >
    					[[${ reservation.activite.nom }]]
  				 </div>
-			</div>
-			<div class="card" th:if="${id == null}">
+			</div> -->
+			<div class="card">
  				 <select name="activite.id">
 				<option th:each="activite : ${ activites }"
 				th:value = "${activite.id}"
@@ -72,12 +72,12 @@
 			
 			<div class="form-group row">
 				<label for="isApprox" class="col-sm-2 col-form-label">Le nombre de personnes est-il approximatif ?</label>
-				<div class="form-check form-check-inline" id="isApprox">
-  					<input class="form-check-input" type="radio" name="isApprox" id="inlineRadio1" value="false"  th:value="${ reservation?.isApprox }">
+				<div class="form-check form-check-inline" name="Approx">
+  					<input class="form-check-input" type="radio" name="Approx" id="inlineRadio1" th:value="0" >
   					<label class="form-check-label" for="inlineRadio1">Oui</label>
 				</div>
 				<div class="form-check form-check-inline">
-  					<input class="form-check-input" type="radio" name="isApprox" id="inlineRadio2" value="true"  th:value="${ reservation?.isApprox }">
+  					<input class="form-check-input" type="radio" name="Approx" id="inlineRadio2" th:value="1" >
  					<label class="form-check-label" for="inlineRadio2">Non</label>
 				</div>
 				
@@ -105,10 +105,10 @@
 			</div>
 			
 			<div class="form-group row">
- 				 <select name="statut">
-				<option	th:value = "${reservation.statut}" th:text = "Non traité" value="0"/> 
-				<option	th:value = "${reservation.statut}" th:text = "Accepté" value="1"/> 
-				<option	th:value = "${reservation.statut}" th:text = "Refusé" value="2"/> 
+ 				 <select name="statut"> 
+				<option	th:text = "Nontraité" th:value="0"/> 
+				<option	th:text = "Accepté" th:value="1"/> 
+				<option	th:text = "Refusé" th:value="2"/> 
 			</select>
  			</div>
 			
