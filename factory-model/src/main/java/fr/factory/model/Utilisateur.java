@@ -44,7 +44,6 @@ public class Utilisateur {
 	private String password;
 	
 	@Column(name="UTI_ADMIN")
-	@NotEmpty
 	@NotNull
 	private boolean admin;
 	
@@ -53,7 +52,7 @@ public class Utilisateur {
 	@NotEmpty
 	private String email;
 
-	@OneToOne (mappedBy = "utilisateur", cascade = CascadeType.PERSIST)
+	@OneToOne (mappedBy = "utilisateur", cascade = CascadeType.ALL)
 	private Lieu lieu;
 		
 	
@@ -104,6 +103,8 @@ public class Utilisateur {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+
 
 	public boolean isAdmin() {
 		return admin;
