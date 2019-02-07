@@ -2,8 +2,10 @@ package fr.factory.controller;
 
 import java.util.List;
 
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -13,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import fr.factory.dao.IDAOActivite;
 import fr.factory.dao.IDAOCategorie;
+import fr.factory.dao.IDAOReservation;
 import fr.factory.model.Activite;
 import fr.factory.model.Categorie;
 import fr.factory.model.Niveau;
+import fr.factory.model.Reservation;
 
 //**********************************************************//
 //	PENSER A METTRE A JOUR LES LIENS URL SELON LE BESOIN	//
@@ -31,14 +35,33 @@ public class ActiviteController {
 	@Autowired
 	private IDAOCategorie daoCategorie;
 	
+	@Autowired
+	private IDAOReservation daoReservation;
+	
+	
 	private Niveau monNiveau;
 	
 	
 //Lister des activités
 	@GetMapping("")
+	@Transactional
 	public String listeActivite(@ModelAttribute Activite activite, Model model) {
 		
 		List<Activite> mesActivites = daoActivite.findAll();
+		
+		//PARCOURS LA LISTE
+		for(Activite a : mesActivites ) {
+			//POUR CHAQUE, TU INIT HIBERNATE INITIALIAZE DE LA LISTE DE RESERVATIONS
+			Integer res = daoReservation.getSumNbParticipantsByActiviteId(a.getId());
+			
+			if (res != null) {
+				a.setNbParticipants(res);
+			}
+			
+			//ET POUR QUE CA MARCHE, LA METHODE DOIT SEXECUTER DANS UNE MEME TRANSACTION
+			
+		}
+		
 		model.addAttribute("mesActivites", mesActivites);
 		return "listeActivites";
 	}

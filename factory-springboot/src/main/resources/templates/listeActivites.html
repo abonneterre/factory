@@ -34,7 +34,7 @@
 						<th>Nom</th>
 						<th>Participants min/max</th>
 						<th>Nombre de réservations</th>
-						<th>Activité visible</th>
+						<th>Statut</th>
 						<!-- colonne des boutons d'action -->
 						<th></th> 
 					</tr>
@@ -45,7 +45,9 @@
 						<td>[[${ activite.codeUnique }]]</td>
 						<td>[[${ activite.nom }]]</td>
 						<td>[[${ activite.nbParticipantsMin }]] à [[${ activite.nbParticipantsMax }]]</td>
-						<td>reservation</td>
+						<td>
+							[[${activite.nbParticipants}]]
+						</td>
 						<td>						
 							<span th:if="${activite.activee == true}">
 								<a th:href="@{/activite/afficher/{id}(id=${ activite.id })}" class="btn btn-success" role="button">
