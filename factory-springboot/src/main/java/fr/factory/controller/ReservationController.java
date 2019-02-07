@@ -26,8 +26,7 @@ public class ReservationController {
 	private IDAOActivite daoActivite;
 	
 	@RequestMapping(value="/reservation", method=RequestMethod.GET)
-	public String reservation(Model model, 
-			 @RequestParam(value="id", required=false) Integer id) {
+	public String reservation(Model model, @RequestParam(value="id", required=false) Integer id) {
 		if(id!=null) {
 			Reservation resa = daoReservation.findById(id).get();
 			model.addAttribute("reservation", resa);
