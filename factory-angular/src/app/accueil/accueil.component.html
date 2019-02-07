@@ -13,7 +13,7 @@
 
 
 <!------MENU ------>
-<div class="row">
+<!-- <div class="row">
   <nav id="menu" >
     <div class="dropdown">
       <button class="dropbtn"><a id="categorie" href="#">Accueil</a></button>
@@ -42,8 +42,18 @@
       </div>
     </div>
   	</nav>
-</div>
+</div> -->
 
+<div class="row">
+  <nav id="menu" >
+  	<div  *ngFor="let c of categorieService.findAllAsync() | async"  class="dropdown">
+      <button class="dropbtn"><a id="categorie" href="#">{{ c.libelle }}</a></button>
+      <div   class="dropdown-content">
+        <a *ngFor="let cf of c.categoriesFilles" href="#">{{ cf.libelle }}</a>
+      </div>
+    </div>
+  	</nav>
+</div>
 
 
 
