@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import fr.factory.dao.IDAOCategorie;
 import fr.factory.model.Categorie;
+import fr.factory.projection.Views;
 
 
 
@@ -25,7 +26,7 @@ public class CategorieRestController {
 	private IDAOCategorie daoCategorie;
 	
 	@GetMapping("/api/categorie")
-//	@JsonView(Views.Categorie.class)
+	@JsonView(Views.Categorie.class)
 	public List<Categorie> listeCategorie() {
 			return this.daoCategorie.findAll();
 	}

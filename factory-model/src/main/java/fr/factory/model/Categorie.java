@@ -11,11 +11,11 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import fr.factory.projection.Views;
 
 
 
@@ -26,10 +26,12 @@ public class Categorie {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="CAT_ID")
+	@JsonView(Views.Common.class)
 	private int id;
 	
 	@Column(name="CAT_LIBELLE", nullable=false)
 	@NotNull
+	@JsonView(Views.Categorie.class)
 	private String libelle;
 	
 	@ManyToMany(mappedBy="categories")
@@ -39,6 +41,7 @@ public class Categorie {
 	private List<Categorie> categoriesFilles;
 	
 	@ManyToOne
+	@JsonView(Views.Categorie.class)
 	private Categorie categorieMere;
 	
 	public List<Activite> getActivites() {
