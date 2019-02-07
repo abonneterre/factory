@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import fr.factory.dao.IDAOActivite;
 import fr.factory.model.Activite;
 
 @RestController
@@ -24,7 +24,7 @@ public class ActiviteRestController {
 	
 	@GetMapping()
 	public List<Activite> listeActivites() {
-		List<Activite> act = daoActivite.findByActivee(true);
+		List<Activite> act = daoActivite.findAll();
 		return act;
 		
 	}

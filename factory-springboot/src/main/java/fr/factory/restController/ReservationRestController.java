@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import fr.factory.dao.IDAOReservation;
 import fr.factory.model.Categorie;
 import fr.factory.model.Reservation;
 
@@ -27,9 +28,10 @@ public class ReservationRestController {
 	
 
 		
-	@PostMapping
+	@PostMapping("/api/reservation")
 //	@JsonView(Views.Reservation.class)
 	public Reservation ajouterReservation(@RequestBody Reservation reservation) {
+		System.out.println(reservation.getNom());
 		this.daoReservation.save(reservation);
 		return reservation;
 	}
