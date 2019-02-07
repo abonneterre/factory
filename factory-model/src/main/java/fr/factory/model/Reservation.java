@@ -49,7 +49,7 @@ public class Reservation {
 	@Column(name="RES_DUREESOUHAITEE")
 	private int dureeSouhaitee;
 	
-	@Column(name="RES_STATUT")
+	@Column(name="RES_STATUT") //0 pour en attente, 1 pour validée, 2 pour refusée
 	private int statut;
 	
 	@ManyToOne
