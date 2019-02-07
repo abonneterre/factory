@@ -54,7 +54,7 @@ public class Activite {
 	@Column(name = "ACT_TARIF_PERSONNE")
 	private float tarifPersonne;
 	
-	@Column(name = "ACT_ACTIVEE")
+	@Column(name = "ACT_ACTIVEE", nullable=false)
 	private boolean activee = false;
 	
 	@Column(name = "ACT_DUREE")
@@ -74,7 +74,6 @@ public class Activite {
 	@Size(max = 500)
 	@Column(name = "ACT_IMAGE", columnDefinition="TEXT", nullable = true, length = 500)
 	private String image;
-
 	
 	@Column(name="ACT_NIVEAU_ID")
 	@Enumerated(EnumType.ORDINAL)
@@ -85,10 +84,12 @@ public class Activite {
 	
 	@ManyToMany
 	@JoinColumn(name="ACT_CATEGORIE_ID")
+	@NotNull
 	private List<Categorie> categories ;
 	
 	@ManyToOne
 	@JoinColumn(name="ACT_LIEU_ID")
+	@NotNull
 	private Lieu lieu;
 
 	public int getId() {
