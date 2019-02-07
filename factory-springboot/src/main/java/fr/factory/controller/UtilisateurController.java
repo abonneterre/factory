@@ -38,12 +38,12 @@ public class UtilisateurController {
 		return "admin" ; 
 	} 
 	
-	@GetMapping("/ajoutUtilisateur")
+	@GetMapping("/ajouterUtilisateur")
 	public String afficher() {
-		return "/ajoutUtilisateur";
+		return "ajoutUtilisateur";
 	}
 	 
-	@PostMapping("/ajoutUtilisateur") 
+	@PostMapping("/ajouterUtilisateur") 
 	public String ajouterUtilisateur( 
 			@ModelAttribute Utilisateur utilisateur, Model model) {  
 		System.out.println("hello");
@@ -56,7 +56,7 @@ public class UtilisateurController {
 		
 		utilisateur.setAdmin(false);
 		daoUtilisateur.save(utilisateur); 
-
+		
 		 
 		return "redirect:./listeUtilisateurs"; 
 	} 
