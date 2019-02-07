@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="ISO-8859-1" />
+		<meta charset="UTF-8" />
 		<title>Factory</title>
 		<meta name="Description" content="Bienvenu sur Factory">
 		<link rel="stylesheet" 
@@ -14,27 +14,27 @@
 	<body>
 	<!-- IMPORTER NAVBAR.HTML -->
 		<header>
-			<h1 class="text-center">Gestion des activités</h1>
+			<h1 class="text-center">Gestion des activitÃ©s</h1>
 		</header>
 		<p></p>
 		<section class="container" id="ajouterCarte">
 			<p>
-				<a href="activite/ajouter" class="btn btn-sucess" role="button">Ajouter une activité</a>
+				<a href="activite/ajouter" class="btn btn-sucess" role="button">Ajouter une activitÃ©</a>
 			</p>
 		</section>
 		
 		<section class="container" id="listeActivites">
-			<h2>Liste des activités</h2>
-			<!-- Tableau des produits - striped pour avoir 1 ligne sur 2 coloré -->
+			<h2>Liste des activitÃ©s</h2>
+			<!-- Tableau des produits - striped pour avoir 1 ligne sur 2 colorÃ© -->
 			<table id="activites" class="table table-striped">
-				<!-- En-tête du tableau (le titre des colonnes) -->
+				<!-- En-tÃªte du tableau (le titre des colonnes) -->
 				<thead>
 					<tr>
 						<th>Code</th>
 						<th>Nom</th>
 						<th>Participants min/max</th>
-						<th>Nombre de réservations</th>
-						<th>Activité visible</th>
+						<th>Nombre de rÃ©servations</th>
+						<th>ActivitÃ© visible</th>
 						<!-- colonne des boutons d'action -->
 						<th></th> 
 					</tr>
@@ -44,11 +44,19 @@
 					<tr th:each="activite : ${mesActivites}">
 						<td>[[${ activite.codeUnique }]]</td>
 						<td>[[${ activite.nom }]]</td>
-						<td>[[${ activite.nbParticipantsMin }]] à [[${ activite.nbParticipantsMax }]]</td>
-						<td></td>
+						<td>[[${ activite.nbParticipantsMin }]] Ã  [[${ activite.nbParticipantsMax }]]</td>
+						<td>reservation</td>
 						<td>
-							<a th:href="@{carte/editer/{id}(id=${ carte.id })}" class="btn btn-info" role="button">Editer</a>
-							<a th:href="@{carte/supprimer/{id}(id=${ carte.id })}" class="btn btn-danger" role="button">Supprimer</a>
+							<label>
+							    Oui
+							    <input type="checkbox">
+							    <span class="lever"></span> 
+							    Non
+							</label>
+						</td>
+						<td>
+							<a th:href="@{activite/editer/{id}(id=${ activite.id })}" class="btn btn-info" role="button">Editer</a>
+							<a th:href="@{activite/supprimer/{id}(id=${ activite.id })}" class="btn btn-danger" role="button">Supprimer</a>
 						</td>
 					</tr>
 				</tbody>
