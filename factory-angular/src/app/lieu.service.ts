@@ -5,27 +5,26 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class LieuService {
-    public lieux: any = null;
-    public lieu: Lieu = new Lieu();
+    public lieu: any = null;
 
   constructor(private httpClient: HttpClient) { }
 
   findAllAsync() {
-     if (this.lieux == null) {
-  this.lieux =  this.httpClient.get("http://localhost:8080/api/lieu");
+     if (this.lieu == null) {
+  this.lieu =  this.httpClient.get("http://localhost:8080/api/lieu");
   }
-   return this.lieux;
+   return this.lieu;
   }
 
   findById(id:number){
     return this.httpClient
-      .get<Lieu>("http://localhost:8080/api/lieu/" + id, this.httpOptions)
+      .get<any>("http://localhost:8080/api/lieu/" + id)
       .subscribe(resp => this.lieu=resp);
   }
 
 
   refresh() {
-      this.lieux = null;
+      this.lieu = null;
       }
 
 }
