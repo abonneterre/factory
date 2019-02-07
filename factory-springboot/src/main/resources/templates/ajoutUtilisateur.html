@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:th="http://www.thymeleaf.org">
+<!-- xmlns:sec="http://www.thymeleaf.org/extras/spring-security" -->
+
 
 <head>
 <meta charset="ISO-8859-1">
 <title>Ajouter un utilisateur</title>
 </head>
 <body>
-<form method="POST"> 
+<form method="POST" action="ajoutUtilisateur"> 
 		<h2>Formulaire de nouvel utilisateur</h2>
 			<div>
 				<h3>Utilisateur</h3>
@@ -38,7 +39,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 				</div>
 			</div>
 			
-			<div>
+			<!-- <div>
 				<h3>Lieu de l'utilisateur</h3>
 				<div>
 					<label for="nomLieu">Nom du lieu</label> 
@@ -71,7 +72,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 						placeholder="Entrez l'url du lien du lieu"/>
 				</div>
 			</div>
-			
+			 -->
 			<div>
 				<input type="submit" value="Envoyer"/>
 			</div>

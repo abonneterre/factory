@@ -3,8 +3,6 @@ package fr.factory.controller;
 import java.util.List;
 import java.util.Optional;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,15 +37,26 @@ public class UtilisateurController {
 		model.addAttribute("mesUtilisateurs", mesUtilisateurs); 
 		return "admin" ; 
 	} 
+	
+	@GetMapping("/ajoutUtilisateur")
+	public String afficher() {
+		return "/ajoutUtilisateur";
+	}
 	 
 	@PostMapping("/ajoutUtilisateur") 
 	public String ajouterUtilisateur( 
-			@ModelAttribute Utilisateur utilisateur, @ModelAttribute Lieu lieu, BindingResult result, Model model) {  
-		lieu.setUtilisateur(utilisateur);
-		utilisateur.setLieu(lieu);
+			@ModelAttribute Utilisateur utilisateur, Model model) {  
+		System.out.println("hello");
+		System.out.println(utilisateur.getNom());
+		
+//		System.out.println(lieu.getNom());
+//		lieu.setUtilisateur(utilisateur);
+//		utilisateur.setLieu(lieu);
+//		daoLieu.save(lieu);
+		
 		utilisateur.setAdmin(false);
 		daoUtilisateur.save(utilisateur); 
-		daoLieu.save(lieu);
+
 		 
 		return "redirect:./listeUtilisateurs"; 
 	} 
