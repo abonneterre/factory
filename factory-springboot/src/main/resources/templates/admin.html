@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=devide-width, initial-scale=1" />
 </head>
 <body>
-<a th:href="@{ajoutUtilisateur(id=${utilisateur?.id })}"> Ajouter</a>
+ <a th:href="@{ajoutUtilisateur(id=${utilisateur?.id })}"> Ajouter</a>
 	<table>
 		<thead>
 			<tr>
@@ -30,6 +30,7 @@
 				<td>[[${utilisateur.email}]]</td>
 				
 				<td>[[${utilisateur.lieu?.nom }]]</td>
+				
 				<td>
 				 <a th:href="@{supprimer/{id}(id=${utilisateur.id })}"> Supprimer</a>
 			     <a th:href="@{editer/{id}(id=${utilisateur.id })}"> Editer</a>
