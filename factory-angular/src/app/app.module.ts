@@ -17,6 +17,7 @@ const routes: Routes = [
 { path: 'accueil', component: AccueilComponent },
 { path: 'reservation', component: ReservationComponent },
 { path: 'lieu', component: LieuComponent },
+{ path: 'lieu/:id', component: LieuComponent },
 { path: 'categorie', component: CategorieComponent },
 { path: 'activite', component: ActiviteComponent },
 { path: '', redirectTo: 'accueil', pathMatch: 'full' }
