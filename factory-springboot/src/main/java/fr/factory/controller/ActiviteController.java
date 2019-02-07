@@ -2,6 +2,7 @@ package fr.factory.controller;
 
 import java.util.List;
 
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -74,6 +75,9 @@ public class ActiviteController {
 		List<Categorie> mesCategories = daoCategorie.findAll();
 		model.addAttribute("activite", daoActivite.findById(id).get());
 		model.addAttribute("mesCategories", mesCategories);
+		
+		
+		
 		return "formActivite"; //formulaire html de création/édition d'activités (mettre à jour si besoin)
 	}
 	
@@ -83,12 +87,14 @@ public class ActiviteController {
 		return "redirect:..";
 	}
 	
+	
 //Supprimer une activité
 	@GetMapping("/supprimer/{id}")
 	public String supprimerActivite(@PathVariable int id) {
 		daoActivite.deleteById(id);
 		return "redirect:../";
 	}
+	
 	
 //masquer une activité
 	@GetMapping("/masquer/{id}")
@@ -99,6 +105,8 @@ public class ActiviteController {
 		return"redirect:../";
 	}
 	
+	
+	
 //afficher une activité
 	@GetMapping("/afficher/{id}")
 	public String afficherActivite(@PathVariable Integer id) {
@@ -107,4 +115,41 @@ public class ActiviteController {
 		daoActivite.save(monActivite);
 		return"redirect:../";
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	//Supprimer une catégorie de l'activité
+		@GetMapping("/supprimerCategorie/{idActivite}/{idCategorie}")
+		public String supprimerCategorie(@PathVariable int idActivite, @PathVariable int idCategorie ) {
+			
+			Activite monActivite = daoActivite.findById(idActivite).get();
+			Hibernate.initialize(monActivite.getCategories());
+			
+			for(int i = 0; i<monActivite.getCategories().size(); i++) {
+				
+				if(idCategorie == monActivite.getCategories().get(i).getId()){
+					
+					monActivite.getCategories().remove(i);
+					
+					break;
+				}
+				
+			
+				
+			}
+			daoActivite.save(monActivite);
+			return "redirect:/activite/editer/{idActivite}";
+		}
+	
+	
+	
+	
+	
+	
+	
 }

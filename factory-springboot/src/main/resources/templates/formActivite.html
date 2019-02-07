@@ -43,7 +43,7 @@
 
 
 
- <div>
+<!--  <div>
   <label> Catégorie  </label>
  <select  name="categorie.id" >
  <option th:each="categorie: ${ mesCategories}"
@@ -51,7 +51,7 @@
  		th:text="${categorie.libelle}"
  		th:selected="${activite?.categorie?.id == categorie.id}" />
  </select>
-  </div>
+  </div> -->
 
 
 
@@ -71,12 +71,36 @@
 			</thead>
 			<tbody>
 			
-		<tr th:each="categorie : ${mesCategories}">
+		<tr th:each="categorie : ${activite.categories}">
 		
 		<td > [[${ categorie.libelle }]] </td>
-		<td >  </td>
-	
+		<a th:href="@{/activite/supprimerCategorie/{id}/{id2}(id2=${categorie.id}, id=${id} )}" class="btn btn-light" role="button"> Supprimer</a>
 		</tr>
+		
+		
+		
+		<tr> 
+
+		<!-- A FAIRE DEMAIN, ALLEZ AU BOULOT (enlever form et faire autre chose, bon courage) -->
+		<form  method="POST" action="/activite/ajouterCategorie/{id}">
+		<td>
+		<select  name="categorie.id" >
+ 			<option th:each="categorie: ${ mesCategories}"
+ 		th:value="${categorie.id}"
+ 		th:text="${categorie.libelle}" />
+ 			</select> 
+ 		</td>
+ 	<td>	
+ <input type="submit" class="btn btn-light" > </input>
+ </td>
+ 
+ </form>
+ 
+ 			</tr>
+		
+		
+		
+		
 			</tbody>
 		</table>
 		</div>
