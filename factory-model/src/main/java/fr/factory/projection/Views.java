@@ -22,8 +22,7 @@ public class Views {
 		
 	}
 
-	public static class Common {
-	}
+
 	public static class Categorie extends Common {
 	}
 	public static class Activite extends Common {
