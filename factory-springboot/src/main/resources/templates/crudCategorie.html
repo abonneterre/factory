@@ -15,20 +15,26 @@
 			value="${_csrf.token}" />
 		<h1>Crud catégorie</h1>
 
+
 		<form method="post">
-
-			Libellé de la categorie: <br> <input type="text" name="libelle"
-				required> <br> Choisir categorie mère<select
-				class="custom-select" name="categorieMere.id">
-				<option th:each="categorie : ${listeCategorie}"
-					th:value="${categorie.id}">[[${categorie.libelle }]]</option>
-				<option>/</option>
-			</select> <br> <input class="btn btn-primary" type="submit"
-				value="Ajouter">
+			<div class="form-group">
+				<label for="libelleInput">Libellé de la categorie:</label> <input
+					type="text" class="form-control" name="libelle" id="libelleInput"
+					placeholder="libellé">
+			</div>
+			<div class="form-group">
+				<label for="categorieMereInput">Choisir categorie mère</label> <select
+					class="form-control" name="categorieMere.id"
+					id="categorieMereInput">
+					<option value="0">-- AUCUNE --</option>
+					<option th:each="categorie : ${listeCategorie}"
+						th:value="${categorie.id}">[[${categorie.libelle }]]</option>
+				</select>
+			</div>
+			<input class="btn btn-primary" type="submit" value="Ajouter">
 		</form>
-
-	
-
+		<br>
+		
 		<table class="table">
 
 			<tr th:each="categorie : ${listeCategorie}">

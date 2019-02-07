@@ -13,16 +13,25 @@
 	<div class="container">
 		<h1>Edition catégorie</h1>
 		<form method="post">
-			<input type="hidden" name="id" th:value="${categorie?.id}">
-			Libellé de la categorie: <br> <input type="text" name="libelle"
-				required th:value="${categorie.libelle }"><br> Choisir
-			categorie mère <br> <select class="custom-select"
-				name="categorieMere.id">
-				<option th:each="categorie2 : ${listeCategorie}"
-					th:value="${categorie2.id}" th:selected="${ categorie?.categorieMere?.id == categorie2.id}">
-				
-					[[${categorie2.libelle }]]</option>
-			</select> <br> <input class="btn btn-primary" type="submit" value="Modifier">		</form>
+			<div class="form-group">
+				<label for="libelleInput">Libellé de la categorie:</label> <input
+					type="text" class="form-control" name="libelle" id="libelleInput"
+					required th:value="${categorie.libelle }">
+			</div>
+			<div class="form-group">
+				<label for="categorieMereInput">Choisir categorie mère</label> <select
+					class="form-control" name="categorieMere.id"
+					id="categorieMereInput">
+					<option value="0">-- AUCUNE --</option>
+					<option th:each="categorie2 : ${listeCategorie}"
+						th:value="${categorie2.id}"
+						th:selected="${ categorie?.categorieMere?.id == categorie2.id}">
+
+						[[${categorie2.libelle }]]</option>
+				</select>
+			</div>
+			<input class="btn btn-primary" type="submit" value="Modifier">
+		</form>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
