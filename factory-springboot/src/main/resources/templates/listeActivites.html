@@ -46,13 +46,23 @@
 						<td>[[${ activite.nom }]]</td>
 						<td>[[${ activite.nbParticipantsMin }]] à [[${ activite.nbParticipantsMax }]]</td>
 						<td>reservation</td>
-						<td>
-							<label>
-							    Oui
-							    <input type="checkbox">
-							    <span class="lever"></span> 
-							    Non
-							</label>
+						<td>						
+							<span th:if="${activite.activee == true}">
+								<a th:href="@{/activite/afficher/{id}(id=${ activite.id })}" class="btn btn-success" role="button">
+							   		Affiché
+								</a>
+								<a th:href="@{/activite/masquer/{id}(id=${ activite.id })}" class="btn btn-light" role="button">
+									Masqué
+								</a>
+							</span>
+							<span th:if="${activite.activee == false}">
+								<a th:href="@{/activite/afficher/{id}(id=${ activite.id })}" class="btn btn-light " role="button">
+							   		Affiché
+								</a>
+								<a th:href="@{/activite/masquer/{id}(id=${ activite.id })}" class="btn btn-success" role="button">
+									Masqué
+								</a>
+							</span>							 
 						</td>
 						<td>
 							<a th:href="@{activite/editer/{id}(id=${ activite.id })}" class="btn btn-info" role="button">Editer</a>
