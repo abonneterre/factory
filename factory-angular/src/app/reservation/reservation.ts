@@ -10,7 +10,9 @@ export class Reservation{
   public dateReservation;
   public dureeSouhaitee;
   public statut;
-  public activite;
+  public activite{
+    "id":1
+  };
 
   constructor(){}
 
