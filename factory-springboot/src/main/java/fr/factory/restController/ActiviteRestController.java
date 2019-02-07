@@ -24,7 +24,7 @@ public class ActiviteRestController {
 	
 	@GetMapping()
 	public List<Activite> listeActivites() {
-		List<Activite> act = daoActivite.findAll();
+		List<Activite> act = daoActivite.findByActivee(true);
 		return act;
 		
 	}
