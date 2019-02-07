@@ -29,7 +29,8 @@ public class UtilisateurController {
 	 
 	@Autowired
 	private IDAOLieu daoLieu; 
-	 
+	
+	Lieu lieu = new Lieu();
  
 	@GetMapping("/listeUtilisateurs") 
 	public String formulaireAjout(Model model) { 
@@ -48,10 +49,9 @@ public class UtilisateurController {
 			@ModelAttribute Utilisateur utilisateur, Model model) {  
 		System.out.println("hello");
 		System.out.println(utilisateur.getNom());
-		
-//		System.out.println(lieu.getNom());
-//		lieu.setUtilisateur(utilisateur);
-//		utilisateur.setLieu(lieu);
+		lieu = utilisateur.getLieu();
+		System.out.println(lieu.getNom());
+		lieu.setUtilisateur(utilisateur);
 //		daoLieu.save(lieu);
 		
 		utilisateur.setAdmin(false);
