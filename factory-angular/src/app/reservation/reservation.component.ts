@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ReservationService } from '../reservation.service';
+import { Reservation } from './reservation';
 
 @Component({
   selector: 'app-reservation',
@@ -6,8 +8,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./reservation.component.css']
 })
 export class ReservationComponent implements OnInit {
+  public reservation: Reservation;
 
-  constructor() { }
+  constructor(public reservationService: ReservationService) { }
 
   ngOnInit() {
   }
