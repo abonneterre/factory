@@ -12,6 +12,6 @@ export class Reservation{
   public statut;
   public activite;
 
-  constructor(public nom?: string, public prix?: number){}
+  constructor(){}
 
 }
