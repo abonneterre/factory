@@ -18,6 +18,10 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import fr.factory.projection.Views;
+
 
 @Entity
 @Table(name="activite")
@@ -26,6 +30,7 @@ public class Activite {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ACT_ID")
+	@JsonView(Views.Common.class)
 	private int id;
 	
 	
@@ -33,48 +38,60 @@ public class Activite {
 	@NotEmpty
 	@NotNull
 	@Size(max=100)
+	@JsonView(Views.ReservationWithActivite.class)
 	private String nom;
 	
 	@Column(name = "ACT_CODE_UNIQUE")
 	@NotEmpty
 	@NotNull
+	@JsonView(Views.ReservationWithActivite.class)
 	private int codeUnique;
 	
 	@Column(name = "ACT_NB_PARTICIPANTS_MIN")
 	@NotEmpty
 	@NotNull
+	@JsonView(Views.ReservationWithActivite.class)
 	private int nbParticipantsMin;
 	
 	@Column(name = "ACT_NB_PARTICIPANTS_MAX")
 	@NotEmpty
 	@NotNull
+	@JsonView(Views.ReservationWithActivite.class)
 	private int nbParticipantsMax;
 	
 	@Column(name = "ACT_TARIF_PERSONNE")
+	@JsonView(Views.ReservationWithActivite.class)
 	private float tarifPersonne;
 	
 	@Column(name = "ACT_ACTIVEE")
+	@JsonView(Views.ReservationWithActivite.class)
 	private boolean activee;
 	
 	@Column(name = "ACT_DUREE")
+	@JsonView(Views.ReservationWithActivite.class)
 	private int duree;
 	
 	@Column(name = "ACT_NB_APPROXIMATIF", nullable=false)
+	@JsonView(Views.ReservationWithActivite.class)
 	private boolean nbApproximatif;
 	
 	@Column(name = "ACT_DESCRIPTION", columnDefinition="TEXT", nullable = false)
 	@NotEmpty
+	@JsonView(Views.ReservationWithActivite.class)
 	private String description;
 	
 	@Column(name = "ACT_LIEN_YOUTUBE")
+	@JsonView(Views.ReservationWithActivite.class)
 	private String lienYoutube;
 	
 	@Column(name = "ACT_IMAGE")
+	@JsonView(Views.ReservationWithActivite.class)
 	private String image;
 
 	
 	@Column(name="ACT_NIVEAU_ID")
 	@Enumerated(EnumType.ORDINAL)
+	@JsonView(Views.ReservationWithActivite.class)
 	private Niveau niveau;
 	
 	@OneToMany(mappedBy = "activite")

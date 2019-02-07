@@ -12,6 +12,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import fr.factory.projection.Views;
+
 
 @Entity
 @Table(name="Reservation")
@@ -19,41 +23,53 @@ public class Reservation {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="RES_ID")
+	@JsonView(Views.Common.class)
 	private int id;
 	
 	@Column(name="RES_NOM")
+	@JsonView(Views.Reservation.class)
 	private String nom;
 	
 	@Column(name="RES_PRENOM")
+	@JsonView(Views.Reservation.class)
 	private String prenom;
 	
 	@Column(name="RES_TELEPHONE")
+	@JsonView(Views.Reservation.class)
 	@Size(max=20)
 	private String telephone;
 	
 	@Column(name="RES_MAIL")
+	@JsonView(Views.Reservation.class)
 	private String mail;
 	
 	@Column(name="RES_NBPARTICIPANTS")
+	@JsonView(Views.Reservation.class)
 	private int nbParticipants;
 	
 	@Column(name="RES_APPROX")
+	@JsonView(Views.Reservation.class)
 	private boolean isApprox = false;
 	
 	@Column(name="RES_DATEDEMANDE")
+	@JsonView(Views.Reservation.class)
 	private Date dateDemande; 
 	
 	@Column(name="RES_DATERESERVATION")
+	@JsonView(Views.Reservation.class)
 	private Date dateReservation;
 	
 	@Column(name="RES_DUREESOUHAITEE")
+	@JsonView(Views.Reservation.class)
 	private int dureeSouhaitee;
 	
 	@Column(name="RES_STATUT") //0 pour en attente, 1 pour validée, 2 pour refusée
+	@JsonView(Views.Reservation.class)
 	private int statut;
 	
 	@ManyToOne
 	@JoinColumn(name="RES_ACTIVITE_ID") //A VERIFIER AUPRES DU GROUPE I
+	@JsonView(Views.ReservationWithActivite.class)
 	private Activite activite;
 
 	public int getId() {
