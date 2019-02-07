@@ -45,6 +45,7 @@ public class UtilisateurController {
 			@ModelAttribute Utilisateur utilisateur, @ModelAttribute Lieu lieu, BindingResult result, Model model) {  
 		lieu.setUtilisateur(utilisateur);
 		utilisateur.setLieu(lieu);
+		utilisateur.setAdmin(false);
 		daoUtilisateur.save(utilisateur); 
 		daoLieu.save(lieu);
 		 
