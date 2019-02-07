@@ -16,6 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 
 
@@ -40,13 +41,13 @@ public class Activite {
 	@Size(max=100)
 	private String codeUnique;
 	
-	@Column(name = "ACT_NB_PARTICIPANTS_MIN", nullable=false)
-	@NotEmpty
-	@NotNull
+	@Column(name = "ACT_NB_PARTICIPANTS_MIN", nullable = false)
+    @Positive
+    @NotNull
 	private int nbParticipantsMin;
 	
-	@Column(name = "ACT_NB_PARTICIPANTS_MAX", nullable=false)
-	@NotEmpty
+	@Column(name = "ACT_NB_PARTICIPANTS_MAX", nullable = false)
+	@Positive
 	@NotNull
 	private int nbParticipantsMax;
 	
@@ -60,16 +61,18 @@ public class Activite {
 	private int duree;
 	
 	@Column(name = "ACT_NB_APPROXIMATIF", nullable=false)
-	private boolean nbApproximatif;
+	private boolean nbApproximatif = false;
 	
 	@Column(name = "ACT_DESCRIPTION", columnDefinition="TEXT", nullable = false)
 	@NotEmpty
 	private String description;
 	
-	@Column(name = "ACT_LIEN_YOUTUBE", columnDefinition="TEXT", nullable = true)
+	@Size(max = 500)
+	@Column(name = "ACT_LIEN_YOUTUBE", columnDefinition="TEXT",nullable = true, length = 500)
 	private String lienYoutube;
 	
-	@Column(name = "ACT_IMAGE", columnDefinition="TEXT", nullable = true)
+	@Size(max = 500)
+	@Column(name = "ACT_IMAGE", columnDefinition="TEXT", nullable = true, length = 500)
 	private String image;
 	
 	@Column(name="ACT_NIVEAU_ID")
