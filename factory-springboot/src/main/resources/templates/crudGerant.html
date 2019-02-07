@@ -12,36 +12,41 @@
 <meta name="viewport" content="width=devide-width, initial-scale=1" />
 </head>
 <body>
-<div th:replace="navbar"> </div>
+	<div th:replace="navbar"></div>
 
 	<table class="table table-striped">
 		<thead>
-			<tr>
+		
 				<h1>Liste des gérants</h1>
-<a th:href="@{ajouterUtilisateur}"> Ajouter</a>
+				<p>
+					<a th:href="@{ajouterUtilisateur}"
+						class="btn btn-primary btn-lg active" role="button"
+						aria-pressed="true"> Ajouter</a>
+				</p>
+			<tr>
 				<th scope="col">Nom</th>
 				<th scope="col">Prénom</th>
 				<th scope="col">Email</th>
 				<th scope="col">Lieu</th>
 				<th scope="col">Actions</th>
 			</tr>
+
 		</thead>
 		<tbody>
-		<tr th:each="utilisateur :${ mesUtilisateurs }" >
-		
+			<tr th:each="utilisateur :${ mesUtilisateurs }">
+
 				<td>[[${utilisateur.nom }]]</td>
 
 				<td>[[${utilisateur.prenom}]]</td>
 
 				<td>[[${utilisateur.email}]]</td>
-				
+
 				<td>[[${utilisateur.lieu?.nom }]]</td>
-				
-				<td>
-				 <a th:href="@{supprimer/{id}(id=${utilisateur.id })}"> Supprimer</a>
-			     <a th:href="@{editer/{id}(id=${utilisateur.id })}"> Editer</a>
-			    </td>
-		</tr>
+
+				<td><a th:href="@{supprimer/{id}(id=${utilisateur.id })}">
+						Supprimer</a> <a th:href="@{editer/{id}(id=${utilisateur.id })}">
+						Editer</a></td>
+			</tr>
 		</tbody>
 	</table>
 	<script

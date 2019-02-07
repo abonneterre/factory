@@ -21,8 +21,18 @@ this.activites =  this.httpClient.get("http://localhost:8080/api/activite");
 }
 
 findById(id : number){
-  this.activite = this.httpClient.get<activite>("http://localhost:8080/api/activite/" + id, this.httpOptions).subscribe(resp =>
+  this.activite = this.httpClient.get("http://localhost:8080/api/activite/" + id).subscribe(resp =>
     this.activite = resp);
+}
+
+findByActiveeAsync() {
+   if (this.activites == null) {
+this.activites =  this.httpClient.get("http://localhost:8080/api/activite/activee");
+}
+
+ return this.activites;
+
+
 }
 
      refresh() {

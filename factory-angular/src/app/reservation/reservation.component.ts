@@ -9,10 +9,17 @@ import { Reservation } from './reservation';
 })
 export class ReservationComponent implements OnInit {
   public reservation: Reservation;
+  public activite: any;
 
   constructor(public reservationService: ReservationService) { }
 
   ngOnInit() {
+  }
+
+
+  ajouterReservation(){
+    this.reservation.activite.id = 1;
+    this.reservationService.save(this.reservation);
   }
 
 }
