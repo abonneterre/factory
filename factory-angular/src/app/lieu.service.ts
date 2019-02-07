@@ -13,14 +13,11 @@ export class LieuService {
      if (this.lieu == null) {
   this.lieu =  this.httpClient.get("http://localhost:8080/api/lieu");
   }
-
    return this.lieu;
-
-
   }
 
-      refresh() {
-        this.lieu = null;
+  refresh() {
+      this.lieu = null;
       }
 
 }
