@@ -34,11 +34,8 @@ public class Reservation {
 	@Column(name="RES_MAIL")
 	private String mail;
 	
-	@Column(name="RES_NBPARTICIPANTSMIN")
-	private int nbParticipantsMin;
-	
-	@Column(name="RES_NBPARTICIPANTSMAX")
-	private int nbParticipantsMax;
+	@Column(name="RES_NBPARTICIPANTS")
+	private int nbParticipants;
 	
 	@Column(name="RES_APPROX")
 	private boolean isApprox = false;
@@ -99,12 +96,12 @@ public class Reservation {
 		this.mail = mail;
 	}
 
-	public int getNbParticipantsMin() {
-		return nbParticipantsMin;
+	public int getNbParticipants() {
+		return nbParticipants;
 	}
 
-	public void setNbParticipantsMin(int nbParticipantsMin) {
-		this.nbParticipantsMin = nbParticipantsMin;
+	public void setNbParticipants(int nbParticipants) {
+		this.nbParticipants = nbParticipants;
 	}
 
 	public boolean isApprox() {
@@ -153,14 +150,6 @@ public class Reservation {
 
 	public void setActivite(Activite activite) {
 		this.activite = activite;
-	}
-
-	public int getNbParticipantsMax() {
-		return nbParticipantsMax;
-	}
-
-	public void setNbParticipantsMax(int nbParticipantsMax) {
-		this.nbParticipantsMax = nbParticipantsMax;
 	}
 	
 	
