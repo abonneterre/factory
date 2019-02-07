@@ -18,10 +18,10 @@
   <nav id="menu" >
   	<div  *ngFor="let c of categorieService.findAllAsync() | async"  class="dropdown">
       <div *ngIf="c.categorieMere==null" >
-        <button class="dropbtn"><a id="categorie" href="#">{{ c.libelle }}</a></button>
+        <button class="dropbtn"><a id="categorie" href="activites/{{c.id}}">{{ c.libelle }}</a></button>
         <div   class="dropdown-content">
           <div *ngFor="let cf of categorieService.findAllAsync() | async">
-            <a  *ngIf="cf.categorieMere?.id==c.id" href="#">{{ cf.libelle }}</a>
+            <a  *ngIf="cf.categorieMere?.id==c.id" href="activites/{{c.id}}">{{ cf.libelle }}</a>
           </div>
         </div>
       </div>
