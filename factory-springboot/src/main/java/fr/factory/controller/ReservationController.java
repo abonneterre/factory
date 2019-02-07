@@ -12,12 +12,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import fr.factory.dao.IDAOActivite;
 import fr.factory.dao.IDAOReservation;
 import fr.factory.model.Reservation;
 
 public class ReservationController {
 	@Autowired
 	private IDAOReservation daoReservation;
+	
+	@Autowired
+	private IDAOActivite daoActivite;
 	
 	@RequestMapping(value="/reservation", method=RequestMethod.GET)
 	public String reservation(Model model, 
@@ -28,6 +32,20 @@ public class ReservationController {
 		}
 		model.addAttribute("reservations", daoReservation.findAll());
 		return "reservation";
+	}
+	
+	@GetMapping("/reservation/editer")
+	public String modifierPersonnage(@RequestParam int id, Model model) {
+		model.addAttribute("activites", daoActivite.findAll());
+		model.addAttribute("reservation",daoReservation.findById(id));
+		return "resa-edit";
+	}
+	
+	@PostMapping("/reservation/editer")
+	public String editerReservation(@RequestParam int id, @Valid @ModelAttribute Reservation reservation) {		
+		reservation.setId(id);
+		daoReservation.save(reservation);
+		return "redirect:/reservation";
 	}
 	
 	@PostMapping("/reservation")
