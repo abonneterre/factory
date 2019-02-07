@@ -41,6 +41,7 @@ public class CategorieController {
 	public String editerCategorie(@PathVariable int id, Model model) {
 		model.addAttribute("categorie", daoCategorie.findById(id).get());
 		model.addAttribute("listeCategorie", daoCategorie.findAll());
+		model.addAttribute("categorieVide", new Categorie());
 		return "editerCategorie";
 	}
 	
