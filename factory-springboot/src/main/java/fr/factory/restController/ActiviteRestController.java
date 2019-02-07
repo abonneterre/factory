@@ -26,7 +26,7 @@ public class ActiviteRestController {
 	private IDAOActivite daoActivite; 
 	
 	@GetMapping()
-	@JsonView(Views.Activite.class)
+	@JsonView(Views.ActiviteWithCategorieAndReservationsAndLieu.class)
 	public List<Activite> listeActivites() {
 		List<Activite> act = daoActivite.findAll();
 		return act;

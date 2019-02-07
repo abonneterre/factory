@@ -42,7 +42,7 @@ public class Categorie {
 	private List<Categorie> categoriesFilles;
 	
 	@ManyToOne
-//	@JsonView(Views.Categorie.class)
+//	@JsonView(Views.Categoie.class)
 	private Categorie categorieMere;
 	
 	public List<Activite> getActivites() {
