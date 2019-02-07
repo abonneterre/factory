@@ -16,7 +16,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonView;
+
+import fr.factory.projection.Views;
 
 
 @Entity
@@ -26,66 +31,84 @@ public class Activite {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ACT_ID")
+	@JsonView(Views.Common.class)
 	private int id;
-	
 	
 	@Column(name = "ACT_NOM")
 	@NotEmpty
 	@NotNull
 	@Size(max=100)
+	@JsonView({Views.ReservationWithActivite.class,Views.Activite.class})
 	private String nom;
 	
 	@Column(name = "ACT_CODE_UNIQUE")
 	@NotEmpty
 	@NotNull
-	private int codeUnique;
+	@Size(max=100)
+	@JsonView(Views.ReservationWithActivite.class)
+	private String codeUnique;
 	
-	@Column(name = "ACT_NB_PARTICIPANTS_MIN")
-	@NotEmpty
-	@NotNull
+	@Column(name = "ACT_NB_PARTICIPANTS_MIN", nullable = false)
+    @Positive
+    @NotNull
+	@JsonView({Views.ReservationWithActivite.class,Views.Activite.class})
 	private int nbParticipantsMin;
 	
-	@Column(name = "ACT_NB_PARTICIPANTS_MAX")
-	@NotEmpty
+	@Column(name = "ACT_NB_PARTICIPANTS_MAX", nullable = false)
+	@Positive
 	@NotNull
+	@JsonView({Views.ReservationWithActivite.class,Views.Activite.class})
 	private int nbParticipantsMax;
 	
 	@Column(name = "ACT_TARIF_PERSONNE")
-	private float tarifPersonne;
+	@JsonView({Views.ReservationWithActivite.class,Views.Activite.class})
+	private Float tarifPersonne;
 	
-	@Column(name = "ACT_ACTIVEE")
-	private boolean activee;
+	@Column(name = "ACT_ACTIVEE", nullable=false)
+	@JsonView({Views.ReservationWithActivite.class,Views.Activite.class})
+	private boolean activee = false;
 	
 	@Column(name = "ACT_DUREE")
+	@JsonView({Views.ReservationWithActivite.class,Views.Activite.class})
 	private int duree;
 	
 	@Column(name = "ACT_NB_APPROXIMATIF", nullable=false)
-	private boolean nbApproximatif;
+	@JsonView({Views.ReservationWithActivite.class,Views.Activite.class})
+	private boolean nbApproximatif = false;
 	
 	@Column(name = "ACT_DESCRIPTION", columnDefinition="TEXT", nullable = false)
 	@NotEmpty
+	@JsonView({Views.ReservationWithActivite.class,Views.Activite.class})
 	private String description;
 	
-	@Column(name = "ACT_LIEN_YOUTUBE")
+	@Column(name = "ACT_LIEN_YOUTUBE", columnDefinition="TEXT",nullable = true, length = 500)
+	@Size(max = 500)
+	@JsonView({Views.ReservationWithActivite.class,Views.Activite.class})
 	private String lienYoutube;
 	
-	@Column(name = "ACT_IMAGE")
+	@Column(name = "ACT_IMAGE", columnDefinition="TEXT", nullable = true, length = 500)
+	@Size(max = 500)
+	@JsonView({Views.ReservationWithActivite.class,Views.Activite.class})
 	private String image;
-
 	
 	@Column(name="ACT_NIVEAU_ID")
 	@Enumerated(EnumType.ORDINAL)
+	@JsonView({Views.ReservationWithActivite.class,Views.Activite.class})
 	private Niveau niveau;
 	
 	@OneToMany(mappedBy = "activite")
+	@JsonView(Views.ActiviteWithCategorieAndReservations.class)
 	private List<Reservation> reservations;
 	
 	@ManyToMany
 	@JoinColumn(name="ACT_CATEGORIE_ID")
+	@JsonView(Views.ActiviteWithCategorie.class)
 	private List<Categorie> categories ;
 	
 	@ManyToOne
 	@JoinColumn(name="ACT_LIEU_ID")
+	@NotNull
+	@JsonView(Views.ActiviteWithCategorieAndReservationsAndLieu.class)
 	private Lieu lieu;
 
 	public int getId() {
@@ -104,11 +127,11 @@ public class Activite {
 		this.nom = nom;
 	}
 
-	public int getCodeUnique() {
+	public String getCodeUnique() {
 		return codeUnique;
 	}
 
-	public void setCodeUnique(int codeUnique) {
+	public void setCodeUnique(String codeUnique) {
 		this.codeUnique = codeUnique;
 	}
 
