@@ -34,35 +34,41 @@ public class ReservationController {
 		return "reservation";
 	}
 	
-	@GetMapping("/reservation/editer")
+	@GetMapping("/ajouter")
+	public String ajouterReservation(@Valid @ModelAttribute Reservation reservation, Model model) {
+		model.addAttribute("activites", daoActivite.findAll());
+		return "resa-edit";
+	}
+	
+	@PostMapping("/ajouter")
+	public String addReservation(@Valid @ModelAttribute Reservation reservation, BindingResult result,
+			Model model) {
+		//model.addAttribute("reservations", daoReservation.findAll());
+		if(result.hasErrors()) {
+			System.out.println("Invalide");
+			return "resa-edit";
+		}
+		else {
+			System.out.println("Ok");
+			daoReservation.save(reservation);
+			model.addAttribute("reservations", daoReservation.findAll());
+		    return "redirect:/reservation";
+		}
+		
+	}
+	
+	@GetMapping("/editer")
 	public String modifierPersonnage(@RequestParam int id, Model model) {
 		model.addAttribute("activites", daoActivite.findAll());
 		model.addAttribute("reservation",daoReservation.findById(id));
 		return "resa-edit";
 	}
 	
-	@PostMapping("/reservation/editer")
+	@PostMapping("/editer")
 	public String editerReservation(@RequestParam int id, @Valid @ModelAttribute Reservation reservation) {		
 		reservation.setId(id);
 		daoReservation.save(reservation);
 		return "redirect:/reservation";
-	}
-	
-	@PostMapping("/reservation")
-	public String addReservation(@Valid @ModelAttribute Reservation reservation, BindingResult result,
-			Model model) {
-		//model.addAttribute("reservations", daoReservation.findAll());
-		if(result.hasErrors()) {
-			System.out.println("Invalide");
-			return "reservation";
-		}
-		else {
-			System.out.println("Ok");
-			daoReservation.save(reservation);
-			model.addAttribute("reservations", daoReservation.findAll());
-		    return "reservation";
-		}
-		
 	}
 	
 	@GetMapping("/supprimer")
