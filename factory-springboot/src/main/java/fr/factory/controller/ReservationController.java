@@ -61,7 +61,7 @@ public class ReservationController {
 	@GetMapping("/editer")
 	public String modifierPersonnage(@RequestParam int id, Model model) {
 		model.addAttribute("activites", daoActivite.findAll());
-		model.addAttribute("reservation",daoReservation.findById(id));
+		model.addAttribute("reservation",daoReservation.findById(id).get());
 		return "resa-edit";
 	}
 	
