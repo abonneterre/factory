@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Bienvenue sur la factory !</title>
@@ -27,9 +27,9 @@
 				<td>[[${utilisateur.prenom}]]</td>
 
 				<td>[[${utilisateur.email}]]</td>
-				
-				<td>[[${utilisateur.lieu.nom }]]</td>
-				
+			
+			
+				<td>
 				 <a th:href="@{supprimer/{id}(id=${utilisateur.id })}"> Supprimer</a>
 			     <a th:href="@{editer/{id}(id=${utilisateur.id })}"> Editer</a>
 			    </td>
