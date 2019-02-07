@@ -48,6 +48,7 @@
  </select>
   </div>
 
+
  <div>
  <label> Nombre de partipants  </label>
  <input type="text" name="nbParticipantsMin" placeholder="Renseignez un nombre de participants mini" required/>
@@ -55,6 +56,8 @@
  </div>
 
 
+ 
+ 
  <div>
  <label> Tarif (EUR)/personne (Optionnel)</label>
  <input type="text" name="tarifPersonne" placeholder="Renseignez le tarif" step="0.1"/>
@@ -70,28 +73,40 @@
 
 
 
+ <div>
+  <label> Catégorie  </label>
+ <select name="lieu.id">
+ <option th:each="lieu: ${ mesLieux}"
+ 		th:value="${lieu.id}"
+ 		th:text="${lieu.nom}"
+ 		th:selected="${activite?.lieu?.id == lieu.id}"/>
+ </select>
+  </div>
+
+
+
 <div class="custom-control custom-switch">
-  <input type="checkbox" class="custom-control-input" id="customSwitch1">
+  <input type="checkbox" class="custom-control-input" id="customSwitch1" name="nbApproximatif">
   <label class="custom-control-label nbApproximatif" for="customSwitch1">Nombre approximatif de participants (Optionnel) </label>
 </div>
 
 
 
  <div>
- <label>  Description (Optionnel) </label>
- <input type="text" name="description" placeholder="Decrivez l'activité" />
+ <label>  Description</label>
+ <input type="text" name="description" placeholder="Decrivez l'activité" required/>
  </div>
 
 
  <div>
- <label>  Lien vidéo Youtube </label>
+ <label>  Lien vidéo Youtube (Optionnel)  </label>
  <input type="text" name="lienYoutube" placeholder="Inserez un lien" />
  </div>
  
  
  
  <div>
- <label>  Lien image </label>
+ <label>  Lien image (Optionnel) </label>
  <input type="text" name="image" placeholder="Inserez un lien" />
  </div>
 

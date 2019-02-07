@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import fr.factory.dao.IDAOActivite;
 import fr.factory.dao.IDAOCategorie;
+import fr.factory.dao.IDAOLieu;
 import fr.factory.model.Activite;
 import fr.factory.model.Categorie;
+import fr.factory.model.Lieu;
 import fr.factory.model.Niveau;
 
 //**********************************************************//
@@ -31,8 +33,9 @@ public class ActiviteController {
 	@Autowired
 	private IDAOCategorie daoCategorie;
 	
+	@Autowired
+	private IDAOLieu daoLieu;
 	
-	private Niveau monNiveau;
 	
 	
 //Lister des activités
@@ -50,12 +53,15 @@ public class ActiviteController {
 	
 //Ajouter une activité
 	@GetMapping({ "/ajouterActivite" })
-	public String ajouterActivite(@ModelAttribute Categorie Categorie , Niveau niveau, Model model) {
+	public String ajouterActivite(@ModelAttribute Categorie Categorie , Niveau niveau, Lieu lieu, Model model) {
 		
 		Niveau[] mesNiveaux = Niveau.values();
+		
 		List<Categorie> mesCategories = daoCategorie.findAll();
+		List<Lieu> mesLieux = daoLieu.findAll();
 		model.addAttribute("mesCategories", mesCategories);
 		model.addAttribute("mesNiveaux", mesNiveaux);
+		model.addAttribute("mesLieux", mesLieux);
 		return "formActivite"; 
 	}
 		
