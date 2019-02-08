@@ -47,6 +47,19 @@ public class Proposition {
 	@JsonView(Views.Proposition.class)
 	private String description;
 	
+	@Column(name="PRO_ISARCHIVEE", nullable=false)
+	@NotNull
+	private boolean archivee=false;
+
+
+	public boolean isArchivee() {
+		return archivee;
+	}
+
+	public void setArchivee(boolean archivee) {
+		this.archivee = archivee;
+	}
+
 	public int getId() {
 		return id;
 	}
