@@ -89,3 +89,29 @@ nav {
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {background-color: #848484;}
+
+/*Position des cadres*/
+
+#cadre {
+  display: flex;
+  width: 1200px;
+  margin:0 auto;
+  text-align: center;
+  padding: 20px 20px 20px 20px;
+  justify-content: center;
+
+}
+
+#cadre2 {
+  padding: 20px 20px 20px 20px;
+}
+
+.card-header {
+  height: 75px;
+  weight: 250px;
+}
+
+.card-body {
+  height: 200px;
+  weight: 250px;
+}
