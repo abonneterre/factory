@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import fr.factory.dao.IDAOProposition;
 import fr.factory.model.Proposition;
+import fr.factory.security.annotation.isAdmin;
 
 @Controller
+@isAdmin
 public class PropositionController {
 	
 	@Autowired

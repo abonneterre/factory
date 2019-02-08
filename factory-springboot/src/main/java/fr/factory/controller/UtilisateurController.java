@@ -16,12 +16,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import fr.factory.dao.IDAOLieu;
 import fr.factory.dao.IDAOUtilisateur;
 import fr.factory.model.Lieu;
-import fr.factory.model.Utilisateur; 
+import fr.factory.model.Utilisateur;
+import fr.factory.security.annotation.isAdmin; 
  
  
  
 @Controller 
 @RequestMapping("") 
+@isAdmin
 public class UtilisateurController { 
 	 
 	@Autowired 
