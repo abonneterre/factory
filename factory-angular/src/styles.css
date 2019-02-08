@@ -6,6 +6,7 @@ div#carouselExampleIndicators {
 
 div#titre  {
   text-align: center;
+    background-color: #CD5D1B;
   /* border-bottom: solid white 20px; */
 }
 
@@ -20,7 +21,8 @@ border-bottom: solid white 10px; */
 }
 
 .row {
-  background-color: #C0C0C0;
+  /* background-color: #C0C0C0; */
+  background-color: #893d37;
 }
 .container a {
   color: inherit;
@@ -32,16 +34,18 @@ nav#menu a {
   text-decoration: none;
   font-family: 'Open Sans', sans-serif;
   text-align: center;
+
 }
 
 nav {
   text-align: center;
   width:100%;
+  background-color: #893D37;
 }
 
 /* Dropdown Button */
 .dropbtn {
-  background-color: #C0C0C0;
+  background-color: #893d37;
   color: white;
   padding: 16px;
   font-size: 16px;
@@ -56,6 +60,7 @@ nav {
  .dropdown {
   position: relative;
   display: inline-block;
+  background-color: #893D37;
 
 
 }
@@ -64,7 +69,7 @@ nav {
  .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f1f1f1;
+  /* background-color: #f1f1f1; */
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
@@ -89,7 +94,8 @@ nav {
 .dropdown:hover .dropbtn {background-color: #848484;}
 
 body {
-  background-color: pink;
+  background-color: #D1A77D;
+
 }
 
 /* div {
@@ -102,11 +108,17 @@ body {
 
 #page-background {
   display: flex;
-  background-color: purple;
   text-align: center;
 }
 
 #page-content {
-  margin-top:30px;
-  margin-bottom:30px;
+  padding-top:30px;
+  padding-bottom:30px;
+  background-color: #F0BA56;
+}
+
+#header {
+    background: #CD5D1B ;
+    margin-left:0px;
+
 }
