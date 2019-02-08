@@ -12,7 +12,9 @@ export class ActiviteService {
 
  findAllAsync() {
     if (this.activites == null) {
-this.activites =  this.httpClient.get("http://localhost:8080/api/activite");
+      this.activites =  this.httpClient.get("http://localhost:8080/api/activite");
+
+
 }
 
   return this.activites;
@@ -22,7 +24,7 @@ this.activites =  this.httpClient.get("http://localhost:8080/api/activite");
 
 findByActiveeAsync() {
    if (this.activites == null) {
-this.activites =  this.httpClient.get("http://localhost:8080/api/activite/activee");
+      this.activites =  this.httpClient.get("http://localhost:8080/api/activite/activee");
 }
 
  return this.activites;
