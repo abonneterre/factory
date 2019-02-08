@@ -28,7 +28,7 @@
 
 <div>
 	<div class="card bg-light mb-3" style="max-width: 18rem;" *ngFor="let cat of activiteService.findAllAsync() | async"  >
-	  <div class="card-header">Header</div>
+	  <div class="card-header"> {{cat.nom}} </div>
 	  <div class="card-body">
 	    <h5 class="card-title">Light card title</h5>
 	    <p class="card-text">Some.</p>
