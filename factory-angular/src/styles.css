@@ -7,11 +7,20 @@ div#carouselExampleIndicators {
 div#titre  {
   text-align: center;
     background-color: #CD5D1B;
+
   /* border-bottom: solid white 20px; */
 }
 
+#police{  font-family: 'Permanent Marker', cursive; }
+
 h1 {
     font-size: 60px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+div#description  {
+    text-align: center;
+    margin-right: 120px;
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -115,10 +124,15 @@ body {
   padding-top:30px;
   padding-bottom:30px;
   background-color: #F0BA56;
+  text-align: center;
 }
 
 #header {
     background: #CD5D1B ;
     margin-left:0px;
 
+}
+
+#page-background {
+     min-height: 700px;
 }
