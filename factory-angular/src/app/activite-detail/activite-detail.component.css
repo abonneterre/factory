@@ -1,5 +1,5 @@
 div#detailActivite {
-  margin-top: 30px ;
+  margin-top: 20px ;
 }
 
 div#detailActivite h4{
@@ -37,7 +37,6 @@ div#detailActivite div#image{
 
 div#detailActivite div#image img{
   width: 500px;
-  height: 350px;
 }
 
 div#detailActivite div#cat {
