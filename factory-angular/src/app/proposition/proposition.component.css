@@ -87,3 +87,16 @@ nav {
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {background-color: #6d302c;}
+
+
+p {
+     text-align:left;
+}
+
+#page-background {
+     min-height: 800px;
+}
+
+.body {
+  background-color: #D1A77D;
+}
