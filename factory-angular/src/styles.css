@@ -14,12 +14,10 @@ h1 {
     font-size: 60px;
     font-family: 'Open Sans', sans-serif;
 }
-h5{
-  margin-left: 70px;
-  margin-right: 70px;
-  font-family: 'Open Sans', sans-serif;
-
-
+div#description  {
+    text-align: center;
+    margin-right: 120px;
+    font-family: 'Open Sans', sans-serif;
 }
 .container {
 /* border-top : solid white 20px;
@@ -121,6 +119,7 @@ body {
   padding-top:30px;
   padding-bottom:30px;
   background-color: #F0BA56;
+  text-align: center;
 }
 
 #header {
