@@ -26,28 +26,18 @@
 </div>
 
 
-<div>
+<div id="cadre" class="col-sm-12">
   <div *ngFor="let act of activiteService.findByActiveeAsync() | async" >
     <div *ngFor="let cat of act.categories">
-      <div *ngIf="cat.id == categorieService.categorie.id">
+      <div id="cadre2" *ngIf="cat.id == categorieService.categorie.id">
         <div class="card bg-light mb-3" style="max-width: 18rem;" >
           <div class="card-header"><a id="activite" href="activite/{{cat.id}}" ><h5 class="card-title">{{act.nom}}</h5></a></div>
           <div class="card-body">
-
             <img src="{{act.image}}" width="200px" height="auto">
             <p class="card-text">{{act.description}}</p>
-  <div id="cadre" class="col-sm-12">
-    <div *ngFor="let act of activiteService.findByActiveeAsync() | async" >
-      <div *ngFor="let cat of act.categories">
-        <div id="cadre2" *ngIf="cat.id == categorieService.categorie.id">
-          <div  class="card bg-light mb-3" style="max-width: 18rem;" >
-            <div class="card-header"> {{act.nom}} </div>
-            <div class="card-body">
-              <h5 class="card-title">Light card title</h5>
-              <p class="card-text">Some.</p>
-            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
