@@ -1,19 +1,54 @@
+<!------BOUTON CONNEXION ------>
 
-  <div>
+<div class="container">
+<button id="bouton" type="button" class="btn btn-outline-secondary"><a href="#">Connexion</a></button>
+</div>
+
+
+<!------TITRE ------>
+
+<div id="titre">
+  <h1>Bienvenue sur La Factory !</h1>
+</div>
+
+
+<!------MENU ------>
+
+<div class="row">
+  <nav id="menu" >
+  	<div  *ngFor="let c of categorieService.findAllAsync() | async"  class="dropdown">
+      <div *ngIf="c.categorieMere==null" >
+        <button class="dropbtn"><a id="categorie" href="#">{{ c.libelle }}</a></button>
+        <div   class="dropdown-content">
+          <div *ngFor="let cf of categorieService.findAllAsync() | async">
+            <a  *ngIf="cf.categorieMere?.id==c.id" href="#">{{ cf.libelle }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  	</nav>
+</div>
+
+<!------DETAIL ACTIVITE------>
+  <div id="detailActivite">
   <h2 id="nom">{{ activiteService.activite.nom }}</h2>
-  <h4 id="nbMin">{{ activiteService.activite.nbParticipantsMin }}</h4>
-  <h4 id="nbMax">{{ activiteService.activite.nbParticipantsMax }}</h4>
-  <h4 id="tarif">{{ activiteService.activite.tarifPersonne }}</h4>
-  <h4 id="duree">{{ activiteService.activite.duree }}</h4>
-  <h4 id="desc">{{ activiteService.activite.description }}</h4>
+  <h4 id="nbMin">Nombre de participants max : {{ activiteService.activite.nbParticipantsMin }}</h4>
+  <h4 id="nbMax">Nombre de participants min : {{ activiteService.activite.nbParticipantsMax }}</h4>
+  <h4 id="tarif">Tarif par participant : {{ activiteService.activite.tarifPersonne }}</h4>
+  <h4 id="duree">Durée de l'activité : {{ activiteService.activite.duree }}</h4>
+  <h4 id="desc">Description : {{ activiteService.activite.description }}</h4>
   <h4 id="lienYt">{{ activiteService.activite.lienYoutube }}</h4>
-  <h4 id="image">{{ activiteService.activite.image }}</h4>
-  <h4>niveau : </h4>
-  <h4 id="niveau">{{ activiteService.activite.niveau }}</h4>
+  <img id="image" src="{{ activiteService.activite.image }}">
+  <h4 id="niveau">Niveau de l'activité : {{ activiteService.activite.niveau | lowercase}}</h4>
   <!-- <table>
     <tr *ngFor="let c of activiteService.activite.categories | async">
         <td>{{ c.libelle }}</td>
   </table> -->
 
-  <h4 id="lieuNom">{{ activiteService.activite.lieu.nom }}</h4>
+  <h4 id="lieuNom">Lieu de l'activité : {{ activiteService.activite.lieu.nom }}</h4>
+  </div>
+
+  <div id="formReservation">
+
+
   </div>
