@@ -38,6 +38,18 @@ public class Proposition {
 	@NotNull
 	private String description;
 	
+	@Column(name="PRO_ISARCHIVEE", nullable=false)
+	@NotNull
+	private boolean isArchivee=false;
+	
+	public boolean isArchivee() {
+		return isArchivee;
+	}
+
+	public void setArchivee(boolean isArchivee) {
+		this.isArchivee = isArchivee;
+	}
+
 	public int getId() {
 		return id;
 	}
