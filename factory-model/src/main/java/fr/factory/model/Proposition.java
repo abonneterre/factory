@@ -9,37 +9,47 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import fr.factory.projection.Views;
+
 @Entity
 @Table(name="proposition")
 public class Proposition {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="PRO_ID")
+	@JsonView(Views.Common.class)
 	private int id;
 	
 	@Column(name="PRO_NOM",nullable=false)
 	@NotNull
 	@NotEmpty
+	@JsonView(Views.Proposition.class)
 	private String nom;
 	
 	@Column(name="PRO_PRENOM", nullable=false)
 	@NotNull
 	@NotEmpty
+	@JsonView(Views.Proposition.class)
 	private String prenom;
 	
 	@Column(name="PRO_MAIL", nullable=false)
 	@NotNull
 	@NotEmpty
+	@JsonView(Views.Proposition.class)
 	private String mail;
 	
 
 	@Column(name="PRO_DESCRIPTION", columnDefinition="TEXT", nullable=false)
 	@NotEmpty
 	@NotNull
+	@JsonView(Views.Proposition.class)
 	private String description;
 	
 	@Column(name="PRO_ISARCHIVEE", nullable=false)
 	@NotNull
+	@JsonView(Views.Proposition.class)
 	private boolean archivee=false;
 
 
