@@ -32,6 +32,12 @@ div#detailActivite h2{
 div#detailActivite div#image{
   display: flex;
   justify-content: center;
+  margin-bottom:  20px;
+}
+
+div#detailActivite div#image img{
+  width: 500px;
+  height: 350px;
 }
 
 div#detailActivite div#cat {
