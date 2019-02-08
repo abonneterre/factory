@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <meta charset="UTF-8">
 <title>Bienvenue sur la factory !</title>
@@ -13,11 +13,11 @@
 <body>
 	<nav id=id1 >
 		<ul class="nav nav-tabs" >
-			<li class="nav-item"><a class="nav-link" href="listeUtilisateurs">Gérant</a></li>
+			<li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item"><a class="nav-link" href="listeUtilisateurs">Gérant</a></li>
 			<li class="nav-item"><a class="nav-link" href="reservation">Réservation</a>
 			<li class="nav-item"><a class="nav-link" href="activite">Activité</a>
-			<li class="nav-item"><a class="nav-link" href="categorie">Catégorie</a>
-			<li class="nav-item"><a class="nav-link" href="propositions">Proposition</a>
+			<li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item"><a class="nav-link" href="categorie">Catégorie</a>
+			<li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item"><a class="nav-link" href="propositions">Proposition</a>
 			<li class="nav-item"><a class="nav-link" href="deconnexion">Déconnexion</a>
 			</li>
 		</ul>
