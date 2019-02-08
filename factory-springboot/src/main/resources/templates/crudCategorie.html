@@ -2,32 +2,71 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+	crossorigin="anonymous">
 <title>Crud Categorie</title>
 </head>
 <body>
-<h1>Crud cat�gorie</h1>
+	<div class="container">
+		<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
+		<h1>Crud catégorie</h1>
 
-	<form method="post">
-		
-			Libelle de la categorie: <br> <input type="text" name="libelle"
-				required> <input type="submit" value="Ajouter">
-		
+
+		<form method="post">
+			<div class="form-group">
+				<label for="libelleInput">Libellé de la categorie:</label> <input
+					type="text" class="form-control" name="libelle" id="libelleInput"
+					placeholder="libellé">
+			</div>
+			<div class="form-group">
+				<label for="categorieMereInput">Choisir categorie mère</label> <select
+					class="form-control" name="categorieMere.id"
+					id="categorieMereInput">
+					<option value="0">-- AUCUNE --</option>
+					<option th:each="categorie : ${listeCategorie}"
+						th:value="${categorie.id}">[[${categorie.libelle }]]</option>
+				</select>
+			</div>
+			<input class="btn btn-primary" type="submit" value="Ajouter">
 		</form>
+		<br>
 
-
-
-	<table class="table">
-
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">Libellé</th>
+					<th scope="col">Suppression</th>
+					<th scope="col">Edition</th>
+				</tr>
+			</thead>
 			<tr th:each="categorie : ${listeCategorie}">
-				<td>[[${ categorie.libelle }]]</td> 
-				
-				<td><div sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{'/supprimer/'+${ categorie.id }}">Supprimer</a></div></td>
-				<td><div sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{'/editer/' +${ categorie.id }}">Editer</a></div></td>
-				
+				<td>[[${ categorie.libelle }]]</td>
+
+				<td><div>
+						<a th:href="@{'/categorie/supprimer/'+${ categorie.id }}" class="btn btn-danger">Supprimer</a>
+					</div></td>
+				<td><div>
+						<a th:href="@{'/categorie/editer/' +${ categorie.id }}" class="btn btn-primary">Editer</a>
+					</div></td>
+
 			</tr>
 
 		</table>
-
+	</div>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+		integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+		integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+		crossorigin="anonymous"></script>
 </body>
 </html>

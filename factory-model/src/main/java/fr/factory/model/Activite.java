@@ -36,7 +36,7 @@ public class Activite {
 	@Size(max=100)
 	private String nom;
 	
-	@Column(name = "ACT_CODE_UNIQUE")
+	@Column(name = "ACT_CODE_UNIQUE", unique = true)
 	@NotEmpty
 	@NotNull
 	@Size(max=100)
@@ -85,7 +85,7 @@ public class Activite {
 	
 	@ManyToMany
 	@JoinColumn(name="ACT_CATEGORIE_ID")
-	private List<Categorie> categories ;
+	private List<Categorie> categories;
 	
 	@ManyToOne
 	@JoinColumn(name="ACT_LIEU_ID")
