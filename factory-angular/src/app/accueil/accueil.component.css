@@ -1,12 +1,12 @@
 div#carouselExampleIndicators {
-  border-top: solid white 20px;
+  /* border-top: solid white 20px; */
   width : 700px;
   margin: 0 auto;
 }
 
 div#titre  {
   text-align: center;
-  border-bottom: solid white 20px;
+  /* border-bottom: solid white 20px; */
 }
 
 h1 {
@@ -15,8 +15,8 @@ h1 {
 }
 
 .container {
-border-top : solid white 20px;
-border-bottom: solid white 10px;
+/* border-top : solid white 20px;
+border-bottom: solid white 10px; */
 }
 
 .row {
@@ -89,3 +89,7 @@ nav {
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {background-color: #848484;}
+
+.container {
+  text-align: right;
+}
