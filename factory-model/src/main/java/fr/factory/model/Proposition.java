@@ -40,14 +40,15 @@ public class Proposition {
 	
 	@Column(name="PRO_ISARCHIVEE", nullable=false)
 	@NotNull
-	private boolean isArchivee=false;
-	
+	private boolean archivee=false;
+
+
 	public boolean isArchivee() {
-		return isArchivee;
+		return archivee;
 	}
 
-	public void setArchivee(boolean isArchivee) {
-		this.isArchivee = isArchivee;
+	public void setArchivee(boolean archivee) {
+		this.archivee = archivee;
 	}
 
 	public int getId() {
