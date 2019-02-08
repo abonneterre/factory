@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class ActiviteService {
   public activites: any = null;
+  public activite: any = null ;
 
   constructor(private httpClient: HttpClient) { }
 
@@ -18,8 +20,11 @@ export class ActiviteService {
 }
 
   return this.activites;
+}
 
-
+findById(id : number){
+  this.activite = this.httpClient.get("http://localhost:8080/api/activite/" + id).subscribe(resp =>
+    this.activite = resp);
 }
 
 findByActiveeAsync() {

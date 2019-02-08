@@ -9,6 +9,7 @@ import { CategorieComponent } from './categorie/categorie.component';
 import { ActiviteComponent } from './activite/activite.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule} from '@angular/forms';
+import { ActiviteDetailComponent } from './activite-detail/activite-detail.component';
 
 
 // Config des routes :
@@ -16,8 +17,10 @@ const routes: Routes = [
 { path: 'accueil', component: AccueilComponent },
 { path: 'reservation', component: ReservationComponent },
 { path: 'lieu', component: LieuComponent },
+{ path: 'lieu/:id', component: LieuComponent },
 { path: 'categorie', component: CategorieComponent },
 { path: 'activite', component: ActiviteComponent },
+{ path: 'activite/:id', component: ActiviteDetailComponent, pathMatch: 'full' },
 { path: '', redirectTo: 'accueil', pathMatch: 'full' }
 ];
 
@@ -28,7 +31,8 @@ const routes: Routes = [
     ReservationComponent,
     LieuComponent,
     CategorieComponent,
-    ActiviteComponent
+    ActiviteComponent,
+    ActiviteDetailComponent
   ],
   imports: [
     BrowserModule,
