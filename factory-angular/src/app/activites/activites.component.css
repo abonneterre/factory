@@ -113,9 +113,15 @@ nav {
 .card-header {
   height: 75px;
   weight: 250px;
+  background-color: #ba5952;
+}
+
+.card-header a {
+  color: #000000;
 }
 
 .card-body {
   height: 250px;
   weight: 250px;
+  background-color: #fee1cd;
 }
