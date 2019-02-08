@@ -1,4 +1,3 @@
-
 <link rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
              crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
 
@@ -15,7 +14,7 @@
 
  <!------MENU ------>
 
- <div class="row">
+ <div class="row " >
    <nav id="menu" >
    	<div  *ngFor="let c of categorieService.findAllAsync() | async"  class="dropdown">
        <div *ngIf="c.categorieMere==null" >
@@ -29,8 +28,8 @@
      </div>
    	</nav>
  </div>
-
-<div class="container"  >
+<section class=body>
+<div class="container "   >
   <div class="row justify-content-center text-black"id= page-content >
     <div class="col-lg-4 ">
         <br />  <br />  <br />  <br />
@@ -40,10 +39,10 @@
         <p>Votre idée : <textarea class="form-control " type="textarea" [(ngModel)]="proposition.description" ></textarea></p>
          <br />
          <div class= "row justify-content-center" id= page-content>
-            <button class="btn btn-primary "  style="width: 200px;" (click)="ajouterProposition()" > ENVOYER</button>
+            <button class="btn btn-danger "  style="width: 200px;" (click)="ajouterProposition()" > ENVOYER</button>
           <div>
-
       </div>
   </div>
         <br />  <br />
+</div>
 </div>
