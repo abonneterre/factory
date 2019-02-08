@@ -23,8 +23,10 @@ public class CategorieController {
 	
 	//Liste des catégories
 	@GetMapping()
-	public String listeCategorie( Model model) {
+	public String listeCategorie(Categorie categorie, Model model) {
 		List<Categorie> mesCategories = daoCategorie.findAll();
+	
+	
 		model.addAttribute("listeCategorie", mesCategories);
 		return "crudCategorie";
 	}
@@ -32,6 +34,9 @@ public class CategorieController {
 	//Ajouter une catégorie
 	@PostMapping()
 	public String ajouterCategorie(@ModelAttribute Categorie categorie) {
+		if (categorie.getCategorieMere().getId() == 0) {
+			categorie.setCategorieMere(null);
+		}
 		daoCategorie.save(categorie);
 		return "redirect:/categorie";
 	}
@@ -47,7 +52,10 @@ public class CategorieController {
 	
 	@PostMapping("/editer/{id}")
 	public String editerCategorie(@ModelAttribute Categorie categorie) {
-		daoCategorie.save(categorie);
+		if (categorie.getCategorieMere().getId() == 0) {
+			categorie.setCategorieMere(null);
+		}
+				daoCategorie.save(categorie);
 		return "redirect:/categorie";
 	}
 	

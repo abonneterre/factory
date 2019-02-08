@@ -34,7 +34,7 @@ public class Categorie {
 	@NotEmpty
 	private String libelle;
 	
-	@ManyToMany(mappedBy="categories")
+	@ManyToMany(mappedBy="categories",cascade = CascadeType.REMOVE)
 	private List<Activite> activites;
 	
 	@OneToMany(mappedBy="categorieMere", cascade = CascadeType.REMOVE)
