@@ -10,13 +10,17 @@
 <title>Crud Categorie</title>
 </head>
 <body>
+
+	<div th:replace="navbar"></div>
+
 	<div class="container">
-		<input type="hidden" name="${_csrf.parameterName}"
-			value="${_csrf.token}" />
+
 		<h1>Crud catégorie</h1>
 
 
 		<form method="post">
+			<input type="hidden" name="${_csrf.parameterName}"
+				value="${_csrf.token}" />
 			<div class="form-group">
 				<label for="libelleInput">Libellé de la categorie:</label> <input
 					type="text" class="form-control" name="libelle" id="libelleInput"
@@ -46,12 +50,10 @@
 			<tr th:each="categorie : ${listeCategorie}">
 				<td>[[${ categorie.libelle }]]</td>
 
-				<td><div>
-						<a th:href="@{'/categorie/supprimer/'+${ categorie.id }}" class="btn btn-danger">Supprimer</a>
-					</div></td>
-				<td><div>
-						<a th:href="@{'/categorie/editer/' +${ categorie.id }}" class="btn btn-primary">Editer</a>
-					</div></td>
+				<td><a th:href="@{'/categorie/supprimer/'+${ categorie.id }}"
+					class="btn btn-danger">Supprimer</a></td>
+				<td><a th:href="@{'/categorie/editer/' +${ categorie.id }}"
+					class="btn btn-primary">Editer</a></td>
 
 			</tr>
 
