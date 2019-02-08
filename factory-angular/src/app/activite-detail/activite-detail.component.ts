@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ActiviteService } from '../activite.service';
 
 @Component({
@@ -10,7 +11,7 @@ export class ActiviteDetailComponent implements OnInit {
 
   private id: number = 0 ;
 
-  constructor(private activiteService : ActiviteService) {
+  constructor(private route: ActivatedRoute, private activiteService : ActiviteService) {
 
   this.route.params.subscribe(params => {
       this.activiteService.findById(params.id);

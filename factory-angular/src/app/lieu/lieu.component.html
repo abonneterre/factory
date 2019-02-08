@@ -1,17 +1,7 @@
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">Nom Lieu</th>
-      <th scope="col">Adresse</th>
-      <th scope="col">Nom Utilisateur</th>
-      <th scope="col">Prénom Utilisateur</th>
-    </tr>
-  </thead>
-  <tbody>
-      <tr *ngFor="let l of lieuService.findAllAsync() | async">
-        <td>{{ l.nom }}</td>
-        <td>{{ l.adresse }}</td>
-        <td>{{ l.utilisateur.nom }}</td>
-        <td>{{ l.utilisateur.prenom }}</td>
-  </tbody>
-</table>
+<div class="container">
+
+<h2>{{ lieuService.lieu?.nom }}</h2>
+<h4>Adresse : {{ lieuService.lieu?.adresse }}</h4>
+<h4>Téléphone : {{ lieuService.lieu?.telephone }}</h4>
+<h4>Gérant : {{ lieuService.lieu?.utilisateur?.prenom }} {{ lieuService.lieu?.utilisateur?.nom }}</h4>
+</div>

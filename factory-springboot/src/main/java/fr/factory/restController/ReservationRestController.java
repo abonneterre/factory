@@ -1,18 +1,15 @@
 package fr.factory.restController;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import fr.factory.dao.IDAOActivite;
 import fr.factory.dao.IDAOReservation;
-import fr.factory.model.Categorie;
 import fr.factory.model.Reservation;
 import fr.factory.projection.Views;
 
@@ -25,6 +22,8 @@ public class ReservationRestController {
 	
 	@Autowired
 	private IDAOReservation daoReservation;
+	@Autowired
+	private IDAOActivite daoActivite;
 	
 	
 
@@ -34,6 +33,9 @@ public class ReservationRestController {
 	public Reservation ajouterReservation(@RequestBody Reservation reservation) {
 		System.out.println(reservation.getNom());
 		this.daoReservation.save(reservation);
+		
+		reservation.setActivite(this.daoActivite.findById(reservation.getActivite().getId()).get());
+		
 		return reservation;
 	}
 }
