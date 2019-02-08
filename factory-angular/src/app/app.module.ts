@@ -36,9 +36,9 @@ const routes: Routes = [
     LieuComponent,
     CategorieComponent,
     ActiviteComponent,
-    ActiviteDetailComponent
+    ActiviteDetailComponent,
     ActiviteComponent,
-    ActivitesComponent
+    ActivitesComponent,
     PropositionComponent
   ],
   imports: [
