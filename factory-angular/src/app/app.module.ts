@@ -20,6 +20,7 @@ const routes: Routes = [
 { path: 'lieu/:id', component: LieuComponent },
 { path: 'categorie', component: CategorieComponent },
 { path: 'activite', component: ActiviteComponent },
+{ path: 'activite/:id', component: ActiviteDetailComponent, pathMatch: 'full' },
 { path: '', redirectTo: 'accueil', pathMatch: 'full' }
 ];
 
