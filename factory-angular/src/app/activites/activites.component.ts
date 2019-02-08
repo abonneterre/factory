@@ -19,12 +19,13 @@ export class ActivitesComponent implements OnInit {
 
   private categorie: any;
 
-  constructor(public categorieService: CategorieService, public activiteService: ActiviteService, 
+  constructor(public categorieService: CategorieService, public activiteService: ActiviteService,
   	private route: ActivatedRoute) {
 
   this.route.params.subscribe(params => {
      this.id = params.id;
-     this.categorie = this.categorieService.categories;
+     //this.categorie = this.categorieService.findById(id);
+     this.categorieService.findById(this.id);
      });
 
   }
