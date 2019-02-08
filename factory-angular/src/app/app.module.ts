@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule} from '@angular/forms';
 import { ActiviteDetailComponent } from './activite-detail/activite-detail.component';
 import { ActivitesComponent } from './activites/activites.component';
+import { PropositionComponent } from './proposition/proposition.component';
 
 
 // Config des routes :
@@ -23,6 +24,7 @@ const routes: Routes = [
 { path: 'activite', component: ActiviteComponent },
 { path: 'activite/:id', component: ActiviteDetailComponent, pathMatch: 'full' },
 { path: 'activites/:id', component: ActivitesComponent },
+{ path: 'proposition', component: PropositionComponent },
 { path: '', redirectTo: 'accueil', pathMatch: 'full' }
 ];
 
@@ -36,7 +38,8 @@ const routes: Routes = [
     ActiviteComponent,
     ActiviteDetailComponent,
     ActiviteComponent,
-    ActivitesComponent
+    ActivitesComponent,
+    PropositionComponent
   ],
   imports: [
     BrowserModule,

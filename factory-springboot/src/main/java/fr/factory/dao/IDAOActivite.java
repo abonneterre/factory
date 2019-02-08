@@ -8,5 +8,6 @@ import fr.factory.model.Activite;
 
 public interface IDAOActivite extends JpaRepository <Activite, Integer>{
 	public List<Activite> findByActivee(boolean activee);
+	public Activite findByCodeUnique(String codeUnique);
 
 }
