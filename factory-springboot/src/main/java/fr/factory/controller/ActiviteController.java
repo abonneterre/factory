@@ -96,9 +96,16 @@ public class ActiviteController {
 //Editer une activité
 	@GetMapping("/editer/{id}")
 	public String editerActivite(@ModelAttribute Categorie Categorie , @PathVariable int id, Model model) {
+		
+		Niveau[] mesNiveaux = Niveau.values();
+
+		List<Lieu> mesLieux = daoLieu.findAll();
+		
 		List<Categorie> mesCategories = daoCategorie.findAll();
 		model.addAttribute("activite", daoActivite.findById(id).get());
 		model.addAttribute("mesCategories", mesCategories);
+		model.addAttribute("mesNiveaux", mesNiveaux);
+		model.addAttribute("mesLieux", mesLieux);
 		
 		
 		
