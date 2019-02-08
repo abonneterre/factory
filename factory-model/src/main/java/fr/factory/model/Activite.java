@@ -85,7 +85,6 @@ public class Activite {
 	
 	@ManyToMany
 	@JoinColumn(name="ACT_CATEGORIE_ID")
-	@NotNull
 	private List<Categorie> categories ;
 	
 	@ManyToOne
