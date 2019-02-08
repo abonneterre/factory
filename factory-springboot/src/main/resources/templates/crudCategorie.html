@@ -34,17 +34,23 @@
 			<input class="btn btn-primary" type="submit" value="Ajouter">
 		</form>
 		<br>
-		
-		<table class="table">
 
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">Libellé</th>
+					<th scope="col">Suppression</th>
+					<th scope="col">Edition</th>
+				</tr>
+			</thead>
 			<tr th:each="categorie : ${listeCategorie}">
 				<td>[[${ categorie.libelle }]]</td>
 
 				<td><div>
-						<a th:href="@{'/categorie/supprimer/'+${ categorie.id }}">Supprimer</a>
+						<a th:href="@{'/categorie/supprimer/'+${ categorie.id }}" class="btn btn-danger">Supprimer</a>
 					</div></td>
 				<td><div>
-						<a th:href="@{'/categorie/editer/' +${ categorie.id }}">Editer</a>
+						<a th:href="@{'/categorie/editer/' +${ categorie.id }}" class="btn btn-primary">Editer</a>
 					</div></td>
 
 			</tr>
