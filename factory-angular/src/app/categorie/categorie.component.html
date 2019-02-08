@@ -1,0 +1,11 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Nom</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let c of categorieService.findAllAsync() | async">
+        <td  >{{ c.libelle }}</td>
+  </tbody>
+</table>

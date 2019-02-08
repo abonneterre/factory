@@ -17,6 +17,7 @@ import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import fr.factory.projection.Views;
 
 
 
@@ -27,11 +28,13 @@ public class Categorie {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="CAT_ID")
+	@JsonView(Views.Common.class)
 	private int id;
 	
 	@Column(name="CAT_LIBELLE", nullable=false)
 	@NotNull
 	@NotEmpty
+	@JsonView({Views.Categorie.class, Views.ActiviteWithCategorieAndReservationsAndLieu.class})
 	private String libelle;
 	
 	@ManyToMany(mappedBy="categories",cascade = CascadeType.REMOVE)
@@ -41,6 +44,7 @@ public class Categorie {
 	private List<Categorie> categoriesFilles;
 	
 	@ManyToOne
+	@JsonView({Views.Categorie.class,  Views.ActiviteWithCategorieAndReservationsAndLieu.class})
 	private Categorie categorieMere;
 	
 	public List<Activite> getActivites() {

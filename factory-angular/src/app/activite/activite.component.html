@@ -1,0 +1,34 @@
+<!------TITRE ------>
+
+<div id="titre">
+  <h1>ACTIVITES</h1>
+</div>
+
+<table>
+  <thead>
+      <th>code</th>
+      <th>nom</th>
+      <th>duree</th>
+      <th>nb min</th>
+      <th>nb max</th>
+      <th>tarif</th>
+      <th>lieu</th>
+      <th>categorie</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let a of activiteService.findByActiveeAsync() | async">
+      <td  >{{ a.codeUnique }}</td>
+      <td  >{{ a.nom }}</td>
+      <td  >{{ a.duree }}</td>
+      <td  >{{ a.nbParticipantsMin }}</td>
+      <td  >{{ a.nbParticipantsMax }}</td>
+      <td  >{{ a.tarifPersonne }}</td>
+      <td  >{{ a.lieu?.nom }}</td>
+      <td  >
+          <span *ngFor="let c of a.categories"> 
+              {{ c.libelle}}
+          </span>
+        </td>
+    </tr>
+  </tbody>
+</table>

@@ -7,12 +7,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import fr.factory.dao.IDAOActivite;
 import fr.factory.model.Activite;
+import fr.factory.projection.Views;
 
 @RestController
 @CrossOrigin("*")
@@ -23,11 +27,31 @@ public class ActiviteRestController {
 	private IDAOActivite daoActivite; 
 	
 	@GetMapping()
+	@JsonView(Views.ActiviteWithCategorieAndReservationsAndLieu.class)
 	public List<Activite> listeActivites() {
+		List<Activite> act = daoActivite.findAll();
+		return act;
+		
+	}
+	
+	@GetMapping("/activee")
+	@JsonView(Views.ActiviteWithCategorieAndReservationsAndLieu.class)
+	public List<Activite> listeActivitesActivee() {
 		List<Activite> act = daoActivite.findByActivee(true);
 		return act;
 		
 	}
+	
+	@GetMapping("/{idActivite}")
+	@JsonView(Views.ActiviteWithCategorieAndReservationsAndLieu.class)
+	public Activite findById(@PathVariable int idActivite) {
+		
+
+		return this.daoActivite.findById(idActivite).get();
+	}
+	
+
+	
 	
 	
 
