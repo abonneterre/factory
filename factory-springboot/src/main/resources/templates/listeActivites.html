@@ -34,7 +34,7 @@
 						<th>Nom</th>
 						<th>Participants min/max</th>
 						<th>Nombre de réservations</th>
-						<th>Activité visible</th>
+						<th>Statut</th>
 						<!-- colonne des boutons d'action -->
 						<th></th> 
 					</tr>
@@ -45,17 +45,29 @@
 						<td>[[${ activite.codeUnique }]]</td>
 						<td>[[${ activite.nom }]]</td>
 						<td>[[${ activite.nbParticipantsMin }]] à [[${ activite.nbParticipantsMax }]]</td>
-						<td>reservation</td>
 						<td>
-							<label>
-							    Oui
-							    <input type="checkbox">
-							    <span class="lever"></span> 
-							    Non
-							</label>
+							[[${activite.nbParticipants}]]
+						</td>
+						<td>						
+							<span th:if="${activite.activee == true}">
+								<a th:href="@{/activite/afficher/{id}(id=${ activite.id })}" class="btn btn-success" role="button">
+							   		Affiché
+								</a>
+								<a th:href="@{/activite/masquer/{id}(id=${ activite.id })}" class="btn btn-light" role="button">
+									Masqué
+								</a>
+							</span>
+							<span th:if="${activite.activee == false}">
+								<a th:href="@{/activite/afficher/{id}(id=${ activite.id })}" class="btn btn-light " role="button">
+							   		Affiché
+								</a>
+								<a th:href="@{/activite/masquer/{id}(id=${ activite.id })}" class="btn btn-success" role="button">
+									Masqué
+								</a>
+							</span>							 
 						</td>
 						<td>
-							<a th:href="@{activite/editer/{id}(id=${ activite.id })}" class="btn btn-info" role="button">Editer</a>
+							<a th:href="@{editer/{id}(id=${ activite.id })}" class="btn btn-info" role="button">Editer</a>
 							<a th:href="@{activite/supprimer/{id}(id=${ activite.id })}" class="btn btn-danger" role="button">Supprimer</a>
 						</td>
 					</tr>
