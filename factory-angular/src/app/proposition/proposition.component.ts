@@ -18,8 +18,11 @@ export class PropositionComponent implements OnInit {
 
   ajouterProposition(){
 
+    this.proposition.archivee = false;
+
     // this.reservation.activite.id = 1;
     this.propositionService.save(this.proposition);
+    this.proposition = new Proposition();
   }
 
 }

@@ -4,6 +4,7 @@ export class Proposition{
   public mail;
   public nom;
   public prenom;
+  public archivee;
 
   constructor(  ){}
 

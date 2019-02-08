@@ -49,6 +49,7 @@ public class Proposition {
 	
 	@Column(name="PRO_ISARCHIVEE", nullable=false)
 	@NotNull
+	@JsonView(Views.Proposition.class)
 	private boolean archivee=false;
 
 
