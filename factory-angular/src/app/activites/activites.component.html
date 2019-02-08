@@ -5,7 +5,6 @@
 </div>
 <!-----TITRE----->
 <div id="titre">
-  <!-- <h1> {{ id }} </h1> -->
   <h1> {{ categorieService.categorie.libelle }} </h1>
 </div>
 
@@ -25,15 +24,20 @@
     </div>
     </nav>
 </div>
-<!--  -->
+
 
 <div>
-	<div class="card bg-light mb-3" style="max-width: 18rem;" *ngFor="let cat of activiteService.findAllAsync() | async"  >
-	  <div class="card-header"> {{cat.nom}} </div>
-	  <div class="card-body">
-	    <h5 class="card-title">Light card title</h5>
-	    <p class="card-text">Some.</p>
-	  </div>
-	</div>
-
+  <div *ngFor="let act of activiteService.findByActiveeAsync() | async" >
+    <div *ngFor="let cat of act.categories">
+      <div *ngIf="cat.id == categorieService.categorie.id">
+        <div class="card bg-light mb-3" style="max-width: 18rem;" >
+          <div class="card-header"> {{act.nom}} </div>
+          <div class="card-body">
+            <h5 class="card-title">Light card title</h5>
+            <p class="card-text">Some.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
