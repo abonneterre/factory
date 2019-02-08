@@ -10,6 +10,7 @@ import { ActiviteComponent } from './activite/activite.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule} from '@angular/forms';
 import { ActiviteDetailComponent } from './activite-detail/activite-detail.component';
+import { ActivitesComponent } from './activites/activites.component';
 import { PropositionComponent } from './proposition/proposition.component';
 
 
@@ -22,6 +23,7 @@ const routes: Routes = [
 { path: 'categorie', component: CategorieComponent },
 { path: 'activite', component: ActiviteComponent },
 { path: 'activite/:id', component: ActiviteDetailComponent, pathMatch: 'full' },
+{ path: 'activites/:id', component: ActivitesComponent },
 { path: 'proposition', component: PropositionComponent },
 { path: '', redirectTo: 'accueil', pathMatch: 'full' }
 ];
@@ -34,7 +36,9 @@ const routes: Routes = [
     LieuComponent,
     CategorieComponent,
     ActiviteComponent,
-    ActiviteDetailComponent,
+    ActiviteDetailComponent
+    ActiviteComponent,
+    ActivitesComponent
     PropositionComponent
   ],
   imports: [
