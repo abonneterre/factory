@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+import { Activite } from './activites/activite';
+import { Categorie } from './activites/categorie';
+
 @Injectable({
   providedIn: 'root'
 })
