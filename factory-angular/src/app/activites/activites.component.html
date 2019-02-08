@@ -1,0 +1,38 @@
+<!------BOUTON CONNEXION ------>
+
+<div class="container">
+<button id="bouton" type="button" class="btn btn-outline-secondary"><a href="#">Connexion</a></button>
+</div>
+<!-----TITRE----->
+<div id="titre">
+  <h1> {{ categorieService.categories.libelle }} </h1>
+</div>
+
+<!------MENU ------>
+
+<div class="row">
+  <nav id="menu" >
+  	<div  *ngFor="let c of categorieService.findAllAsync() | async"  class="dropdown">
+      <div *ngIf="c.categorieMere==null" >
+        <button class="dropbtn"><a id="categorie" href="activites/{{c.id}}" >{{ c.libelle }}</a></button>
+        <div   class="dropdown-content">
+          <div *ngFor="let cf of categorieService.findAllAsync() | async">
+            <a  *ngIf="cf.categorieMere?.id==c.id" href="activites/{{cf.id}}">{{ cf.libelle }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  	</nav>
+</div>
+<!--  -->
+
+<div>
+	<div class="card bg-light mb-3" style="max-width: 18rem;" *ngFor="let cat of activiteService.findAllAsync() | async"  >
+	  <div class="card-header"> {{cat.nom}} </div>
+	  <div class="card-body">
+	    <h5 class="card-title">Light card title</h5>
+	    <p class="card-text">Some.</p>
+	  </div>
+	</div>
+
+</div>
