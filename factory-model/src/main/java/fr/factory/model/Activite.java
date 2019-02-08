@@ -14,6 +14,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
@@ -41,7 +42,7 @@ public class Activite {
 	@JsonView({Views.ReservationWithActivite.class,Views.Activite.class})
 	private String nom;
 	
-	@Column(name = "ACT_CODE_UNIQUE")
+	@Column(name = "ACT_CODE_UNIQUE", unique = true)
 	@NotEmpty
 	@NotNull
 	@Size(max=100)
@@ -110,6 +111,13 @@ public class Activite {
 	@NotNull
 	@JsonView(Views.ActiviteWithCategorieAndReservationsAndLieu.class)
 	private Lieu lieu;
+	
+	
+	
+	@Transient
+	private int nbParticipants;
+	
+	
 
 	public int getId() {
 		return id;
@@ -239,4 +247,12 @@ public class Activite {
 		this.lieu = lieu;
 	}
 
+	public int getNbParticipants() {
+		return nbParticipants;
+	}
+
+	public void setNbParticipants(int nbParticipants) {
+		this.nbParticipants = nbParticipants;
+	}
+	
 }
