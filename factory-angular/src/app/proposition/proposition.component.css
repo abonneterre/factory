@@ -1,51 +1,3 @@
-div#detailActivite {
-  margin-top: 30px ;
-}
-
-div#detailActivite h4{
-  margin-left: calc(2%);
-  display: flex;
-  justify-content: left;
-}
-
-div#detailActivite div#lieu{
-  display: flex;
-  justify-content: left;
-}
-
-div#detailActivite div#lieu a{
-  margin-left: calc(2%);
-  display: flex;
-  justify-content: left;
-  color : black ;
-  margin-left: 10px;
-  border-collapse: collapse;
-  font-size : 20px;
-}
-
-div#detailActivite h2{
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-div#detailActivite div#image{
-  display: flex;
-  justify-content: center;
-}
-
-div#detailActivite div#cat {
-  display: flex;
-  justify-content: left;
-}
-
-div#detailActivite div#cat table{
-  width: calc(50%) !important;
-}
-
-div#detailActivite div#cat table tr h4 {
-    margin-left: 10px;
-}
 div#carouselExampleIndicators {
   /* border-top: solid white 20px; */
   width : 700px;
@@ -67,9 +19,7 @@ h1 {
 border-bottom: solid white 10px; */
 }
 
-.row {
-  background-color: #893d37;
-}
+
 .container a {
   color: inherit;
   text-decoration: none;
@@ -137,7 +87,3 @@ nav {
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {background-color: #6d302c;}
-
-.container {
-  text-align: right;
-}
