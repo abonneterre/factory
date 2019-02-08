@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import fr.factory.dao.IDAOCategorie;
 import fr.factory.model.Categorie;
-
+import fr.factory.security.annotation.isAdmin;
+@isAdmin
 @Controller
 @RequestMapping("/categorie")
 public class CategorieController {
@@ -22,6 +23,7 @@ public class CategorieController {
 	private IDAOCategorie daoCategorie;
 	
 	//Liste des catégories
+
 	@GetMapping()
 	public String listeCategorie(Categorie categorie, Model model) {
 		List<Categorie> mesCategories = daoCategorie.findAll();
@@ -32,6 +34,7 @@ public class CategorieController {
 	}
 	
 	//Ajouter une catégorie
+
 	@PostMapping()
 	public String ajouterCategorie(@ModelAttribute Categorie categorie) {
 		if (categorie.getCategorieMere().getId() == 0) {
@@ -42,6 +45,7 @@ public class CategorieController {
 	}
 	
 	//Editer une catégorie
+
 	@GetMapping("/editer/{id}")
 	public String editerCategorie(@PathVariable int id, Model model) {
 		model.addAttribute("categorie", daoCategorie.findById(id).get());
@@ -49,7 +53,7 @@ public class CategorieController {
 		model.addAttribute("categorieVide", new Categorie());
 		return "editerCategorie";
 	}
-	
+
 	@PostMapping("/editer/{id}")
 	public String editerCategorie(@ModelAttribute Categorie categorie) {
 		if (categorie.getCategorieMere().getId() == 0) {
@@ -60,6 +64,7 @@ public class CategorieController {
 	}
 	
 	//Supprimer une catégorie
+
 	@GetMapping("/supprimer/{id}")
 	public String supprimerCategorie(@PathVariable int id) {
 		daoCategorie.deleteById(id);
