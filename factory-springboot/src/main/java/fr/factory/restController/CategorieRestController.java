@@ -33,7 +33,7 @@ public class CategorieRestController {
 			return this.daoCategorie.findAll();
 	}
 	
-	@GetMapping("/{idCategorie}")
+	@GetMapping("/api/categorie/{idCategorie}")
 	@JsonView(Views.ActiviteWithCategorieAndReservationsAndLieu.class)
 	public Categorie findById(@PathVariable int idCategorie) {
 		
