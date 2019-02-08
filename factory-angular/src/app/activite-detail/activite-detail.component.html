@@ -1,15 +1,14 @@
 <!------BOUTON CONNEXION ------>
 
-<div class="container">
-<button id="bouton" type="button" class="btn btn-outline-secondary"><a href="#">Connexion</a></button>
-</div>
+<div class="container pt-2 pb-2 col-sm-12" id="header">
+  <button id="bouton" type="button" class="btn btn-danger"><a href="#">Connexion</a></button>
+  <div id="titre">
+    <h1>Bienvenue sur La Factory !</h1>
+  </div>
+  </div>
 
+  <!------TITRE ------>
 
-<!------TITRE ------>
-
-<div id="titre">
-  <h1>Bienvenue sur La Factory !</h1>
-</div>
 
 
 <!------MENU ------>
@@ -26,29 +25,48 @@
         </div>
       </div>
     </div>
+    <div class="dropdown">
+          <button class="dropbtn"><a href="/proposition">BOITE A IDEES</a></button>
+    </div>
   	</nav>
 </div>
 
 <!------DETAIL ACTIVITE------>
-  <div id="detailActivite">
-  <h2 id="nom">{{ activiteService.activite.nom }}</h2>
-  <h4 id="nbMin">Nombre de participants max : {{ activiteService.activite.nbParticipantsMin }}</h4>
-  <h4 id="nbMax">Nombre de participants min : {{ activiteService.activite.nbParticipantsMax }}</h4>
-  <h4 id="tarif">Tarif par participant : {{ activiteService.activite.tarifPersonne }}</h4>
-  <h4 id="duree">Durée de l'activité : {{ activiteService.activite.duree }}</h4>
-  <h4 id="desc">Description : {{ activiteService.activite.description }}</h4>
-  <h4 id="lienYt">{{ activiteService.activite.lienYoutube }}</h4>
-  <img id="image" src="{{ activiteService.activite.image }}">
-  <h4 id="niveau">Niveau de l'activité : {{ activiteService.activite.niveau | lowercase}}</h4>
-  <!-- <table>
-    <tr *ngFor="let c of activiteService.activite.categories | async">
-        <td>{{ c.libelle }}</td>
-  </table> -->
-
-  <h4 id="lieuNom">Lieu de l'activité : {{ activiteService.activite.lieu.nom }}</h4>
-  </div>
-
-  <div id="formReservation">
+<div class="col-sm-12" id="page-background">
+     <div class="col-sm-1">
+      </div>
+     <div class="col-sm-10" id="page-content">
+      <div id="detailActivite">
 
 
-  </div>
+
+        <h2 id="nom">{{ activiteService.activite.nom }}</h2>
+        <h4 id="nbMin">Nombre de participants min : {{ activiteService.activite.nbParticipantsMin }}</h4>
+        <h4 id="nbMax">Nombre de participants max : {{ activiteService.activite.nbParticipantsMax }}</h4>
+        <h4 id="tarif">Tarif par participant : {{ activiteService.activite.tarifPersonne }} €</h4>
+        <h4 id="duree">Durée de l'activité : {{ activiteService.activite.duree }} h</h4>
+        <h4 id="desc">Description : {{ activiteService.activite.description }}</h4>
+        <h4 id="lienYt">{{ activiteService.activite.lienYoutube }}</h4>
+        <div id="image">
+          <img id="image" src="{{ activiteService.activite.image }}">
+        </div>
+        <h4 id="niveau">Niveau de l'activité : {{ activiteService.activite.niveau | lowercase}}</h4>
+        <div id="cat">
+          <h4 id="categorie">Catégorie de l'activité : {{ activiteService.activite.categories.libelle }}</h4>
+          <table>
+            <tr *ngFor="let cat of activiteService.activite.categories">
+              <h4>{{cat.libelle | lowercase}}</h4>
+          </table>
+        </div>
+        <div id="lieu">
+          <h4>Lieu de l'activité : </h4>
+          <a href="./lieu/{{activiteService.activite.lieu.id}}">{{ activiteService.activite.lieu.nom }}</a>
+        </div>
+      </div>
+
+      <div id="formReservation">
+
+
+      </div>
+    </div>
+</div>

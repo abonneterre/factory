@@ -93,3 +93,7 @@ nav {
 .container {
   text-align: right;
 }
+
+#page-background {
+     min-height: 700px;
+}
