@@ -22,11 +22,16 @@ export class ReservationComponent implements OnInit {
 
 
   ajouterReservation(){
-// this.reservation.activite  = {}
 
+//L'ACTIVITE EST POUR L'INSTANT RENSEIGNEE EN BRUT, IL FAUDRA LA RECUPERER SUR LA PAGE UNE FOIS LE SERVICE INTEGRE A LA PAGE (PATHVARIABLE OU REQUESTVARIBLE...)
 this.reservation.activite  = {
   id: 2
 };
+
+
+this.reservation.dateDemande = Date.now();
+
+
     // this.reservation.activite.id = 1;
     this.reservationService.save(this.reservation);
   }
