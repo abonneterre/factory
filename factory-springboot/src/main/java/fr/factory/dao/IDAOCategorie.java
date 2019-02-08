@@ -6,6 +6,7 @@ import fr.factory.model.Categorie;
 
 public interface IDAOCategorie extends JpaRepository<Categorie, Integer>{
 	
+	public Categorie findByLibelle(String libelle);
 	
 
 }
