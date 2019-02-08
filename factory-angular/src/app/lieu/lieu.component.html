@@ -1,17 +1,51 @@
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">Nom Lieu</th>
-      <th scope="col">Adresse</th>
-      <th scope="col">Nom Utilisateur</th>
-      <th scope="col">Prénom Utilisateur</th>
-    </tr>
-  </thead>
-  <tbody>
-      <tr *ngFor="let l of lieuService.findAllAsync() | async">
-        <td>{{ l.nom }}</td>
-        <td>{{ l.adresse }}</td>
-        <td>{{ l.utilisateur.nom }}</td>
-        <td>{{ l.utilisateur.prenom }}</td>
-  </tbody>
-</table>
+<!------BOUTON CONNEXION ------>
+<!------TITRE ------>
+<div class="container pt-2 pb-2 col-sm-12" id="header">
+  <button id="bouton" type="button" class="btn btn-danger"><a href="#">Connexion</a></button>
+  <div id="titre">
+    <h1>La Factory</h1>
+  </div>
+  </div>
+
+
+<!------TITRE ------>
+
+
+<!------MENU ------>
+
+<div class="row">
+  <nav id="menu" >
+  	<div  *ngFor="let c of categorieService.findAllAsync() | async"  class="dropdown">
+      <div *ngIf="c.categorieMere==null" >
+        <button class="dropbtn"><a id="categorie" href="#">{{ c.libelle }}</a></button>
+        <div   class="dropdown-content">
+          <div *ngFor="let cf of categorieService.findAllAsync() | async">
+            <a  *ngIf="cf.categorieMere?.id==c.id" href="#">{{ cf.libelle }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="dropdown">
+          <button class="dropbtn"><a href="/proposition">BOITE A IDEES</a></button>
+    </div>
+  	</nav>
+</div>
+
+<!------AFFICHAGE DES INFOS DU LIEU ------>
+<div class="col-sm-12" id="page-background">
+     <div class="col-sm-1">
+      </div>
+  <div class="col-sm-10" id="page-content">
+    <div id="detail">
+      <h2>{{ lieuService.lieu?.nom }}</h2><br/>
+      <h4> {{ lieuService.lieu?.description }}</h4>
+      <h4>{{ lieuService.lieu?.adresse }}</h4>
+      <h4>{{ lieuService.lieu?.telephone }}</h4>
+      <h5>Gérant : {{ lieuService.lieu?.utilisateur?.prenom }} {{ lieuService.lieu?.utilisateur?.nom }}</h5>
+      <a href="{{ lieuService.lieu?.lien }}" >Lien du site</a>
+      <div id="imgL">
+        <img src="{{ lieuService.lieu?.image }}">
+      </div>
+    </div>
+  </div>
+</div>

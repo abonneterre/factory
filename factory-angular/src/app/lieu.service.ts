@@ -16,6 +16,13 @@ export class LieuService {
    return this.lieu;
   }
 
+  findById(id:number){
+    return this.httpClient
+      .get<any>("http://localhost:8080/api/lieu/" + id)
+      .subscribe(resp => this.lieu=resp);
+  }
+
+
   refresh() {
       this.lieu = null;
       }

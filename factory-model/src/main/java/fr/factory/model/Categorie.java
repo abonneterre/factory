@@ -34,17 +34,17 @@ public class Categorie {
 	@Column(name="CAT_LIBELLE", nullable=false)
 	@NotNull
 	@NotEmpty
-	@JsonView(Views.Categorie.class)
+	@JsonView({Views.Categorie.class, Views.ActiviteWithCategorieAndReservationsAndLieu.class})
 	private String libelle;
 	
-	@ManyToMany(mappedBy="categories")
+	@ManyToMany(mappedBy="categories",cascade = CascadeType.REMOVE)
 	private List<Activite> activites;
 	
 	@OneToMany(mappedBy="categorieMere", cascade = CascadeType.REMOVE)
 	private List<Categorie> categoriesFilles;
 	
 	@ManyToOne
-	@JsonView(Views.Categorie.class)
+	@JsonView({Views.Categorie.class,  Views.ActiviteWithCategorieAndReservationsAndLieu.class})
 	private Categorie categorieMere;
 	
 	public List<Activite> getActivites() {

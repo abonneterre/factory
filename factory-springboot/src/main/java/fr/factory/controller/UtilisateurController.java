@@ -16,12 +16,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import fr.factory.dao.IDAOLieu;
 import fr.factory.dao.IDAOUtilisateur;
 import fr.factory.model.Lieu;
-import fr.factory.model.Utilisateur; 
+import fr.factory.model.Utilisateur;
+import fr.factory.security.annotation.isAdmin; 
  
  
  
 @Controller 
 @RequestMapping("") 
+@isAdmin
 public class UtilisateurController { 
 	 
 	@Autowired 
@@ -36,7 +38,7 @@ public class UtilisateurController {
 	public String formulaireAjout(Model model) { 
 		List <Utilisateur> mesUtilisateurs = daoUtilisateur.findAll(); 
 		model.addAttribute("mesUtilisateurs", mesUtilisateurs); 
-		return "admin" ; 
+		return "crudGerant" ; 
 	} 
 	
 	@GetMapping("/ajouterUtilisateur")
@@ -47,16 +49,11 @@ public class UtilisateurController {
 	@PostMapping("/ajouterUtilisateur") 
 	public String ajouterUtilisateur( 
 			@ModelAttribute Utilisateur utilisateur, Model model) {  
-		System.out.println("hello");
-		System.out.println(utilisateur.getNom());
 		lieu = utilisateur.getLieu();
-		System.out.println(lieu.getNom());
 		lieu.setUtilisateur(utilisateur);
-//		daoLieu.save(lieu);
 		
 		utilisateur.setAdmin(false);
 		daoUtilisateur.save(utilisateur); 
-		
 		 
 		return "redirect:./listeUtilisateurs"; 
 	} 
@@ -77,12 +74,13 @@ public class UtilisateurController {
 		Utilisateur utilisateur = daoUtilisateur.findById(id).get();
 		Optional<Lieu> lieu = daoLieu.findById(utilisateur.getLieu().getId()); 
 		model.addAttribute("lieu", lieu); 
-		return "editer"; 
+		return "ajoutUtilisateur"; 
 	} 
 	 
  
 	@PostMapping("/editer/{id}") 
 	public String modifierUtilisateur(@PathVariable(value="id", required=false) int id, @ModelAttribute Utilisateur utilisateur) { 
+		System.out.println(utilisateur.getNom());
 		daoUtilisateur.save(utilisateur); 
 		return "redirect:../listeUtilisateurs"; 
 	 

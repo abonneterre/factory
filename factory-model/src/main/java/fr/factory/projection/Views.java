@@ -33,6 +33,8 @@ public class Views {
 	}
 	public static class	ActiviteWithCategorieAndReservationsAndLieu extends ActiviteWithCategorieAndReservations {
 	}
+	public static class Proposition extends Common {
+	}
 	
 
 }
