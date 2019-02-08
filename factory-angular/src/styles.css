@@ -132,3 +132,7 @@ body {
     margin-left:0px;
 
 }
+
+#page-background {
+     min-height: 700px;
+}
