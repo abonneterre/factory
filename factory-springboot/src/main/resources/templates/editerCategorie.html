@@ -13,6 +13,8 @@
 	<div class="container">
 		<h1>Edition catégorie</h1>
 		<form method="post">
+			<input type="hidden" name="${_csrf.parameterName}"
+				value="${_csrf.token}" />
 			<div class="form-group">
 				<label for="libelleInput">Libellé de la categorie:</label> <input
 					type="text" class="form-control" name="libelle" id="libelleInput"
