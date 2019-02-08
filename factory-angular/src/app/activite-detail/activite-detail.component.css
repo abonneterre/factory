@@ -51,6 +51,13 @@ div#detailActivite div#cat table{
 div#detailActivite div#cat table tr h4 {
     margin-left: 10px;
 }
+
+div#formReservation {
+  margin-top: 20px;
+}
+
+
+
 div#carouselExampleIndicators {
   /* border-top: solid white 20px; */
   width : 700px;
