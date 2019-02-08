@@ -5,14 +5,15 @@
 </div>
 <!-----TITRE----->
 <div id="titre">
-  <h1> {{ categorieService.categories.libelle }} </h1>
+  <!-- <h1> {{ id }} </h1> -->
+  <h1> {{ categorieService.categorie.libelle }} </h1>
 </div>
 
 <!------MENU ------>
 
 <div class="row">
   <nav id="menu" >
-  	<div  *ngFor="let c of categorieService.findAllAsync() | async"  class="dropdown">
+    <div  *ngFor="let c of categorieService.findAllAsync() | async"  class="dropdown">
       <div *ngIf="c.categorieMere==null" >
         <button class="dropbtn"><a id="categorie" href="activites/{{c.id}}" >{{ c.libelle }}</a></button>
         <div   class="dropdown-content">
@@ -22,7 +23,7 @@
         </div>
       </div>
     </div>
-  	</nav>
+    </nav>
 </div>
 <!--  -->
 

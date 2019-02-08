@@ -10,6 +10,7 @@ import { Categorie } from './activites/categorie';
 })
 export class CategorieService {
   public categories: any = null;
+  public categorie: any = null;
 
   constructor(private httpClient: HttpClient) { }
 
@@ -33,10 +34,10 @@ findById(id: number) {
 
 this.httpClient
     .get("http://localhost:8080/api/categorie/" + id )
-      .subscribe(resp => this.categories = resp);
+      .subscribe(resp => this.categorie = resp);
  }
 
      refresh() {
-       this.categories = null;
+       this.categorie = null;
      }
 }

@@ -24,8 +24,9 @@ export class ActivitesComponent implements OnInit {
 
   this.route.params.subscribe(params => {
      this.id = params.id;
-     //this.categorie = this.categorieService.findById(id);
+     //this.categorie = this.categorieService.findById(this.id);
      this.categorieService.findById(this.id);
+     this.categorieService.findAllAsync();
      });
 
   }
