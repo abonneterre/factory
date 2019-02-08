@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import fr.factory.dao.IDAOActivite;
 import fr.factory.dao.IDAOCategorie;
@@ -73,13 +74,11 @@ public class ActiviteController {
 	
 //Ajouter une activité
 	@GetMapping({ "/ajouterActivite" })
-	public String ajouterActivite(@ModelAttribute Categorie Categorie , Niveau niveau, Lieu lieu, Model model) {
+	public String ajouterActivite(Niveau niveau, Lieu lieu, Model model) {
 		
 		Niveau[] mesNiveaux = Niveau.values();
-		
-		List<Categorie> mesCategories = daoCategorie.findAll();
+
 		List<Lieu> mesLieux = daoLieu.findAll();
-		model.addAttribute("mesCategories", mesCategories);
 		model.addAttribute("mesNiveaux", mesNiveaux);
 		model.addAttribute("mesLieux", mesLieux);
 		return "formActivite"; 
@@ -88,7 +87,9 @@ public class ActiviteController {
 	@PostMapping("/ajouterActivite")
 	public String ajouterActivite1(@ModelAttribute Activite activite, Model model) {
 		daoActivite.save(activite);
-		return "redirect:.";
+		//Activite monActivite = daoActivite.findByCodeUnique(activite.getCodeUnique());
+		//return "redirect:/activite/editer/"+ monActivite.getId();
+		return "redirect:/activite";
 	}
 
 	
@@ -115,7 +116,7 @@ public class ActiviteController {
 	@GetMapping("/supprimer/{id}")
 	public String supprimerActivite(@PathVariable int id) {
 		daoActivite.deleteById(id);
-		return "redirect:../";
+		return "redirect:/activite";
 	}
 	
 	
@@ -125,7 +126,7 @@ public class ActiviteController {
 		Activite monActivite = daoActivite.findById(id).get();
 		monActivite.setActivee(false);
 		daoActivite.save(monActivite);
-		return"redirect:../";
+		return"redirect:/activite";
 	}
 	
 	
@@ -136,13 +137,27 @@ public class ActiviteController {
 		Activite monActivite = daoActivite.findById(id).get();
 		monActivite.setActivee(true);
 		daoActivite.save(monActivite);
-		return"redirect:../";
+		return"redirect:/activite";
 	}
 	
 	
 	
 	
-	
+	//Ajouter une catégorie sur l'activité
+	@PostMapping("ajouterCategorie/{idActivite}")
+	public String ajouterCategorie(@RequestParam int idCategorie, @PathVariable int idActivite) {
+		
+		Activite monActivite = daoActivite.findById(idActivite).get();
+		List<Categorie> mesCategories = monActivite.getCategories();
+		
+		mesCategories.add(daoCategorie.findById(idCategorie).get());
+		monActivite.setCategories(mesCategories);
+		
+		daoActivite.save(monActivite);
+		
+		return"redirect:/activite/editer/{idActivite}";
+		
+	}
 	
 	
 	

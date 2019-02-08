@@ -19,7 +19,7 @@
 		<p></p>
 		<section class="container" id="ajouterCarte">
 			<p>
-				<a href="activite/ajouter" class="btn btn-sucess" role="button">Ajouter une activité</a>
+				<a href="activite/ajouterActivite" class="btn btn-sucess" role="button">Ajouter une activité</a>
 			</p>
 		</section>
 		
@@ -67,7 +67,7 @@
 							</span>							 
 						</td>
 						<td>
-							<a th:href="@{editer/{id}(id=${ activite.id })}" class="btn btn-info" role="button">Editer</a>
+							<a th:href="@{activite/editer/{id}(id=${ activite.id })}" class="btn btn-info" role="button">Editer</a>
 							<a th:href="@{activite/supprimer/{id}(id=${ activite.id })}" class="btn btn-danger" role="button">Supprimer</a>
 						</td>
 					</tr>
